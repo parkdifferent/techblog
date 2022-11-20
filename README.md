@@ -124,6 +124,9 @@
 
 * [building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888](https://medium.com/pinterest-engineering/scaling-cache-infrastructure-at-pinterest-422d6d294ece)
 
+* [Paper Notes: Real-time Data Infrastructure at Uber](https://distributed-computing-musings.com/2022/08/paper-notes-real-time-data-infrastructure-at-uber/)
+  * [Real-time Data Infrastructure at Uber](https://arxiv.org/abs/2104.00087)
+
 ## 延迟服务
 
 * [Dynein: Building an Open-source Distributed Delayed Job Queueing System](https://medium.com/airbnb-engineering/dynein-building-a-distributed-delayed-job-queueing-system-93ab10f05f99)
