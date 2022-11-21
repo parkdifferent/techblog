@@ -77,6 +77,7 @@
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
 
 * [Conductor](https://conductor.netflix.com/)
+* [Cadence Multi-Tenant Task Processing](https://www.uber.com/blog/cadence-multi-tenant-task-processing/)  
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
 * [Workflow Comparison: Uber Cadence vs Netflix Conductor](https://www.instaclustr.com/blog/workflow-comparison-uber-cadence-vs-netflix-conductor/)
 * [Enabling Faster Financial Partnership Integrations Using Cadence](https://doordash.engineering/2022/05/18/enabling-faster-financial-partnership-integrations-using-cadence/)
@@ -102,6 +103,13 @@
 * [New Recruiter & Jobs: The largest enterprise data migration at LinkedIn](https://engineering.linkedin.com/blog/2021/new-recruiter---jobs--the-largest-enterprise-data-migration-at-l)
 
 * [How Uber Migrated Financial Data from DynamoDB to Docstore](https://www.uber.com/blog/dynamodb-to-docstore-migration/)
+
+* [Building Uber’s Fulfillment Platform for Planet-Scale using Google Cloud Spanner](https://www.uber.com/blog/building-ubers-fulfillment-platform/)
+  * [Uber’s Fulfillment Platform: Ground-up Re-architecture to Accelerate Uber’s Go/Get Strategy](https://www.uber.com/blog/fulfillment-platform-rearchitecture/)
+  * [The third article ]()
+  * [the fourth article]() 
+
+* [Revolutionizing Money Movements at Scale with Strong Data Consistency](https://www.uber.com/blog/money-scale-strong-data/)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -141,6 +149,7 @@
 * [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
 
 * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
+
 
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
