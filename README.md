@@ -48,6 +48,7 @@
 * [CDC](https://www.cockroachlabs.com/docs/stable/change-data-capture-overview.html)
 * [Message Queuing and the Database: Solving the Dual Write Problem](https://www.cockroachlabs.com/blog/message-queuing-database-kafka/#the-transactional-outbox-pattern)
 * [DBLog: A Generic Change-Data-Capture Framework](https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b)
+* [How Airbnb, Uber, Netflix, Shopify, and Reddit Use Change Data Capture to Drive Breakthrough Advantages](https://www.arcion.io/blog/brands-using-change-data-capture)
 
 ## 注册中心
 
@@ -73,6 +74,14 @@
 
 * 面向大规模商业系统的数据库设计和实践
 
+* [MyRocks: A space- and write-optimized MySQL database](https://engineering.fb.com/2016/08/31/core-data/myrocks-a-space-and-write-optimized-mysql-database/)
+
+* [深度干货！一篇Paper带您读懂HTAP | StoneDB学术分享会第①期](https://zhuanlan.zhihu.com/p/559365164)
+* [爆肝整理5000字！HTAP的关键技术有哪些？| StoneDB学术分享会第三期](https://zhuanlan.zhihu.com/p/567185977)
+
+* [B站万亿级数据库选型与架构设计实践]
+* [[数据库技术]PolarDB-超火的云原生](https://zhuanlan.zhihu.com/p/477801513)
+
 ## Workflow
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
 
@@ -93,6 +102,7 @@
 
 
 ## Data Migration
+* [What is Data Migration? Guide to Data Migration Solutions and Planning](https://www.arcion.io/blog/data-migration-solutions)
 * [Creating High-Quality Staging Data with a NoSQL Data Migration System](https://tech.ebayinc.com/engineering/creating-high-quality-staging-data-with-a-nosql-data-migration-system/)
 * [Making our user storage more scalable and secure](https://www.intercom.com/blog/updating-our-user-storage/)
 
@@ -110,6 +120,11 @@
   * [the fourth article]() 
 
 * [Revolutionizing Money Movements at Scale with Strong Data Consistency](https://www.uber.com/blog/money-scale-strong-data/)
+
+* [Bulldozer: Batch Data Moving from Data Warehouse to Online Key-Value Stores](https://netflixtechblog.com/bulldozer-batch-data-moving-from-data-warehouse-to-online-key-value-stores-41bac13863f8)
+  * [Machine Learning meets Databases](https://conf.slac.stanford.edu/xldb2018/sites/xldb2018.conf.slac.stanford.edu/files/Tues_11.15_IoannisPapa-Netflix-2018.pdf)
+
+* [Migrating Facebook to MySQL 8.0](https://engineering.fb.com/2021/07/22/data-infrastructure/mysql/)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -130,16 +145,20 @@
 * [Open Sourcing Mantis: A Platform For Building Cost-Effective, Realtime, Operations-Focused Applications](https://netflixtechblog.com/open-sourcing-mantis-a-platform-for-building-cost-effective-realtime-operations-focused-5b8ff387813a)
   * [mantis](https://github.com/netflix/mantis)
 
-* [building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888](https://medium.com/pinterest-engineering/scaling-cache-infrastructure-at-pinterest-422d6d294ece)
+* [Scaling Cache Infrastructure at Pinterest](https://medium.com/pinterest-engineering/scaling-cache-infrastructure-at-pinterest-422d6d294ece)
+* [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 
 * [Paper Notes: Real-time Data Infrastructure at Uber](https://distributed-computing-musings.com/2022/08/paper-notes-real-time-data-infrastructure-at-uber/)
   * [Real-time Data Infrastructure at Uber](https://arxiv.org/abs/2104.00087)
 
-## 延迟服务
+## 延迟服务 & 优先级队列
 
 * [Dynein: Building an Open-source Distributed Delayed Job Queueing System](https://medium.com/airbnb-engineering/dynein-building-a-distributed-delayed-job-queueing-system-93ab10f05f99)
   * [dynein](https://github.com/airbnb/dynein)
 
+* [FOQS: Scaling a distributed priority queue](https://engineering.fb.com/2021/02/22/production-engineering/foqs-scaling-a-distributed-priority-queue/)
+* [FOQS: Making a distributed priority queue disaster-ready](https://engineering.fb.com/2022/01/18/production-engineering/foqs-disaster-ready/)
+* [Distributed delay queues based on Dynomite](https://netflixtechblog.com/distributed-delay-queues-based-on-dynomite-6b31eca37fbc)
 
 ##业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
@@ -150,11 +169,12 @@
 
 * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
 
+* [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
 * [LogDevice: a distributed data store for logs](https://engineering.fb.com/2017/08/31/core-data/logdevice-a-distributed-data-store-for-logs/)
-
+* [Augmenting Flexible Paxos in LogDevice to improve read availability](https://engineering.fb.com/2022/03/07/core-data/augmenting-flexible-paxos-logdevice/)
 * [Introducing and Open Sourcing Ambry](https://engineering.linkedin.com/blog/2016/05/introducing-and-open-sourcing-ambry---linkedins-new-distributed-)
 * [HTTP/2 in infrastructure: Ambry network stack refactoring](https://engineering.linkedin.com/blog/2021/http-2-in-infrastructure--ambry-network-stack-refactoring)
   * [ambry.pdf](http://dprg.cs.uiuc.edu/data/files/2016/ambry.pdf)
@@ -174,9 +194,12 @@
 
 
 ## KV
+* [Under the Hood: Building and open-sourcing RocksDB](https://engineering.fb.com/2013/11/21/core-data/under-the-hood-building-and-open-sourcing-rocksdb/)
 * [Future-proofing our metadata stack with Panda, a scalable key-value store](https://dropbox.tech/infrastructure/panda-metadata-stack-petabyte-scale-transactional-key-value-store)
 * [Mussel — Airbnb’s Key-Value Store for Derived Data](https://medium.com/airbnb-engineering/mussel-airbnbs-key-value-store-for-derived-data-406b9fa1b296)
 * [3 Innovations While Unifying Pinterest’s Key-Value Storage](https://medium.com/@Pinterest_Engineering/3-innovations-while-unifying-pinterests-key-value-storage-8cdcdf8cf6aa)
+
+* [How we built a general purpose key value store for Facebook with ZippyDB](https://engineering.fb.com/2021/08/06/core-data/zippydb/)
 
 * [分布式存储在B站的应用实践](https://zhuanlan.zhihu.com/p/570359883)
 
@@ -196,8 +219,14 @@
 ## Cache
 * [Improving Distributed Caching Performance and Efficiency at Pinterest](https://medium.com/pinterest-engineering/improving-distributed-caching-performance-and-efficiency-at-pinterest-92484b5fe39b)
 * [Scaling Memcache at Facebook](https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf)
+* [Introducing mcrouter: A memcached protocol router for scaling memcached deployments](https://engineering.fb.com/2014/09/15/web/introducing-mcrouter-a-memcached-protocol-router-for-scaling-memcached-deployments/)
 * [Overlord Memcache and redis&cluster proxy](https://github.com/bilibili/overlord)
+* [Cache warming: Agility for a stateful service](https://netflixtechblog.com/cache-warming-agility-for-a-stateful-service-2d3b1da82642)
 
 
+## 任务调度
+* [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
+* [Part 2: Scheduling Notebooks at Netflix](https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6)
 
+* [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
 ------------------------------------------------------
