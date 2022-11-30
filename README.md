@@ -49,6 +49,8 @@
 * [Message Queuing and the Database: Solving the Dual Write Problem](https://www.cockroachlabs.com/blog/message-queuing-database-kafka/#the-transactional-outbox-pattern)
 * [DBLog: A Generic Change-Data-Capture Framework](https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b)
 * [How Airbnb, Uber, Netflix, Shopify, and Reddit Use Change Data Capture to Drive Breakthrough Advantages](https://www.arcion.io/blog/brands-using-change-data-capture)
+
+* [Leveraging CockroachDB’s Change Feed for Real-Time Inventory Data Processing](https://doordash.engineering/2022/11/21/leveraging-cockroachdbs-change-feed-for-real-time-inventory-data-processing/)
 ## 注册中心
 
 * [ShopeePay 自研云原生高可用服务注册中心实践](https://www.toutiao.com/article/7162341615380496903/?wid=1668867319739)
@@ -57,6 +59,8 @@
 * [Architectural Principles for High Availability on Hyperforce](https://engineering.salesforce.com/architectural-principles-for-high-availability-on-hyperforce/)
 
 ## Databases
+
+* [Awesome Database Learning](https://github.com/pingcap/awesome-database-learning)
 
 * [The history of databases at Netflix & how they use CockroachDB](https://www.cockroachlabs.com/blog/netflix-at-cockroachdb/)
 
@@ -164,6 +168,7 @@
 ##业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
 * [Airbnb 的统一支付数据读取流程](https://www.infoq.cn/article/X16w5IIdYwYPO38vF58o)
+* [Unified Payments Data Read at Airbnb](https://medium.com/airbnb-engineering/unified-payments-data-read-at-airbnb-e613e7af1a39)
 
 * [Avoiding Double Payments in a Distributed Payments System](https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-2981f6b070bb)
 * [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
@@ -225,7 +230,6 @@
 * [Cache warming: Agility for a stateful service](https://netflixtechblog.com/cache-warming-agility-for-a-stateful-service-2d3b1da82642)
 * [大量数据的操作应该使用什么缓存策略？](https://www.zhihu.com/question/22336651/answer/2694018364)
 
-* [Seeing through hardware counters: a journey to threefold performance increase](https://netflixtechblog.com/seeing-through-hardware-counters-a-journey-to-threefold-performance-increase-2721924a2822)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
@@ -234,7 +238,18 @@
 * [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
 
 ## 性能优化
+* [Netflix FlameScope](https://netflixtechblog.com/netflix-flamescope-a57ca19d47bb)
+    * [flamescope](https://github.com/Netflix/flamescope)
+* [A Microscope on Microservices](https://netflixtechblog.com/a-microscope-on-microservices-923b906103f4)
 * [Java in Flames](https://netflixtechblog.com/java-in-flames-e763b3d32166)
+* [Introducing Vector: Netflix’s On-Host Performance Monitoring Tool](https://netflixtechblog.com/introducing-vector-netflixs-on-host-performance-monitoring-tool-c0d3058c3f6f)  
+* [Seeing through hardware counters: a journey to threefold performance increase](https://netflixtechblog.com/seeing-through-hardware-counters-a-journey-to-threefold-performance-increase-2721924a2822)
+* [Saving 13 Million Computational Minutes per Day with Flame Graphs](https://netflixtechblog.com/saving-13-million-computational-minutes-per-day-with-flame-graphs-d95633b6d01f)
+* [Trace Event, Chrome and More Profile Formats on FlameScope](https://netflixtechblog.com/trace-event-chrome-and-more-profile-formats-on-flamescope-5dfe9df5dfa9)
 
+* [Performance @Scale 2019 recap](https://engineering.fb.com/2019/08/09/developer-tools/performance-scale-2019-recap/)
 
+* [Consistent caching mechanism in Titus Gateway](https://netflixtechblog.com/consistent-caching-mechanism-in-titus-gateway-6cb89b9ce296)
+* [2022 DoorDash Summer Intern Projects Article #2](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/)
+* [Optimising serverless for BBC Online](https://medium.com/bbc-product-technology/optimising-serverless-for-bbc-online-118fe2c04beb)
 ------------------------------------------------------
