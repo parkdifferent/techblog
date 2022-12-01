@@ -18,6 +18,16 @@
 ## system design link
 * [design example](http://highscalability.com/blog/category/example)
 
+## 分布式系统
+* [papers-we-love](https://github.com/papers-we-love/papers-we-love/tree/master/distributed_systems)
+
+* [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
+
+* [Learning a technical subject](http://muratbuffalo.blogspot.com/2021/12/learning-technical-subject.html)
+
+* [Read papers, Not too much, Mostly foundational ones](http://muratbuffalo.blogspot.com/2021/02/read-papers-not-too-much-mostly.html)
+
+* [Foundational distributed systems papers](http://muratbuffalo.blogspot.com/2021/02/foundational-distributed-systems-papers.html)
 
 ## GO
 * [Go语言](https://www.infoq.cn/minibook/kHgvXNRNW124to0AJFeG)
