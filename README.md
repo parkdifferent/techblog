@@ -19,7 +19,21 @@
 * [design example](http://highscalability.com/blog/category/example)
 
 ## 分布式系统
+
+* [分布式系统学习资料汇总](https://www.qtmuniao.com/2021/05/16/distributed-system-material/)
+* [awesome-distributed-systems](https://github.com/theanalyst/awesome-distributed-systems)  
 * [papers-we-love](https://github.com/papers-we-love/papers-we-love/tree/master/distributed_systems)
+
+* [6.824 Schedule: Spring 2022](https://pdos.csail.mit.edu/6.824/schedule.html)
+* [Department of Computer Science and Technology](https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/materials.html)
+* [15-440: Distributed Systems Syllabus](https://www.cs.cmu.edu/~dga/15-440/S14/syllabus.html)
+* [CS244b: Distributed Systems](http://www.scs.stanford.edu/20sp-cs244b/)
+
+* [Notes on Distributed Systems for Young Bloods](https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/)
+* [Distributed systems theory for the distributed systems engineer](https://www.the-paper-trail.org/post/2014-08-09-distributed-systems-theory-for-the-distributed-systems-engineer/)
+
+* [Distributed Systems Reading Group](http://dsrg.pdos.csail.mit.edu/)
+* [Readings in distributed systems](https://christophermeiklejohn.com/distributed/systems/2013/07/12/readings-in-distributed-systems.html)
 
 * [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
 
