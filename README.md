@@ -50,13 +50,20 @@
 * [godropbox](https://github.com/dropbox/godropbox)
 
 
-## DDD
+## DDD & 微服务
 
 * [去哪儿旅行微服务架构实践](https://www.infoq.cn/article/0OOSDdvcwhu7DYCVukCR)
 
 * [亚马逊云基础架构 16 年创新史](https://www.infoq.cn/article/qo7WWdh7xPzDm76MDh9j)
 
 * [Domain-Oriented Microservice Architecture at Uber](https://eng.uber.com/microservice-architecture/)
+
+* [Why We Leverage Multi-tenancy in Uber’s Microservice Architecture](https://www.uber.com/blog/multitenancy-microservice-architecture/)
+
+## 网关
+* [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
+* [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
+* [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
 
 ## 数据集成
 
@@ -114,6 +121,7 @@
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
 
 * [Conductor](https://conductor.netflix.com/)
+* [Conducting Better Business with Uber’s Open Source Orchestration Tool, Cadence](https://www.uber.com/blog/open-source-orchestration-tool-cadence-overview/)  
 * [Cadence Multi-Tenant Task Processing](https://www.uber.com/blog/cadence-multi-tenant-task-processing/)  
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
 * [Workflow Comparison: Uber Cadence vs Netflix Conductor](https://www.instaclustr.com/blog/workflow-comparison-uber-cadence-vs-netflix-conductor/)
@@ -195,6 +203,7 @@
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
 * [Airbnb 的统一支付数据读取流程](https://www.infoq.cn/article/X16w5IIdYwYPO38vF58o)
 * [Unified Payments Data Read at Airbnb](https://medium.com/airbnb-engineering/unified-payments-data-read-at-airbnb-e613e7af1a39)
+* [Engineering Uber’s Next-Gen Payments Platform](https://www.uber.com/blog/payments-platform/)
 
 * [Avoiding Double Payments in a Distributed Payments System](https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-2981f6b070bb)
 * [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
@@ -205,6 +214,7 @@
 * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
 
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
+* [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
 
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
@@ -249,7 +259,7 @@
   * [Unified PubSub Client at Pinterest](https://medium.com/pinterest-engineering/unified-pubsub-client-at-pinterest-397ccfaf508e)
 
 * [Evaluating Apache Pulsar](https://zendesk.engineering/evaluating-apache-pulsar-92e6ed3fc792)
-
+* [Building Reliable Reprocessing and Dead Letter Queues with Apache Kafka](https://www.uber.com/blog/reliable-reprocessing/)
 
 ## Cache
 * [Improving Distributed Caching Performance and Efficiency at Pinterest](https://medium.com/pinterest-engineering/improving-distributed-caching-performance-and-efficiency-at-pinterest-92484b5fe39b)
