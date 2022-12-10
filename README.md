@@ -64,6 +64,7 @@
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
 * [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
+* [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
 
 ## 数据集成
 
@@ -199,6 +200,10 @@
 * [Distributed delay queues based on Dynomite](https://netflixtechblog.com/distributed-delay-queues-based-on-dynomite-6b31eca37fbc)
   * [dynomite](https://github.com/Netflix/dynomite/wiki/Architecture)
   * [dyno-queues](https://github.com/Netflix/dyno-queues)
+
+* [Austin](https://gitee.com/zhongfucheng/austin)
+
+
 ##业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
 * [Airbnb 的统一支付数据读取流程](https://www.infoq.cn/article/X16w5IIdYwYPO38vF58o)
@@ -215,7 +220,7 @@
 
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 * [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
-
+* B站评论系统架构设计
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
 * [LogDevice: a distributed data store for logs](https://engineering.fb.com/2017/08/31/core-data/logdevice-a-distributed-data-store-for-logs/)
@@ -268,6 +273,7 @@
 * [Overlord Memcache and redis&cluster proxy](https://github.com/bilibili/overlord)
 * [Cache warming: Agility for a stateful service](https://netflixtechblog.com/cache-warming-agility-for-a-stateful-service-2d3b1da82642)
 * [大量数据的操作应该使用什么缓存策略？](https://www.zhihu.com/question/22336651/answer/2694018364)
+* Redis数据倾斜与JD开源hotkey源码分析揭秘
 
 
 ## 任务调度
@@ -295,4 +301,5 @@
 * [Consistent caching mechanism in Titus Gateway](https://netflixtechblog.com/consistent-caching-mechanism-in-titus-gateway-6cb89b9ce296)
 * [2022 DoorDash Summer Intern Projects Article #2](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/)
 * [Optimising serverless for BBC Online](https://medium.com/bbc-product-technology/optimising-serverless-for-bbc-online-118fe2c04beb)
+
 ------------------------------------------------------
