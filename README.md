@@ -203,6 +203,11 @@
 
 * [Austin](https://gitee.com/zhongfucheng/austin)
 
+* 技术夜校｜短信服务平台化实践
+* 技术夜校｜从0到1构建一个完整的消息系统
+* 得物App消息服务平台化建设演化
+* 日均数亿推送稳定性监控实践 ｜ 得物技术
+
 
 ##业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
