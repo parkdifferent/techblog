@@ -60,12 +60,17 @@
 
 * [Why We Leverage Multi-tenancy in Uber’s Microservice Architecture](https://www.uber.com/blog/multitenancy-microservice-architecture/)
 
+* [Troubleshooting Kafka for 2000 Microservices at Wix](https://medium.com/wix-engineering/troubleshooting-kafka-for-2000-microservices-at-wix-986ee382fd1e)
+  * [greyhound](https://github.com/wix/greyhound)
+* [Optimizing Pinterest’s Data Ingestion Stack: Findings and Learnings](https://medium.com/@Pinterest_Engineering/optimizing-pinterests-data-ingestion-stack-findings-and-learnings-994fddb063bf)
+* [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
+
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
 * [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
 * [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
-
+* [Apache ShenYu]
 ## 数据集成
 
 * [Solving the data integration variety problem at scale, with Gobblin](https://engineering.linkedin.com/blog/2021/data-integration-library)
@@ -190,6 +195,7 @@
 * [Paper Notes: Real-time Data Infrastructure at Uber](https://distributed-computing-musings.com/2022/08/paper-notes-real-time-data-infrastructure-at-uber/)
   * [Real-time Data Infrastructure at Uber](https://arxiv.org/abs/2104.00087)
 
+* [Large Scale Ad Data Systems at Booking.com using the Public Cloud](https://medium.com/booking-com-development/large-scale-ad-data-systems-at-booking-com-using-the-public-cloud-c2f2c49fa7f2)
 ## 延迟服务 & 优先级队列
 
 * [Dynein: Building an Open-source Distributed Delayed Job Queueing System](https://medium.com/airbnb-engineering/dynein-building-a-distributed-delayed-job-queueing-system-93ab10f05f99)
@@ -197,10 +203,12 @@
 
 * [FOQS: Scaling a distributed priority queue](https://engineering.fb.com/2021/02/22/production-engineering/foqs-scaling-a-distributed-priority-queue/)
 * [FOQS: Making a distributed priority queue disaster-ready](https://engineering.fb.com/2022/01/18/production-engineering/foqs-disaster-ready/)
+* [Scaling services with Shard Manager](https://engineering.fb.com/2020/08/24/production-engineering/scaling-services-with-shard-manager/)
 * [Distributed delay queues based on Dynomite](https://netflixtechblog.com/distributed-delay-queues-based-on-dynomite-6b31eca37fbc)
   * [dynomite](https://github.com/Netflix/dynomite/wiki/Architecture)
   * [dyno-queues](https://github.com/Netflix/dyno-queues)
-
+  * [Introducing Dynomite — Making Non-Distributed Databases, Distributed](https://netflixtechblog.com/introducing-dynomite-making-non-distributed-databases-distributed-c7bce3d89404)
+* [高性能延迟服务实现之路]
 * [Austin](https://gitee.com/zhongfucheng/austin)
 
 * 技术夜校｜短信服务平台化实践
