@@ -63,6 +63,8 @@
 * [Troubleshooting Kafka for 2000 Microservices at Wix](https://medium.com/wix-engineering/troubleshooting-kafka-for-2000-microservices-at-wix-986ee382fd1e)
   * [greyhound](https://github.com/wix/greyhound)
 * [Optimizing Pinterest’s Data Ingestion Stack: Findings and Learnings](https://medium.com/@Pinterest_Engineering/optimizing-pinterests-data-ingestion-stack-findings-and-learnings-994fddb063bf)
+  * [singer](https://github.com/kabochya/singer)
+  * [Open sourcing Singer, Pinterest’s performant and reliable logging agent](https://medium.com/pinterest-engineering/open-sourcing-singer-pinterests-performant-and-reliable-logging-agent-610fecf35566)
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
 
 ## 网关
