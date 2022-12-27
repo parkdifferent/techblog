@@ -296,6 +296,7 @@
 * [Part 2: Scheduling Notebooks at Netflix](https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6)
 
 * [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
+* [Building a Distributed Job Scheduler for Microservices](https://medium.com/@mesutpiskin/building-a-distributed-job-scheduler-for-microservices-8b7ab2ce5f91)
 
 ## 规则引擎
 * [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
@@ -317,4 +318,9 @@
 * [2022 DoorDash Summer Intern Projects Article #2](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/)
 * [Optimising serverless for BBC Online](https://medium.com/bbc-product-technology/optimising-serverless-for-bbc-online-118fe2c04beb)
 
+## 算法
+* [fucking-algorithm](https://github.com/labuladong/fucking-algorithm)
+* [coding-interview-university](https://github.com/jwasham/coding-interview-university)
+* [CtCI-6th-Edition](https://github.com/careercup/CtCI-6th-Edition)
+* [All Algorithms implemented in Java](https://github.com/TheAlgorithms/Java)
 ------------------------------------------------------
