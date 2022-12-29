@@ -53,7 +53,8 @@
 ## DDD & 微服务
 
 * [去哪儿旅行微服务架构实践](https://www.infoq.cn/article/0OOSDdvcwhu7DYCVukCR)
-
+* [Qunar 酒店基础数据重构DDD落地实践](https://zhuanlan.zhihu.com/p/587791640)
+  * [COLA](https://github.com/alibaba/COLA)
 * [亚马逊云基础架构 16 年创新史](https://www.infoq.cn/article/qo7WWdh7xPzDm76MDh9j)
 
 * [Domain-Oriented Microservice Architecture at Uber](https://eng.uber.com/microservice-architecture/)
@@ -127,7 +128,8 @@
 
 ## Workflow
 * [Orchestrating Data/ML Workflows at Scale With Netflix Maestro](https://netflixtechblog.com/orchestrating-data-ml-workflows-at-scale-with-netflix-maestro-aaa2b41b800c)
-
+* [Netflix Conductor: A microservices orchestrator](https://netflixtechblog.com/netflix-conductor-a-microservices-orchestrator-2e8d4771bf40)
+* [Evolution of Netflix Conductor:v2.0 and beyond](https://netflixtechblog.com/evolution-of-netflix-conductor-16600be36bca)
 * [Conductor](https://conductor.netflix.com/)
 * [Conducting Better Business with Uber’s Open Source Orchestration Tool, Cadence](https://www.uber.com/blog/open-source-orchestration-tool-cadence-overview/)  
 * [Cadence Multi-Tenant Task Processing](https://www.uber.com/blog/cadence-multi-tenant-task-processing/)  
@@ -212,6 +214,7 @@
   * [Introducing Dynomite — Making Non-Distributed Databases, Distributed](https://netflixtechblog.com/introducing-dynomite-making-non-distributed-databases-distributed-c7bce3d89404)
 * [高性能延迟服务实现之路]
 * [Austin](https://gitee.com/zhongfucheng/austin)
+* [Timestone: Netflix’s High-Throughput, Low-Latency Priority Queueing System with Built-in Support for Non-Parallelizable Workloads](https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f)
 
 * 技术夜校｜短信服务平台化实践
 * 技术夜校｜从0到1构建一个完整的消息系统
@@ -282,6 +285,8 @@
 * [Building Reliable Reprocessing and Dead Letter Queues with Apache Kafka](https://www.uber.com/blog/reliable-reprocessing/)
 
 ## Cache
+* [Caching for a Global Netflix](https://netflixtechblog.com/caching-for-a-global-netflix-7bcc457012f1)
+  * [EVCache](https://github.com/Netflix/EVCache)
 * [Improving Distributed Caching Performance and Efficiency at Pinterest](https://medium.com/pinterest-engineering/improving-distributed-caching-performance-and-efficiency-at-pinterest-92484b5fe39b)
 * [Scaling Memcache at Facebook](https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf)
 * [Introducing mcrouter: A memcached protocol router for scaling memcached deployments](https://engineering.fb.com/2014/09/15/web/introducing-mcrouter-a-memcached-protocol-router-for-scaling-memcached-deployments/)
