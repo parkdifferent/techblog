@@ -66,13 +66,17 @@
 * [Optimizing Pinterest’s Data Ingestion Stack: Findings and Learnings](https://medium.com/@Pinterest_Engineering/optimizing-pinterests-data-ingestion-stack-findings-and-learnings-994fddb063bf)
   * [singer](https://github.com/kabochya/singer)
   * [Open sourcing Singer, Pinterest’s performant and reliable logging agent](https://medium.com/pinterest-engineering/open-sourcing-singer-pinterests-performant-and-reliable-logging-agent-610fecf35566)
+  * [Efficient Resource Management at Pinterest’s Batch Processing Platform](https://medium.com/pinterest-engineering/efficient-resource-management-at-pinterests-batch-processing-platform-61512ad98a95)
+  * [Scalable and reliable data ingestion at Pinterest](https://medium.com/pinterest-engineering/scalable-and-reliable-data-ingestion-at-pinterest-b921c2ee8754)
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
+* [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
 
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
 * [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
 * [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
+* [Scaling Push Messaging for Millions of Devices @Netflix](https://qconnewyork.com/ny2018/presentation/architectures-youve-always-wondered-about-presentation)
 * [Apache ShenYu]
 ## 数据集成
 
@@ -88,6 +92,7 @@
 * [Event-Driven Architecture for Java Developers](https://university.cockroachlabs.com/courses/course-v1:crl+event-driven-architecture-for-java-devs+self-paced/about?_ga=2.91804563.82748203.1668174594-2140806030.1668174594#)
 * [CDC](https://www.cockroachlabs.com/docs/stable/change-data-capture-overview.html)
 * [Message Queuing and the Database: Solving the Dual Write Problem](https://www.cockroachlabs.com/blog/message-queuing-database-kafka/#the-transactional-outbox-pattern)
+* [Utilizing Amazon DynamoDB and AWS Lambda for Asynchronous Event Publication](https://engineering.zalando.com/posts/2022/02/transactional-outbox-with-aws-lambda-and-dynamodb.html)
 * [DBLog: A Generic Change-Data-Capture Framework](https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b)
 * [How Airbnb, Uber, Netflix, Shopify, and Reddit Use Change Data Capture to Drive Breakthrough Advantages](https://www.arcion.io/blog/brands-using-change-data-capture)
 
@@ -172,6 +177,9 @@
   * [Machine Learning meets Databases](https://conf.slac.stanford.edu/xldb2018/sites/xldb2018.conf.slac.stanford.edu/files/Tues_11.15_IoannisPapa-Netflix-2018.pdf)
 
 * [Migrating Facebook to MySQL 8.0](https://engineering.fb.com/2021/07/22/data-infrastructure/mysql/)
+* [Netflix Billing Migration to AWS — Part II](https://netflixtechblog.com/netflix-billing-migration-to-aws-part-ii-834f6358126)
+
+* [From Postgres to Amazon DynamoDB](https://tech.instacart.com/from-postgres-to-amazon-dynamodb-4791220b2d5d)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -194,7 +202,6 @@
   * [Building Netflix’s Distributed Tracing Infrastructure](https://netflixtechblog.com/building-netflixs-distributed-tracing-infrastructure-bb856c319304)
 
 * [Scaling Cache Infrastructure at Pinterest](https://medium.com/pinterest-engineering/scaling-cache-infrastructure-at-pinterest-422d6d294ece)
-* [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 
 * [Paper Notes: Real-time Data Infrastructure at Uber](https://distributed-computing-musings.com/2022/08/paper-notes-real-time-data-infrastructure-at-uber/)
   * [Real-time Data Infrastructure at Uber](https://arxiv.org/abs/2104.00087)
@@ -239,6 +246,10 @@
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 * [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
 * B站评论系统架构设计
+* [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
+* [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
+* [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
+
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
 * [LogDevice: a distributed data store for logs](https://engineering.fb.com/2017/08/31/core-data/logdevice-a-distributed-data-store-for-logs/)
@@ -328,4 +339,11 @@
 * [coding-interview-university](https://github.com/jwasham/coding-interview-university)
 * [CtCI-6th-Edition](https://github.com/careercup/CtCI-6th-Edition)
 * [All Algorithms implemented in Java](https://github.com/TheAlgorithms/Java)
+
+## 可靠性
+* [ZEN and the art of Reliability](https://zendesk.engineering/zen-and-the-art-of-reliability-f42fa7e64849)
+* [Building reliability into uncertain event delivery](https://zendesk.engineering/building-reliability-into-uncertain-event-delivery-a09db0750ef9)
+
+## 演讲
+* [public-presentations](https://github.com/zalando/public-presentations)
 ------------------------------------------------------
