@@ -245,7 +245,7 @@
 
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 * [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
-* B站评论系统架构设计
+
 * [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 * [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
 * [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
@@ -346,4 +346,13 @@
 
 ## 演讲
 * [public-presentations](https://github.com/zalando/public-presentations)
+
+## 评论系统
+* [Data Modeling — Designing Facebook style “comments” with SQL](https://nehajirafe.medium.com/data-modeling-designing-facebook-style-comments-with-sql-4cf9e81eb164)
+* [B站评论系统架构设计](https://www.bilibili.com/read/cv20346888?from=search&spm_id_from=333.337.0.0)
+* [百度评论中台的设计与探索](https://juejin.cn/post/7108973163333025805)
+* [直播场景下 高并发的热点处理实践](https://www.bilibili.com/read/cv15278397?from=search&spm_id_from=333.337.0.0)
+* [Designing Live Commenting in youtube/Facebook/Instagram live stream Video](https://dev.to/kutanti/designing-live-commenting-in-youtube-facebook-instagram-live-stream-video-4bec)
+* [How do you build a scalable commenting system?](https://www.quora.com/How-do-you-build-a-scalable-commenting-system)
+
 ------------------------------------------------------
