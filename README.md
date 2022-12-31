@@ -110,7 +110,6 @@
 
 * [The history of databases at Netflix & how they use CockroachDB](https://www.cockroachlabs.com/blog/netflix-at-cockroachdb/)
 
-* [eBay’s Global Secondary Indexes](https://tech.ebayinc.com/engineering/ebays-global-secondary-indexes/)
 
 * [https://github.com/Netflix/dynomite](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf)
 * [Scaling Datastores at Slack with Vitess](https://slack.engineering/scaling-datastores-at-slack-with-vitess/)
@@ -160,7 +159,6 @@
 * [Delta: A highly available, strongly consistent storage service using chain replication](https://engineering.fb.com/2022/05/04/data-infrastructure/delta/)
 * [Delta: A Data Synchronization and Enrichment Platform](https://netflixtechblog.com/delta-a-data-synchronization-and-enrichment-platform-e82c36a79aee)
 
-* [Online Data Migration from HBase to TiDB with Zero Downtime](https://medium.com/pinterest-engineering/online-data-migration-from-hbase-to-tidb-with-zero-downtime-43f0fb474b84)
 
 * [New Recruiter & Jobs: The largest enterprise data migration at LinkedIn](https://engineering.linkedin.com/blog/2021/new-recruiter---jobs--the-largest-enterprise-data-migration-at-l)
 
@@ -246,9 +244,6 @@
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 * [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
 
-* [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
-* [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
-* [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
 
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
@@ -354,5 +349,13 @@
 * [直播场景下 高并发的热点处理实践](https://www.bilibili.com/read/cv15278397?from=search&spm_id_from=333.337.0.0)
 * [Designing Live Commenting in youtube/Facebook/Instagram live stream Video](https://dev.to/kutanti/designing-live-commenting-in-youtube-facebook-instagram-live-stream-video-4bec)
 * [How do you build a scalable commenting system?](https://www.quora.com/How-do-you-build-a-scalable-commenting-system)
+
+## 索引
+* [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
+* [Online Data Migration from HBase to TiDB with Zero Downtime](https://medium.com/pinterest-engineering/online-data-migration-from-hbase-to-tidb-with-zero-downtime-43f0fb474b84)
+
+* [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
+* [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
+* [eBay’s Global Secondary Indexes](https://tech.ebayinc.com/engineering/ebays-global-secondary-indexes/)
 
 ------------------------------------------------------
