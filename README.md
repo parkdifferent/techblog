@@ -87,7 +87,7 @@
 * [Data Mesh — A Data Movement and Processing Platform](https://netflixtechblog.com/data-mesh-a-data-movement-and-processing-platform-netflix-1288bcab2873)
 * [Flink CDC 如何加速海量数据的实时集成？](https://zhuanlan.zhihu.com/p/578930446)
 
-## event-driven-architecture
+## event-driven-architecture & CDC
 
 * [Event-Driven Architecture for Java Developers](https://university.cockroachlabs.com/courses/course-v1:crl+event-driven-architecture-for-java-devs+self-paced/about?_ga=2.91804563.82748203.1668174594-2140806030.1668174594#)
 * [CDC](https://www.cockroachlabs.com/docs/stable/change-data-capture-overview.html)
@@ -357,5 +357,17 @@
 * [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
 * [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
 * [eBay’s Global Secondary Indexes](https://tech.ebayinc.com/engineering/ebays-global-secondary-indexes/)
+* [Modernizing Business Data Indexing](https://engineeringblog.yelp.com/2021/06/modernizing-business-data-indexing.html)
+* [How Netflix Content Engineering makes a federated graph searchable](https://netflixtechblog.com/how-netflix-content-engineering-makes-a-federated-graph-searchable-5c0c1c7d7eaf)
+* [How Netflix Content Engineering makes a federated graph searchable (Part 2)](https://netflixtechblog.com/how-netflix-content-engineering-makes-a-federated-graph-searchable-part-2-49348511c06c)
+* [GraphQL Search Indexing](https://netflixtechblog.com/graphql-search-indexing-334c92e0d8d5)
+* [Elasticsearch Indexing Strategy in Asset Management Platform (AMP)](https://netflixtechblog.medium.com/elasticsearch-indexing-strategy-in-asset-management-platform-amp-99332231e541)
+* [Tech Talk | Shopee 卖家搜索系统的架构演进](https://www.bilibili.com/video/BV1rT411w76x/?spm_id_from=333.999.0.0&vd_source=0f56509f622025f825c3340427e8cb16)
+* [字节跳动数据中台的 Data Catalog 系统搜索实践](https://juejin.cn/post/7168369560259657765)
+* [Pinterest 搜索系统实时化的挑战和建设实践](https://www.infoq.cn/article/twq5zksuzimpqueb9rlf)
 
+* [DynamoDB: Efficient Indexes](https://medium.com/expedia-group-tech/dynamodb-efficient-indexes-cc30c4997012)
+* [Visualizing City Cores with H3, Uber’s Open Source Geospatial Indexing System](https://www.uber.com/blog/visualizing-city-cores-with-h3/)
+* [Getting Started with Elasticsearch](https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd)
+* [Deep Dive into Querying Elasticsearch. Filter vs Query. Full-text search](https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0)
 ------------------------------------------------------
