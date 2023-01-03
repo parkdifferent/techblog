@@ -362,9 +362,11 @@
 * [How Netflix Content Engineering makes a federated graph searchable (Part 2)](https://netflixtechblog.com/how-netflix-content-engineering-makes-a-federated-graph-searchable-part-2-49348511c06c)
 * [GraphQL Search Indexing](https://netflixtechblog.com/graphql-search-indexing-334c92e0d8d5)
 * [Elasticsearch Indexing Strategy in Asset Management Platform (AMP)](https://netflixtechblog.medium.com/elasticsearch-indexing-strategy-in-asset-management-platform-amp-99332231e541)
+
 * [Tech Talk | Shopee 卖家搜索系统的架构演进](https://www.bilibili.com/video/BV1rT411w76x/?spm_id_from=333.999.0.0&vd_source=0f56509f622025f825c3340427e8cb16)
 * [字节跳动数据中台的 Data Catalog 系统搜索实践](https://juejin.cn/post/7168369560259657765)
 * [Pinterest 搜索系统实时化的挑战和建设实践](https://www.infoq.cn/article/twq5zksuzimpqueb9rlf)
+* [美团外卖搜索基于Elasticsearch的优化实践](https://tech.meituan.com/2022/11/17/elasicsearch-optimization-practice-based-on-run-length-encoding.html)
 
 * [DynamoDB: Efficient Indexes](https://medium.com/expedia-group-tech/dynamodb-efficient-indexes-cc30c4997012)
 * [Visualizing City Cores with H3, Uber’s Open Source Geospatial Indexing System](https://www.uber.com/blog/visualizing-city-cores-with-h3/)
