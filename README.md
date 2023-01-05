@@ -46,7 +46,7 @@
 
 * [An Introduction to Distributed Systems](https://github.com/aphyr/distsys-class)
 * [分布式系统领域有哪些经典论文？](https://www.zhihu.com/question/30026369/answer/620077653)
-
+* [分布式系统模式](https://github.com/dreamhead/patterns-of-distributed-systems)
 ## GO
 * [Go语言](https://www.infoq.cn/minibook/kHgvXNRNW124to0AJFeG)
 
@@ -101,6 +101,8 @@
 * [How Airbnb, Uber, Netflix, Shopify, and Reddit Use Change Data Capture to Drive Breakthrough Advantages](https://www.arcion.io/blog/brands-using-change-data-capture)
 
 * [Leveraging CockroachDB’s Change Feed for Real-Time Inventory Data Processing](https://doordash.engineering/2022/11/21/leveraging-cockroachdbs-change-feed-for-real-time-inventory-data-processing/)
+* [CQRS, Event Sourcing Patterns and Database Architecture](https://www.upsolver.com/blog/cqrs-event-sourcing-build-database-architecture)
+* [Data Pipeline Architecture: Building Blocks, Diagrams, and Patterns](https://www.upsolver.com/blog/data-pipeline-architecture-building-blocks-diagrams-and-patterns)
 ## 注册中心
 
 * [ShopeePay 自研云原生高可用服务注册中心实践](https://www.toutiao.com/article/7162341615380496903/?wid=1668867319739)
@@ -153,7 +155,7 @@
 * [Tag: Observability](https://engineering.salesforce.com/tagged/observability/)
 * [Introduction to Netflix Servo](https://www.baeldung.com/netflix-servo)
 * [Monitoring server applications with Vortex](https://dropbox.tech/infrastructure/monitoring-server-applications-with-vortex) 
-
+* [一文读懂微服务监控之分布式追踪](https://zhuanlan.zhihu.com/p/77139483)
 
 ## Data Migration
 * [What is Data Migration? Guide to Data Migration Solutions and Planning](https://www.arcion.io/blog/data-migration-solutions)
@@ -396,5 +398,13 @@
 * [eBay支付核心账务系统之“展”翅高飞](https://mp.weixin.qq.com/s/Qg8a-8qcUy3EkSFN8VvtHQ?st=2BEB564F1CFF97FD40993FE5266E7EAE20AB56369B324ABB5F6DF13EE030678999234CFFF27A36023E8871454A7184FDBDA3C1AE6BD81184F4FEA4965459D57D2FA0F149A9DC6D6255560E087C2060D8CF0FC1ADE441229147DE88B389F26359B2E042CF53DF9ADAD6E729695B2653785381670F1586E9A919B03D0EBF2EDFA2DB98D028438EF1F8F6DFC48A53C17B95D3C08FEC09584BACC247AA1A6CE74026C76ED4823D0EB4FD905A2420D779297DCE30F52F158141EB1A12CC6560F44F5DDFA5C82E1DF31485E399389807C6B157&vid=1688856684375525&cst=33B4843EB92BE815C2FD6925A7C79A529F7C0FBE3F0AF456BAB0ED28B8F4EAAD897914A70EFB0ECAC43490383B04AB94&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [eBay支付核心账务系统之直冲云霄](https://mp.weixin.qq.com/s/2BaEeoYxbgeMoqIWwMQyfw?st=9AB3F1865292ACDEB3C048B619F96DC4FF433400E48F9E05CEC93C72E40E13E829E6F894857E89CF9F0AEB90E20E8971CC78D61BE06B6A11E723201B936B147F37C8DA08E3428F9B1AC6C8022137530071428E893D1197A2B6F6E262EEDD45B2A1FA069513C2E55D898BA94207A3AB51A3C25491C538771DC460FF19E2DFFF44B290C7A4AD6247179B1883853279FB64A86B6C24612B7357022F2AEA6631D6ECD644F52473099CADBC3B35E597C5FAAA4832DD149161B01FA863ABD707BA52EE05C0AAC789FFCC7E720D0DFF49B1A22F&vid=1688856684375525&cst=430FEE4C7A9BFFBCCF4ADE748FB07BDC5EFD5DA3370BE7744C7984683ACD87DD10A37BA20792552B6D1BE22ED870C826&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [eBay支付核心账务系统之混沌不摧](https://mp.weixin.qq.com/s/MWovtMR8iw8Sv4P126XoMQ?st=2F321EA701E8286BC389C5C222C31E09AAF3EF2F83FD86B80F71BD45A07EDE5C3973F3B217FEE5FA2804C7857C9A2B734EC90B93724C989C63291198F0C15905C06E49C87CFED04B49A9811909DD3CD58DC4C0F6DB89EEACE4AD53917FDA90CF1F385FD1CA18E66D5A96A89D1CE90A88B55C65A2C578FF757D6F0BDA3DA94E79C9AD78F69A6A41CBAAF444E81161D8DF7FD199283C6E129AA692C7C383622AA0D43CA0959946A12AA6FCF42FCB7F89901728CD56D34058C406FA4062926D0A34C2553BE1C4D8F382F90C016C0D2D171F&vid=1688856684375525&cst=30550EC8BB1603A98EF7A8B333A65FCF913EAC6BE9993C9D6354226A88BE261454E488ABC523C6C382574C5BB7C761C9&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [Gringofts](https://github.com/eBay/Gringofts)
+
+## 流系统
+* [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
+  * [数据库和流式数据处理：整合的未来](https://zhuanlan.zhihu.com/p/393802225)
+  * [slide](https://ress.infoq.com/downloads/pdfdownloads/presentations/QConLon2020-BenStopford-DatabasesAndStreamProcessingAFutureOfConsolidation.pdf?Expires=1672901255&Signature=MoxdsyVuiTASCwxNy3-sA0qlEqUYwzXJa7AAzhVSpitlR2dEsFahtaqE3~syXcWv9ImFzsT2I3Ba8nqENj8Q9tgMkIy2Vep9yS2rzmvSGYGVFjk38kl0CMQFH7F0fh4CRFUgQLa24ynhDuiDrdd~tkg3R9Gaf7R3TSlkM0QFJ~E_&Key-Pair-Id=APKAIMZVI7QH4C5YKH6Q)
+* [Streaming Data Architecture in 2022: Components and Examples](https://www.upsolver.com/blog/streaming-data-architecture-key-components)
+* [Top 7 Trends in Streaming Data for 2023](https://www.upsolver.com/blog/top-7-trends-in-streaming-data)
 
 ------------------------------------------------------
