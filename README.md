@@ -17,10 +17,19 @@
 
 ## system design link
 * [design example](http://highscalability.com/blog/category/example)
+* [system-design-primer](https://github.com/donnemartin/system-design-primer)
+
 
 ## 分布式系统
+* [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
+  * [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
+  * [Learning a technical subject](http://muratbuffalo.blogspot.com/2021/12/learning-technical-subject.html)
+  * [Read papers, Not too much, Mostly foundational ones](http://muratbuffalo.blogspot.com/2021/02/read-papers-not-too-much-mostly.html)
+  * [Foundational distributed systems papers](http://muratbuffalo.blogspot.com/2021/02/foundational-distributed-systems-papers.html)
+* [How I am learning distributed systems](https://medium.com/@polyglot_factotum/how-i-am-learning-distributed-systems-7eb69b4b51bd)
 
 * [分布式系统学习资料汇总](https://www.qtmuniao.com/2021/05/16/distributed-system-material/)
+* [awesome-scalability](https://github.com/binhnguyennus/awesome-scalability)
 * [awesome-distributed-systems](https://github.com/theanalyst/awesome-distributed-systems)  
 * [papers-we-love](https://github.com/papers-we-love/papers-we-love/tree/master/distributed_systems)
 * [A Distributed Systems Reading List](https://dancres.github.io/Pages/)
@@ -36,22 +45,32 @@
 * [Distributed Systems Reading Group](http://dsrg.pdos.csail.mit.edu/)
 * [Readings in distributed systems](https://christophermeiklejohn.com/distributed/systems/2013/07/12/readings-in-distributed-systems.html)
 
-* [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
-
-* [Learning a technical subject](http://muratbuffalo.blogspot.com/2021/12/learning-technical-subject.html)
-
-* [Read papers, Not too much, Mostly foundational ones](http://muratbuffalo.blogspot.com/2021/02/read-papers-not-too-much-mostly.html)
-
-* [Foundational distributed systems papers](http://muratbuffalo.blogspot.com/2021/02/foundational-distributed-systems-papers.html)
-
 * [An Introduction to Distributed Systems](https://github.com/aphyr/distsys-class)
 * [分布式系统领域有哪些经典论文？](https://www.zhihu.com/question/30026369/answer/620077653)
 * [分布式系统模式](https://github.com/dreamhead/patterns-of-distributed-systems)
+  * [Patterns of Distributed Systems](https://martinfowler.com/articles/patterns-of-distributed-systems/)
 ## GO
 * [Go语言](https://www.infoq.cn/minibook/kHgvXNRNW124to0AJFeG)
 
 * [godropbox](https://github.com/dropbox/godropbox)
+* [Go 语言设计与实现](https://draveness.me/golang/)
 
+## 共识
+* [In Search of an Understandable Consensus Algorithm](https://raft.github.io/raft.pdf)
+* [Implementing Raft: Part 0 - Introduction](https://eli.thegreenplace.net/2020/implementing-raft-part-0-introduction/)
+* [Java Raft: Apache Ratis源码阅读](https://zhuanlan.zhihu.com/p/476876447)
+* [Distributed Consensus Reading List](https://github.com/heidihoward/distributed-consensus-reading-list)
+* [Consensus Papers](https://dancres.github.io/Pages/)
+
+## 一致性
+* [Consistency Models paper](https://dancres.github.io/Pages/)
+* [Consistency Models](https://jepsen.io/consistency)
+* [Strong consistency models](https://aphyr.com/posts/313-strong-consistency-models)
+* [Why you should pick strong consistency, whenever possible](https://cloud.google.com/blog/products/databases/why-you-should-pick-strong-consistency-whenever-possible)
+  * [Differences between Strict Serializable and External Consistency](https://stackoverflow.com/questions/60365103/differences-between-strict-serializable-and-external-consistency)
+  * [Spanner：TrueTime 和外部一致性](https://cloud.google.com/spanner/docs/true-time-external-consistency)
+* [分布式系统一致性的发展历史 (一)](https://danielw.cn/history-of-distributed-systems-1)
+* [Survey on consistency conditions](https://projects.ics.forth.gr/tech-reports/2013/2013.TR439_Survey_on_Consistency_Conditions.pdf)
 
 ## DDD & 微服务
 
@@ -250,6 +269,8 @@
 * [Migrating Netflix's Viewing History from Synchronous Request-Response to Async Events](https://www.infoq.com/articles/microservices-async-migration/)
 * [The Road to uChat: Building Uber’s Internal Chat Solution](https://www.uber.com/blog/uchat/)
 
+* [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
+* [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 
 ## Storage
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
@@ -265,6 +286,16 @@
 
 * [Consolidating Facebook storage infrastructure with Tectonic file system](https://engineering.fb.com/2021/06/21/data-infrastructure/tectonic-file-system/)
   * [Facebook’s Tectonic Filesystem: Efficiency from Exascale](https://www.usenix.org/system/files/fast21-pan.pdf)
+* [Windows Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://sigops.org/s/conferences/sosp/2011/current/2011-Cascais/printable/11-calder.pdf)
+  * [Windows Azure Storage](https://zhuanlan.zhihu.com/p/105651508)
+
+* [字节跳动分布式表格存储系统的演进](https://juejin.cn/post/6844904191308087309)
+* []
+
+## HTAP
+* [Building a large-scale distributed storage system based on Raft](https://www.cncf.io/blog/2019/11/04/building-a-large-scale-distributed-storage-system-based-on-raft/)
+* [TiDB: A Raft-based HTAP Database](https://www.vldb.org/pvldb/vol13/p3072-huang.pdf)
+
 
 ## 现代数据栈
 * [Breaking State and Local Data Silos with Modern Data Architectures](https://blog.cloudera.com/breaking-state-and-local-data-silos-with-modern-data-architectures/)
@@ -287,6 +318,9 @@
 * 百度信息流和搜索业务中的KV存储实践
 * KV 存储引擎 - Badger源码分析
 
+* [字节跳动自研强一致在线 KV&表格存储实践 - 上篇](https://juejin.cn/post/6844904178335088654)
+* [字节跳动自研强一致在线 KV &表格存储实践 - 下篇](https://juejin.cn/post/6844904187239759886)
+* 
 
 ## MQ
 
@@ -295,6 +329,7 @@
 
 * [Evaluating Apache Pulsar](https://zendesk.engineering/evaluating-apache-pulsar-92e6ed3fc792)
 * [Building Reliable Reprocessing and Dead Letter Queues with Apache Kafka](https://www.uber.com/blog/reliable-reprocessing/)
+* [KIP-500: Replace ZooKeeper with a Self-Managed Metadata Quorum](https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum)
 
 ## Cache
 * [Caching for a Global Netflix](https://netflixtechblog.com/caching-for-a-global-netflix-7bcc457012f1)
@@ -399,6 +434,16 @@
 * [eBay支付核心账务系统之直冲云霄](https://mp.weixin.qq.com/s/2BaEeoYxbgeMoqIWwMQyfw?st=9AB3F1865292ACDEB3C048B619F96DC4FF433400E48F9E05CEC93C72E40E13E829E6F894857E89CF9F0AEB90E20E8971CC78D61BE06B6A11E723201B936B147F37C8DA08E3428F9B1AC6C8022137530071428E893D1197A2B6F6E262EEDD45B2A1FA069513C2E55D898BA94207A3AB51A3C25491C538771DC460FF19E2DFFF44B290C7A4AD6247179B1883853279FB64A86B6C24612B7357022F2AEA6631D6ECD644F52473099CADBC3B35E597C5FAAA4832DD149161B01FA863ABD707BA52EE05C0AAC789FFCC7E720D0DFF49B1A22F&vid=1688856684375525&cst=430FEE4C7A9BFFBCCF4ADE748FB07BDC5EFD5DA3370BE7744C7984683ACD87DD10A37BA20792552B6D1BE22ED870C826&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [eBay支付核心账务系统之混沌不摧](https://mp.weixin.qq.com/s/MWovtMR8iw8Sv4P126XoMQ?st=2F321EA701E8286BC389C5C222C31E09AAF3EF2F83FD86B80F71BD45A07EDE5C3973F3B217FEE5FA2804C7857C9A2B734EC90B93724C989C63291198F0C15905C06E49C87CFED04B49A9811909DD3CD58DC4C0F6DB89EEACE4AD53917FDA90CF1F385FD1CA18E66D5A96A89D1CE90A88B55C65A2C578FF757D6F0BDA3DA94E79C9AD78F69A6A41CBAAF444E81161D8DF7FD199283C6E129AA692C7C383622AA0D43CA0959946A12AA6FCF42FCB7F89901728CD56D34058C406FA4062926D0A34C2553BE1C4D8F382F90C016C0D2D171F&vid=1688856684375525&cst=30550EC8BB1603A98EF7A8B333A65FCF913EAC6BE9993C9D6354226A88BE261454E488ABC523C6C382574C5BB7C761C9&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [Gringofts](https://github.com/eBay/Gringofts)
+
+## 营销系统
+* [抖音支付十万级 TPS 流量发券实践](https://blog.csdn.net/ByteDanceTech/article/details/125419247?spm=1001.2014.3001.5501)
+
+* [实战！如何从零搭建10万级 QPS 大流量、高并发优惠券系统](https://blog.csdn.net/ByteDanceTech/article/details/124207051?spm=1001.2014.3001.5501)
+
+* [2022 春节抖音视频红包系统设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/125342256?spm=1001.2014.3001.5501)
+
+* [春节钱包大流量奖励系统入账及展示的设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/123911428?spm=1001.2014.3001.5501)
+
 
 ## 流系统
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
