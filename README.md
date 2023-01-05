@@ -23,6 +23,7 @@
 * [分布式系统学习资料汇总](https://www.qtmuniao.com/2021/05/16/distributed-system-material/)
 * [awesome-distributed-systems](https://github.com/theanalyst/awesome-distributed-systems)  
 * [papers-we-love](https://github.com/papers-we-love/papers-we-love/tree/master/distributed_systems)
+* [A Distributed Systems Reading List](https://dancres.github.io/Pages/)
 
 * [6.824 Schedule: Spring 2022](https://pdos.csail.mit.edu/6.824/schedule.html)
 * [Department of Computer Science and Technology](https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/materials.html)
@@ -44,6 +45,8 @@
 * [Foundational distributed systems papers](http://muratbuffalo.blogspot.com/2021/02/foundational-distributed-systems-papers.html)
 
 * [An Introduction to Distributed Systems](https://github.com/aphyr/distsys-class)
+* [分布式系统领域有哪些经典论文？](https://www.zhihu.com/question/30026369/answer/620077653)
+
 ## GO
 * [Go语言](https://www.infoq.cn/minibook/kHgvXNRNW124to0AJFeG)
 
@@ -71,6 +74,7 @@
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
 * [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
 
+* [当技术重构遇上DDD，如何实现业务、技术双赢？](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247508593&idx=1&sn=88b5dd38e5c72525112cc364e84b8a23&scene=21#wechat_redirect)
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
@@ -350,7 +354,7 @@
 * [Designing Live Commenting in youtube/Facebook/Instagram live stream Video](https://dev.to/kutanti/designing-live-commenting-in-youtube-facebook-instagram-live-stream-video-4bec)
 * [How do you build a scalable commenting system?](https://www.quora.com/How-do-you-build-a-scalable-commenting-system)
 
-## 索引
+## 索引 & 搜索
 * [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 * [Online Data Migration from HBase to TiDB with Zero Downtime](https://medium.com/pinterest-engineering/online-data-migration-from-hbase-to-tidb-with-zero-downtime-43f0fb474b84)
 
@@ -366,10 +370,31 @@
 * [Tech Talk | Shopee 卖家搜索系统的架构演进](https://www.bilibili.com/video/BV1rT411w76x/?spm_id_from=333.999.0.0&vd_source=0f56509f622025f825c3340427e8cb16)
 * [字节跳动数据中台的 Data Catalog 系统搜索实践](https://juejin.cn/post/7168369560259657765)
 * [Pinterest 搜索系统实时化的挑战和建设实践](https://www.infoq.cn/article/twq5zksuzimpqueb9rlf)
+  * [Manas Realtime — Enabling changes to be searchable in a blink of an eye](https://medium.com/pinterest-engineering/manas-realtime-enabling-changes-to-be-searchable-in-a-blink-of-an-eye-36acc3506843)
 * [美团外卖搜索基于Elasticsearch的优化实践](https://tech.meituan.com/2022/11/17/elasicsearch-optimization-practice-based-on-run-length-encoding.html)
 
 * [DynamoDB: Efficient Indexes](https://medium.com/expedia-group-tech/dynamodb-efficient-indexes-cc30c4997012)
 * [Visualizing City Cores with H3, Uber’s Open Source Geospatial Indexing System](https://www.uber.com/blog/visualizing-city-cores-with-h3/)
 * [Getting Started with Elasticsearch](https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd)
 * [Deep Dive into Querying Elasticsearch. Filter vs Query. Full-text search](https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0)
+
+## 流系统
+* [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
+* [An Introduction to Apache Flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
+* [Building Scalable Streaming Pipelines for Near Real-Time Features](https://www.uber.com/blog/building-scalable-streaming-pipelines/)
+
+## ID
+* [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
+
+## 财务
+* [百度交易中台之钱包系统架构浅析](https://xie.infoq.cn/article/349d90982dc3e591ada016ba3)
+* [腾讯财付通会计核算系统原理与架构](https://cloud.tencent.com/developer/article/2202310)
+
+* [超越“双十一” | ebay支付核心账务系统架构演进之路](https://mp.weixin.qq.com/s/O5_Rde5uUXvmBS2B7w2hOQ)
+* [超越“双十一”—— ebay百万TPS支付账务系统的设计与实现](https://mp.weixin.qq.com/s?__biz=MzA3MDMyNDUzOQ==&mid=2650507100&idx=1&sn=08133d64ad916afd60deb4e61ac7e928&chksm=8731bf08b046361e003df71703fabc71c0cacaf39fe4b94bf2a64189d09156f62a36a0cebc4d&scene=21#wechat_redirect)
+* [eBay支付账务系统架构解析之“读”一无二](https://mp.weixin.qq.com/s/SghlR-wIOdMzUlqnb2QwdA?st=3F7A5F36948935A9F9C5F3E7F1BC024B696757264F32837F0F8F530C1E8FBA1A11898717CD5C33A7E34BFB78B6F70327F2A594D03992E8394BCC70107CBDCA90FFDE5BF28B4FC06385FFF331CDB2935DBF3663F684F69C33948CAD961DF346622D1C91BA8C67B6A152FB841161DCAAD4E172D2ACA520761FAA8269F9B736881950FD0B7B336ED0E78D9E440B934DE596D4599BFCAE568199FEDFFFD99D3C5AC5B96D1FBEB130CB4B9ECBD63077A6CC1A77503C807976C4EF70D7AFE84EE3C461F9F7BDA535F54CA60198105DF754F8F9&vid=1688856684375525&cst=D6CBAB3450CD5772BC9FE6CD1F301F3EBCD6E5578439F96180CA4F6119DE4BECCAE00A6155588827D387661BBE642247&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [eBay支付核心账务系统之“展”翅高飞](https://mp.weixin.qq.com/s/Qg8a-8qcUy3EkSFN8VvtHQ?st=2BEB564F1CFF97FD40993FE5266E7EAE20AB56369B324ABB5F6DF13EE030678999234CFFF27A36023E8871454A7184FDBDA3C1AE6BD81184F4FEA4965459D57D2FA0F149A9DC6D6255560E087C2060D8CF0FC1ADE441229147DE88B389F26359B2E042CF53DF9ADAD6E729695B2653785381670F1586E9A919B03D0EBF2EDFA2DB98D028438EF1F8F6DFC48A53C17B95D3C08FEC09584BACC247AA1A6CE74026C76ED4823D0EB4FD905A2420D779297DCE30F52F158141EB1A12CC6560F44F5DDFA5C82E1DF31485E399389807C6B157&vid=1688856684375525&cst=33B4843EB92BE815C2FD6925A7C79A529F7C0FBE3F0AF456BAB0ED28B8F4EAAD897914A70EFB0ECAC43490383B04AB94&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [eBay支付核心账务系统之直冲云霄](https://mp.weixin.qq.com/s/2BaEeoYxbgeMoqIWwMQyfw?st=9AB3F1865292ACDEB3C048B619F96DC4FF433400E48F9E05CEC93C72E40E13E829E6F894857E89CF9F0AEB90E20E8971CC78D61BE06B6A11E723201B936B147F37C8DA08E3428F9B1AC6C8022137530071428E893D1197A2B6F6E262EEDD45B2A1FA069513C2E55D898BA94207A3AB51A3C25491C538771DC460FF19E2DFFF44B290C7A4AD6247179B1883853279FB64A86B6C24612B7357022F2AEA6631D6ECD644F52473099CADBC3B35E597C5FAAA4832DD149161B01FA863ABD707BA52EE05C0AAC789FFCC7E720D0DFF49B1A22F&vid=1688856684375525&cst=430FEE4C7A9BFFBCCF4ADE748FB07BDC5EFD5DA3370BE7744C7984683ACD87DD10A37BA20792552B6D1BE22ED870C826&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [eBay支付核心账务系统之混沌不摧](https://mp.weixin.qq.com/s/MWovtMR8iw8Sv4P126XoMQ?st=2F321EA701E8286BC389C5C222C31E09AAF3EF2F83FD86B80F71BD45A07EDE5C3973F3B217FEE5FA2804C7857C9A2B734EC90B93724C989C63291198F0C15905C06E49C87CFED04B49A9811909DD3CD58DC4C0F6DB89EEACE4AD53917FDA90CF1F385FD1CA18E66D5A96A89D1CE90A88B55C65A2C578FF757D6F0BDA3DA94E79C9AD78F69A6A41CBAAF444E81161D8DF7FD199283C6E129AA692C7C383622AA0D43CA0959946A12AA6FCF42FCB7F89901728CD56D34058C406FA4062926D0A34C2553BE1C4D8F382F90C016C0D2D171F&vid=1688856684375525&cst=30550EC8BB1603A98EF7A8B333A65FCF913EAC6BE9993C9D6354226A88BE261454E488ABC523C6C382574C5BB7C761C9&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+
 ------------------------------------------------------
