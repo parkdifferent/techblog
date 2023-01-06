@@ -273,13 +273,14 @@
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 
 ## Storage
+* [Dynamo](https://arthurchiao.art/blog/amazon-dynamo-zh/)
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
 * [LogDevice: a distributed data store for logs](https://engineering.fb.com/2017/08/31/core-data/logdevice-a-distributed-data-store-for-logs/)
 * [Augmenting Flexible Paxos in LogDevice to improve read availability](https://engineering.fb.com/2022/03/07/core-data/augmenting-flexible-paxos-logdevice/)
 * [Introducing and Open Sourcing Ambry](https://engineering.linkedin.com/blog/2016/05/introducing-and-open-sourcing-ambry---linkedins-new-distributed-)
 * [HTTP/2 in infrastructure: Ambry network stack refactoring](https://engineering.linkedin.com/blog/2021/http-2-in-infrastructure--ambry-network-stack-refactoring)
   * [ambry.pdf](http://dprg.cs.uiuc.edu/data/files/2016/ambry.pdf)
-
+  
 * [File Systems Unfit as Distributed Storage Backends:Lessons from 10 Years of Ceph Evolution](https://www.pdl.cmu.edu/PDL-FTP/Storage/ceph-exp-sosp19.pdf)
 
 * [Everything in its write place: Cloud storage abstraction with Object Store](https://dropbox.tech/infrastructure/abstracting-cloud-storage-backends-with-object-store)
@@ -452,4 +453,6 @@
 * [Streaming Data Architecture in 2022: Components and Examples](https://www.upsolver.com/blog/streaming-data-architecture-key-components)
 * [Top 7 Trends in Streaming Data for 2023](https://www.upsolver.com/blog/top-7-trends-in-streaming-data)
 
+## 容器
+* [Architectural Patterns for Microservices With Kubernetes](https://dzone.com/articles/architectural-patterns-for-microservices-with-kube)
 ------------------------------------------------------
