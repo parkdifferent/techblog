@@ -18,8 +18,15 @@
 ## system design link
 * [design example](http://highscalability.com/blog/category/example)
 * [system-design-primer](https://github.com/donnemartin/system-design-primer)
+* [Grokking-System-Design](https://github.com/Jeevan-kumar-Raj/Grokking-System-Design)
 * [Freewheel首席工程师：我对软件分层设计的思考](https://new.qq.com/rain/a/20210802A0635P00)
-
+* [System Design Interviews: A Step-By-Step Guide](https://interviewnoodle.com/system-design-interviews-a-step-by-step-guide-cb30496f31a5)
+  * [Grokking the System Design Interview]
+  * [Grokking the Advanced System Design Interview]
+* [System Design: Useful concepts for building services at scale!-Part 1](https://medium.com/@surfd1001/system-design-useful-concepts-that-helps-building-services-at-scale-part-1-2f34594adf56)
+* [System Design: Useful concepts for building services at scale!-Part 2](https://medium.com/@surfd1001/system-design-useful-concepts-that-helps-building-services-at-scale-part-2-9392e3fefa)
+* [Building Scalable Distributed Systems: Part 2 — Distributed System Architecture Blueprint: A Whirlwind Tour](https://medium.com/swlh/building-scalable-distributed-systems-part-2-distributed-system-architecture-blueprint-a-dbef1e1ae69e)
+* [Six Rules of Thumb for Scaling Software Architectures](https://medium.com/@i.gorton/six-rules-of-thumb-for-scaling-software-architectures-a831960414f9)
 
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
@@ -96,6 +103,7 @@
 * [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
 
 * [当技术重构遇上DDD，如何实现业务、技术双赢？](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247508593&idx=1&sn=88b5dd38e5c72525112cc364e84b8a23&scene=21#wechat_redirect)
+* [技术天地 | FreeWheel核心业务系统的分布式事务方案和实践](https://mp.weixin.qq.com/s/OreNUm9t1lb79ic2PI3mtg#at)
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
@@ -177,6 +185,7 @@
 * [Introduction to Netflix Servo](https://www.baeldung.com/netflix-servo)
 * [Monitoring server applications with Vortex](https://dropbox.tech/infrastructure/monitoring-server-applications-with-vortex) 
 * [一文读懂微服务监控之分布式追踪](https://zhuanlan.zhihu.com/p/77139483)
+* [技术天地 | 中台技术解析之 - 全链路分布式追踪系统工程实践](https://toutiao.io/posts/hs7324a/preview)
 
 ## Data Migration
 * [What is Data Migration? Guide to Data Migration Solutions and Planning](https://www.arcion.io/blog/data-migration-solutions)
@@ -244,9 +253,11 @@
   * [dynomite](https://github.com/Netflix/dynomite/wiki/Architecture)
   * [dyno-queues](https://github.com/Netflix/dyno-queues)
   * [Introducing Dynomite — Making Non-Distributed Databases, Distributed](https://netflixtechblog.com/introducing-dynomite-making-non-distributed-databases-distributed-c7bce3d89404)
-* [高性能延迟服务实现之路]
+* [高性能延迟服务实现之路](https://mp.weixin.qq.com/s/S86aUg1gJZ_RhYzfbJ-0UQ)
+* [System Design: Designing a Distributed Job Scheduler](https://levelup.gitconnected.com/system-design-designing-a-distributed-job-scheduler-6d3b6d714fdb)
 * [Austin](https://gitee.com/zhongfucheng/austin)
 * [Timestone: Netflix’s High-Throughput, Low-Latency Priority Queueing System with Built-in Support for Non-Parallelizable Workloads](https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f)
+
 
 * 技术夜校｜短信服务平台化实践
 * 技术夜校｜从0到1构建一个完整的消息系统
@@ -298,7 +309,9 @@
 ## HTAP
 * [Building a large-scale distributed storage system based on Raft](https://www.cncf.io/blog/2019/11/04/building-a-large-scale-distributed-storage-system-based-on-raft/)
 * [TiDB: A Raft-based HTAP Database](https://www.vldb.org/pvldb/vol13/p3072-huang.pdf)
-
+* [三篇文章了解 TiDB 技术内幕 - 说存储](https://cn.pingcap.com/blog/tidb-internal-1)
+* [三篇文章了解 TiDB 技术内幕 - 说计算](https://cn.pingcap.com/blog/tidb-internal-2)
+* [三篇文章了解 TiDB 技术内幕 - 谈调度](https://cn.pingcap.com/blog/tidb-internal-3)
 
 ## 现代数据栈
 * [Breaking State and Local Data Silos with Modern Data Architectures](https://blog.cloudera.com/breaking-state-and-local-data-silos-with-modern-data-architectures/)
@@ -446,8 +459,8 @@
 * [2022 春节抖音视频红包系统设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/125342256?spm=1001.2014.3001.5501)
 
 * [春节钱包大流量奖励系统入账及展示的设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/123911428?spm=1001.2014.3001.5501)
-
-
+* [会员购促销工具平台](https://www.bilibili.com/read/cv18951410)
+* 
 ## 流系统
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
   * [数据库和流式数据处理：整合的未来](https://zhuanlan.zhihu.com/p/393802225)
@@ -456,6 +469,7 @@
 * [Top 7 Trends in Streaming Data for 2023](https://www.upsolver.com/blog/top-7-trends-in-streaming-data)
 
 ## 云原生 & 容器
+* [什么是云原生？](https://learn.microsoft.com/zh-cn/dotnet/architecture/cloud-native/definition)
 * [迈向云原生：FreeWheel应用架构演进](https://mp.weixin.qq.com/s/RQ51IhvVOxwh62fnBczuog?st=9A563BA5984D614F6C57712E93D440D967D675168F722F6E794EB2FC5BF10B19C9D08AF049DBAFDC2CAA0E5E302A33773003E1232506711CC25B029F3485AD287E34D2727ECD5284B5B3019BA449165877873810AFA400359E4DF8C02FAA801AC13837F3FC59BC090ED523D4FC5D33767DC6230360D652B2EEF3B709EF42F97E2D61E77BCDB38F888FC4B9CE7785766CE6ABAF001498E7D34BEC32A2A4C803C56092FB49D4183E1A71EB548058AA2010AF65A39684E97611106534FAE90D739EF5D3E4B93E9C4650AB2729CE604EF843&vid=1688856684375525&cst=23DE356FD40072D95EFDA6CE5CC2B931DED3BBA746083246D1DBE6813812A427E85AC8F725B95960A068D9939F40FDA8&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [Architectural Patterns for Microservices With Kubernetes](https://dzone.com/articles/architectural-patterns-for-microservices-with-kube)
 * [技术天地 |从0开始构建核心业务微服务治理平台的实践](https://mp.weixin.qq.com/s/-ZkrHPZigMsb2B3AwwzeRg?st=38E1095D281D7142464514FB1C7D2C0CA5C0EF663E1005055B9A154B9BC33EC176E08FD998F608AF365AEE39A2E524DA1006A02F11073FD4E21E503908B583891363A7468ABE08E1FD8BCB430F16116E05F730389D45ED3FF1CD0FEB63F3EE31627D6E91F6E8F3B9AE77CA77113BD81F7380AF7CB0847BDF8792365DC08D3A3BA5FAE5120E505138DDA9C6035573898C7584FB07C606E24E00D4B9F02C76BBBF769DDFB4C0283062005B607555035E3DD855F1194C551AE7E349E84CFB4E32DC05F59D75CA9CFCDD6393211982F4286C&vid=1688856684375525&cst=22B6071A992B434906D666D4AF2D194D8CA7F0CC257C5A10D5964F493B01C098DF2A74B00A11E4C7414EAF5A6E045B52&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
