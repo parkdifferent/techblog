@@ -18,6 +18,7 @@
 ## system design link
 * [design example](http://highscalability.com/blog/category/example)
 * [system-design-primer](https://github.com/donnemartin/system-design-primer)
+* [Freewheel首席工程师：我对软件分层设计的思考](https://new.qq.com/rain/a/20210802A0635P00)
 
 
 ## 分布式系统
@@ -90,6 +91,7 @@
   * [Open sourcing Singer, Pinterest’s performant and reliable logging agent](https://medium.com/pinterest-engineering/open-sourcing-singer-pinterests-performant-and-reliable-logging-agent-610fecf35566)
   * [Efficient Resource Management at Pinterest’s Batch Processing Platform](https://medium.com/pinterest-engineering/efficient-resource-management-at-pinterests-batch-processing-platform-61512ad98a95)
   * [Scalable and reliable data ingestion at Pinterest](https://medium.com/pinterest-engineering/scalable-and-reliable-data-ingestion-at-pinterest-b921c2ee8754)
+  * [技术天地 |云原生应用下的 FreeWheel 核心业务日志系统最佳实践](https://mp.weixin.qq.com/s/tgPOaZU7xsWPnubCrh19tQ#at)
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
 * [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
 
@@ -453,6 +455,10 @@
 * [Streaming Data Architecture in 2022: Components and Examples](https://www.upsolver.com/blog/streaming-data-architecture-key-components)
 * [Top 7 Trends in Streaming Data for 2023](https://www.upsolver.com/blog/top-7-trends-in-streaming-data)
 
-## 容器
+## 云原生 & 容器
+* [迈向云原生：FreeWheel应用架构演进](https://mp.weixin.qq.com/s/RQ51IhvVOxwh62fnBczuog?st=9A563BA5984D614F6C57712E93D440D967D675168F722F6E794EB2FC5BF10B19C9D08AF049DBAFDC2CAA0E5E302A33773003E1232506711CC25B029F3485AD287E34D2727ECD5284B5B3019BA449165877873810AFA400359E4DF8C02FAA801AC13837F3FC59BC090ED523D4FC5D33767DC6230360D652B2EEF3B709EF42F97E2D61E77BCDB38F888FC4B9CE7785766CE6ABAF001498E7D34BEC32A2A4C803C56092FB49D4183E1A71EB548058AA2010AF65A39684E97611106534FAE90D739EF5D3E4B93E9C4650AB2729CE604EF843&vid=1688856684375525&cst=23DE356FD40072D95EFDA6CE5CC2B931DED3BBA746083246D1DBE6813812A427E85AC8F725B95960A068D9939F40FDA8&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [Architectural Patterns for Microservices With Kubernetes](https://dzone.com/articles/architectural-patterns-for-microservices-with-kube)
+* [技术天地 |从0开始构建核心业务微服务治理平台的实践](https://mp.weixin.qq.com/s/-ZkrHPZigMsb2B3AwwzeRg?st=38E1095D281D7142464514FB1C7D2C0CA5C0EF663E1005055B9A154B9BC33EC176E08FD998F608AF365AEE39A2E524DA1006A02F11073FD4E21E503908B583891363A7468ABE08E1FD8BCB430F16116E05F730389D45ED3FF1CD0FEB63F3EE31627D6E91F6E8F3B9AE77CA77113BD81F7380AF7CB0847BDF8792365DC08D3A3BA5FAE5120E505138DDA9C6035573898C7584FB07C606E24E00D4B9F02C76BBBF769DDFB4C0283062005B607555035E3DD855F1194C551AE7E349E84CFB4E32DC05F59D75CA9CFCDD6393211982F4286C&vid=1688856684375525&cst=22B6071A992B434906D666D4AF2D194D8CA7F0CC257C5A10D5964F493B01C098DF2A74B00A11E4C7414EAF5A6E045B52&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+
+
 ------------------------------------------------------
