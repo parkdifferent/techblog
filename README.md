@@ -28,6 +28,9 @@
 * [Building Scalable Distributed Systems: Part 2 — Distributed System Architecture Blueprint: A Whirlwind Tour](https://medium.com/swlh/building-scalable-distributed-systems-part-2-distributed-system-architecture-blueprint-a-dbef1e1ae69e)
 * [Six Rules of Thumb for Scaling Software Architectures](https://medium.com/@i.gorton/six-rules-of-thumb-for-scaling-software-architectures-a831960414f9)
 
+* [Chat App System Design](https://medium.com/@BalajiSA/whatsapp-system-design-3d8566bb2e6c)
+* [How to Build Messaging capability for live video streams at scale!](https://medium.com/@surfd1001/system-design-build-messaging-capability-for-live-video-streams-b9fdb7ce9ff8)
+
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
   * [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
@@ -253,7 +256,10 @@
   * [dynomite](https://github.com/Netflix/dynomite/wiki/Architecture)
   * [dyno-queues](https://github.com/Netflix/dyno-queues)
   * [Introducing Dynomite — Making Non-Distributed Databases, Distributed](https://netflixtechblog.com/introducing-dynomite-making-non-distributed-databases-distributed-c7bce3d89404)
+
 * [高性能延迟服务实现之路](https://mp.weixin.qq.com/s/S86aUg1gJZ_RhYzfbJ-0UQ)
+* [How to design a Time based Scheduler!](https://medium.com/@surfd1001/system-design-time-based-scheduler-28d5ac100249)
+* [How to build a Generic and Smart Notification Service!](https://medium.com/@surfd1001/system-design-notification-service-d7a47fdfcee3)
 * [System Design: Designing a Distributed Job Scheduler](https://levelup.gitconnected.com/system-design-designing-a-distributed-job-scheduler-6d3b6d714fdb)
 * [Austin](https://gitee.com/zhongfucheng/austin)
 * [Timestone: Netflix’s High-Throughput, Low-Latency Priority Queueing System with Built-in Support for Non-Parallelizable Workloads](https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f)
