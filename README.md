@@ -38,6 +38,7 @@
   * [Read papers, Not too much, Mostly foundational ones](http://muratbuffalo.blogspot.com/2021/02/read-papers-not-too-much-mostly.html)
   * [Foundational distributed systems papers](http://muratbuffalo.blogspot.com/2021/02/foundational-distributed-systems-papers.html)
 * [How I am learning distributed systems](https://medium.com/@polyglot_factotum/how-i-am-learning-distributed-systems-7eb69b4b51bd)
+* [DISTRIBUTED COMPUTING MUSINGS blog](https://distributed-computing-musings.com/)
 
 * [分布式系统学习资料汇总](https://www.qtmuniao.com/2021/05/16/distributed-system-material/)
 * [awesome-scalability](https://github.com/binhnguyennus/awesome-scalability)
@@ -77,11 +78,18 @@
 * [Consistency Models paper](https://dancres.github.io/Pages/)
 * [Consistency Models](https://jepsen.io/consistency)
 * [Strong consistency models](https://aphyr.com/posts/313-strong-consistency-models)
+* [聊聊云原生数据库的一致性](https://www.toutiao.com/article/7099678401891729952/?app=news_article&timestamp=1673191422&use_new_style=1&req_id=2023010823234141D3CAA15B33A4ED91E0&group_id=7099678401891729952&share_token=b1982ea5-d932-46ed-92b6-c488c0b9d1d7&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+  * [Consistency levels in Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels)
 * [Why you should pick strong consistency, whenever possible](https://cloud.google.com/blog/products/databases/why-you-should-pick-strong-consistency-whenever-possible)
   * [Differences between Strict Serializable and External Consistency](https://stackoverflow.com/questions/60365103/differences-between-strict-serializable-and-external-consistency)
   * [Spanner：TrueTime 和外部一致性](https://cloud.google.com/spanner/docs/true-time-external-consistency)
 * [分布式系统一致性的发展历史 (一)](https://danielw.cn/history-of-distributed-systems-1)
 * [Survey on consistency conditions](https://projects.ics.forth.gr/tech-reports/2013/2013.TR439_Survey_on_Consistency_Conditions.pdf)
+
+## 分布式事务
+* [two phase commit & raft](https://zhuanlan.zhihu.com/p/597456066)
+* [请问分布式事务一致性与raft或paxos协议解决的一致性问题是同一回事吗？](https://www.zhihu.com/question/275845393/answer/2835506213)
+* [分布式架构：什么是高可用性？](https://zhuanlan.zhihu.com/p/597529287)
 
 ## DDD & 微服务
 
@@ -291,8 +299,16 @@
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 
+## DynamoDB
+* [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
+* [Amazon DynamoDB – a Fast and Scalable NoSQL Database Service Designed for Internet Scale Applications](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)
+* [Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service](https://www.usenix.org/conference/atc22/presentation/elhemali)
+  * [Amazon DynamoDB: A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service (USENIX ATC 2022)](http://muratbuffalo.blogspot.com/2022/07/amazon-dynamodb-scalable-predictably.html)
+  * [Paper Notes: Amazon DynamoDB – A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service](https://distributed-computing-musings.com/2022/07/paper-notes-amazon-dynamodb-a-scalable-predictably-performant-and-fully-managed-nosql-database-service/)
+* [Amazon DynamoDB 的十年之约](https://aws.amazon.com/cn/blogs/china/ten-year-anniversary-of-amazon-dynamodb/)
+
 ## Storage
-* [Dynamo](https://arthurchiao.art/blog/amazon-dynamo-zh/)
+
 * [Open-sourcing LogDevice: A distributed data store for sequential data](https://engineering.fb.com/2018/09/21/core-data/open-sourcing-logdevice-a-distributed-data-store-for-sequential-data/)
 * [LogDevice: a distributed data store for logs](https://engineering.fb.com/2017/08/31/core-data/logdevice-a-distributed-data-store-for-logs/)
 * [Augmenting Flexible Paxos in LogDevice to improve read availability](https://engineering.fb.com/2022/03/07/core-data/augmenting-flexible-paxos-logdevice/)
@@ -310,7 +326,6 @@
   * [Windows Azure Storage](https://zhuanlan.zhihu.com/p/105651508)
 
 * [字节跳动分布式表格存储系统的演进](https://juejin.cn/post/6844904191308087309)
-* []
 
 ## HTAP
 * [Building a large-scale distributed storage system based on Raft](https://www.cncf.io/blog/2019/11/04/building-a-large-scale-distributed-storage-system-based-on-raft/)
@@ -352,6 +367,7 @@
 * [Evaluating Apache Pulsar](https://zendesk.engineering/evaluating-apache-pulsar-92e6ed3fc792)
 * [Building Reliable Reprocessing and Dead Letter Queues with Apache Kafka](https://www.uber.com/blog/reliable-reprocessing/)
 * [KIP-500: Replace ZooKeeper with a Self-Managed Metadata Quorum](https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum)
+* [翟佳：高可用、强一致、低延迟——BookKeeper的存储实现](https://cloud.tencent.com/developer/article/2054521)
 
 ## Cache
 * [Caching for a Global Netflix](https://netflixtechblog.com/caching-for-a-global-netflix-7bcc457012f1)
@@ -414,6 +430,7 @@
 * [How do you build a scalable commenting system?](https://www.quora.com/How-do-you-build-a-scalable-commenting-system)
 
 ## 索引 & 搜索
+* [如何设计一个搜索系统？](https://zhuanlan.zhihu.com/p/578622190)
 * [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 * [Online Data Migration from HBase to TiDB with Zero Downtime](https://medium.com/pinterest-engineering/online-data-migration-from-hbase-to-tidb-with-zero-downtime-43f0fb474b84)
 
@@ -442,8 +459,9 @@
 * [An Introduction to Apache Flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
 * [Building Scalable Streaming Pipelines for Near Real-Time Features](https://www.uber.com/blog/building-scalable-streaming-pipelines/)
 
-## ID
+## ID生成
 * [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
+* [分布式唯一 ID 生成方案浅谈](https://cloud.tencent.com/developer/article/2034844)
 
 ## 财务
 * [百度交易中台之钱包系统架构浅析](https://xie.infoq.cn/article/349d90982dc3e591ada016ba3)
@@ -458,6 +476,7 @@
 * [Gringofts](https://github.com/eBay/Gringofts)
 
 ## 营销系统
+* [大厂的优惠券系统是如何设计的？](https://zhuanlan.zhihu.com/p/511822092)
 * [抖音支付十万级 TPS 流量发券实践](https://blog.csdn.net/ByteDanceTech/article/details/125419247?spm=1001.2014.3001.5501)
 
 * [实战！如何从零搭建10万级 QPS 大流量、高并发优惠券系统](https://blog.csdn.net/ByteDanceTech/article/details/124207051?spm=1001.2014.3001.5501)
@@ -466,7 +485,14 @@
 
 * [春节钱包大流量奖励系统入账及展示的设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/123911428?spm=1001.2014.3001.5501)
 * [会员购促销工具平台](https://www.bilibili.com/read/cv18951410)
-* 
+* [电商系统在双十一大促活动下的架构](https://www.toutiao.com/article/7095393898037690921/?app=news_article&timestamp=1673188468&use_new_style=1&req_id=20230108223427DD912AF9F85E8EE5A990&group_id=7095393898037690921&share_token=2607e7ca-d359-41b4-b03b-dd5b46bb6ad2&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+
+## 电商
+* [高并发、高可用系统设计](https://www.toutiao.com/article/7088512444104245795/?app=news_article&timestamp=1673191865&use_new_style=1&req_id=20230108233105F675E679390E9DE0D8DD&group_id=7088512444104245795&share_token=815452a2-d2f6-469d-b96f-da8b45940f9b&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [9个电商场景下的解决方案](https://www.toutiao.com/article/7088883768949260835/?app=news_article&timestamp=1673191287&use_new_style=1&req_id=20230108232126F1789285E7B7A5E623FC&group_id=7088883768949260835&share_token=33cb17ee-663f-4598-8bf5-f98512b72544&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [美团技术：交易平台建设实践](https://www.toutiao.com/article/7064580801240908291/?app=news_article&timestamp=1673192038&use_new_style=1&req_id=20230108233358BEA1B70DD5C85AE4D111&group_id=7064580801240908291&share_token=282d7de5-7593-408c-9f3b-0ad34781ba13&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [vivo 全球商城：订单中心架构设计与实践](https://zhuanlan.zhihu.com/p/339755414)
+
 ## 流系统
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
   * [数据库和流式数据处理：整合的未来](https://zhuanlan.zhihu.com/p/393802225)
