@@ -90,6 +90,7 @@
 * [two phase commit & raft](https://zhuanlan.zhihu.com/p/597456066)
 * [请问分布式事务一致性与raft或paxos协议解决的一致性问题是同一回事吗？](https://www.zhihu.com/question/275845393/answer/2835506213)
 * [分布式架构：什么是高可用性？](https://zhuanlan.zhihu.com/p/597529287)
+* [Architectural Principles for High Availability on Hyperforce](https://engineering.salesforce.com/architectural-principles-for-high-availability-on-hyperforce/)
 
 ## DDD & 微服务
 
@@ -115,6 +116,8 @@
 
 * [当技术重构遇上DDD，如何实现业务、技术双赢？](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247508593&idx=1&sn=88b5dd38e5c72525112cc364e84b8a23&scene=21#wechat_redirect)
 * [技术天地 | FreeWheel核心业务系统的分布式事务方案和实践](https://mp.weixin.qq.com/s/OreNUm9t1lb79ic2PI3mtg#at)
+* [10 Principles for Architecture at Salesforce](https://engineering.salesforce.com/10-principles-for-architecture-at-salesforce-82105d5399a8/)
+
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
@@ -122,6 +125,7 @@
 * [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
 * [Scaling Push Messaging for Millions of Devices @Netflix](https://qconnewyork.com/ny2018/presentation/architectures-youve-always-wondered-about-presentation)
 * [Apache ShenYu]
+* [The Journey of Building a Scalable API](https://engineering.salesforce.com/the-journey-of-building-a-scalable-api-df7ecf2f233e/)
 ## 数据集成
 
 * [Solving the data integration variety problem at scale, with Gobblin](https://engineering.linkedin.com/blog/2021/data-integration-library)
@@ -143,6 +147,8 @@
 * [Leveraging CockroachDB’s Change Feed for Real-Time Inventory Data Processing](https://doordash.engineering/2022/11/21/leveraging-cockroachdbs-change-feed-for-real-time-inventory-data-processing/)
 * [CQRS, Event Sourcing Patterns and Database Architecture](https://www.upsolver.com/blog/cqrs-event-sourcing-build-database-architecture)
 * [Data Pipeline Architecture: Building Blocks, Diagrams, and Patterns](https://www.upsolver.com/blog/data-pipeline-architecture-building-blocks-diagrams-and-patterns)
+
+* [Event Sourcing for an Inventory Availability Solution](https://engineering.salesforce.com/event-sourcing-for-an-inventory-availability-solution-3cc0daf5a742/)
 ## 注册中心
 
 * [ShopeePay 自研云原生高可用服务注册中心实践](https://www.toutiao.com/article/7162341615380496903/?wid=1668867319739)
@@ -202,7 +208,7 @@
 * [What is Data Migration? Guide to Data Migration Solutions and Planning](https://www.arcion.io/blog/data-migration-solutions)
 * [Creating High-Quality Staging Data with a NoSQL Data Migration System](https://tech.ebayinc.com/engineering/creating-high-quality-staging-data-with-a-nosql-data-migration-system/)
 * [Making our user storage more scalable and secure](https://www.intercom.com/blog/updating-our-user-storage/)
-
+* [Our Top 4 Tips for Massive Data Migrations](https://engineering.salesforce.com/our-top-4-tips-for-massive-data-migrations-565daaa83cfc/)
 * [Delta: A highly available, strongly consistent storage service using chain replication](https://engineering.fb.com/2022/05/04/data-infrastructure/delta/)
 * [Delta: A Data Synchronization and Enrichment Platform](https://netflixtechblog.com/delta-a-data-synchronization-and-enrichment-platform-e82c36a79aee)
 
@@ -225,6 +231,7 @@
 * [Netflix Billing Migration to AWS — Part II](https://netflixtechblog.com/netflix-billing-migration-to-aws-part-ii-834f6358126)
 
 * [From Postgres to Amazon DynamoDB](https://tech.instacart.com/from-postgres-to-amazon-dynamodb-4791220b2d5d)
+* [MuleSoft’s Online Migration on DynamoDB](https://engineering.salesforce.com/mulesofts-online-migration-on-dynamodb-25e438c146c/)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -272,7 +279,7 @@
 * [Austin](https://gitee.com/zhongfucheng/austin)
 * [Timestone: Netflix’s High-Throughput, Low-Latency Priority Queueing System with Built-in Support for Non-Parallelizable Workloads](https://netflixtechblog.com/timestone-netflixs-high-throughput-low-latency-priority-queueing-system-with-built-in-support-1abf249ba95f)
 
-
+* [How Uber Optimizes the Timing of Push Notifications using ML and Linear Programming](https://www.uber.com/blog/how-uber-optimizes-push-notifications-using-ml/)
 * 技术夜校｜短信服务平台化实践
 * 技术夜校｜从0到1构建一个完整的消息系统
 * 得物App消息服务平台化建设演化
@@ -339,7 +346,8 @@
 
 * [A Flexible and Efficient Storage System for Diverse Workloads](https://blog.cloudera.com/a-flexible-and-efficient-storage-system-for-diverse-workloads/)
 
-
+## saas多租户
+* [Salesforce Multi-tenant Architecture](https://engineering.salesforce.com/l33t-m10y-f04f38127b82/)
 
 ## KV
 * [Under the Hood: Building and open-sourcing RocksDB](https://engineering.fb.com/2013/11/21/core-data/under-the-hood-building-and-open-sourcing-rocksdb/)
@@ -408,6 +416,10 @@
 * [2022 DoorDash Summer Intern Projects Article #2](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/)
 * [Optimising serverless for BBC Online](https://medium.com/bbc-product-technology/optimising-serverless-for-bbc-online-118fe2c04beb)
 
+## 内存泄漏
+* [Troubleshoot Memory Issues in Your Java Apps](https://engineering.salesforce.com/troubleshoot-memory-issues-in-your-java-apps-719b1d0f9b78/)
+* [Fix Memory Issues in Your Java Apps](https://engineering.salesforce.com/fix-memory-issues-in-your-java-apps-c261046bae52/)
+
 ## 算法
 * [fucking-algorithm](https://github.com/labuladong/fucking-algorithm)
 * [coding-interview-university](https://github.com/jwasham/coding-interview-university)
@@ -417,6 +429,9 @@
 ## 可靠性
 * [ZEN and the art of Reliability](https://zendesk.engineering/zen-and-the-art-of-reliability-f42fa7e64849)
 * [Building reliability into uncertain event delivery](https://zendesk.engineering/building-reliability-into-uncertain-event-delivery-a09db0750ef9)
+* [Building Reliable Systems From Unreliable Components](https://engineering.salesforce.com/building-reliable-systems-from-unreliable-components-3218d453fb77/)
+  * [Argus](https://github.com/salesforce/Argus)
+* [Guaranteed Data Delivery System for Distributed Services](https://engineering.salesforce.com/guaranteed-data-delivery-system-for-distributed-services-3b07fd24775d/)
 
 ## 演讲
 * [public-presentations](https://github.com/zalando/public-presentations)
@@ -448,11 +463,13 @@
 * [Pinterest 搜索系统实时化的挑战和建设实践](https://www.infoq.cn/article/twq5zksuzimpqueb9rlf)
   * [Manas Realtime — Enabling changes to be searchable in a blink of an eye](https://medium.com/pinterest-engineering/manas-realtime-enabling-changes-to-be-searchable-in-a-blink-of-an-eye-36acc3506843)
 * [美团外卖搜索基于Elasticsearch的优化实践](https://tech.meituan.com/2022/11/17/elasicsearch-optimization-practice-based-on-run-length-encoding.html)
+* [The Design of Strongly Consistent Global Secondary Indexes in Apache Phoenix — Part 1](https://engineering.salesforce.com/the-design-of-strongly-consistent-global-secondary-indexes-in-apache-phoenix-part-1-90b90bda4210/)
 
 * [DynamoDB: Efficient Indexes](https://medium.com/expedia-group-tech/dynamodb-efficient-indexes-cc30c4997012)
 * [Visualizing City Cores with H3, Uber’s Open Source Geospatial Indexing System](https://www.uber.com/blog/visualizing-city-cores-with-h3/)
 * [Getting Started with Elasticsearch](https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd)
 * [Deep Dive into Querying Elasticsearch. Filter vs Query. Full-text search](https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0)
+
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
@@ -466,6 +483,7 @@
 ## 财务
 * [百度交易中台之钱包系统架构浅析](https://xie.infoq.cn/article/349d90982dc3e591ada016ba3)
 * [腾讯财付通会计核算系统原理与架构](https://cloud.tencent.com/developer/article/2202310)
+* [支付收银台初探](https://mp.weixin.qq.com/s/DsHOTj-tfZskVy8NoVvKhw?st=3E0E5D813BAA7E90B3D42FDFA83F52A97C162570F35F472247FE6A0EC21217616B62A0B6C7771C478BB90E987B92D7C0A51DB758E91DF5FB12467A59DA839347A0C069D99F9E60B8554C7F33CED91CE0A30EA2340D2B8B2B8B0381137BCAAD59F52511A726609B2D903CED88A1291BD8822C14DCD2E37C9968AAC9828B9FA594D0B637EC961CB99806E09D2CFBB22096F7C382C625EA5A2BB40CCFE0ED88B7390E3A7D0A40120EBDF553856011F7587018E6C8ABA1C38C6FBC68A3452BC9CB359B445EDC6A54E9790A29577AB278382B&vid=1688856684375525&cst=4EA95E6BA534B75EA37E39769211A7640DF90FCB5BBCB63921F6D6B5600CD8FC41274AC7E9D9BCCD6E4CC28E31AD43F7&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
 * [超越“双十一” | ebay支付核心账务系统架构演进之路](https://mp.weixin.qq.com/s/O5_Rde5uUXvmBS2B7w2hOQ)
 * [超越“双十一”—— ebay百万TPS支付账务系统的设计与实现](https://mp.weixin.qq.com/s?__biz=MzA3MDMyNDUzOQ==&mid=2650507100&idx=1&sn=08133d64ad916afd60deb4e61ac7e928&chksm=8731bf08b046361e003df71703fabc71c0cacaf39fe4b94bf2a64189d09156f62a36a0cebc4d&scene=21#wechat_redirect)
@@ -492,6 +510,7 @@
 * [9个电商场景下的解决方案](https://www.toutiao.com/article/7088883768949260835/?app=news_article&timestamp=1673191287&use_new_style=1&req_id=20230108232126F1789285E7B7A5E623FC&group_id=7088883768949260835&share_token=33cb17ee-663f-4598-8bf5-f98512b72544&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [美团技术：交易平台建设实践](https://www.toutiao.com/article/7064580801240908291/?app=news_article&timestamp=1673192038&use_new_style=1&req_id=20230108233358BEA1B70DD5C85AE4D111&group_id=7064580801240908291&share_token=282d7de5-7593-408c-9f3b-0ad34781ba13&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [vivo 全球商城：订单中心架构设计与实践](https://zhuanlan.zhihu.com/p/339755414)
+* [订单逆向履约系统的建模与PaaS化落地实践](https://mp.weixin.qq.com/s/fT4Yy5v8IEe_hypzmAhwuw)
 
 ## 流系统
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
