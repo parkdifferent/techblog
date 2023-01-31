@@ -340,6 +340,7 @@
 * [三篇文章了解 TiDB 技术内幕 - 说存储](https://cn.pingcap.com/blog/tidb-internal-1)
 * [三篇文章了解 TiDB 技术内幕 - 说计算](https://cn.pingcap.com/blog/tidb-internal-2)
 * [三篇文章了解 TiDB 技术内幕 - 谈调度](https://cn.pingcap.com/blog/tidb-internal-3)
+* [PingCAP CTO谈数据库发展新趋势](https://mp.weixin.qq.com/s/gQA-35AcMlTMwop1p35-kw?st=095F02CEA19E801B9831C3C05FA8AB6DDD1D1176EEA5B3D97EB9EBBE7F41DAA1F59C572825667B514FC6F81FFC13E0B75B3BD9C97F15791EBFE058B9CCDE374D81B71B48C1761212CCD95DD976EC007E226F412DDBB7C18E88B3F0AA3931D9A048FD13EFC15DD62F68996AD7756557B8BE5E089D9C5C452C84F17406EBDBA1A9FD1A7F6E9293B11607E693373208A050ABF7EB33C6C5596961CE8DCDCC0A48E4B8F344BF1B10376FFE79C1A633FC167753AE09911BB7E304D241910C4147CF023DA91FB18CAC0FB225D5C0B1B916F443&vid=1688856684375525&cst=80FF99C07D49EA7A0F19A83385C84494B691A560AC2F450E94BD7F25EA86B87D163319B7CE3DB6C40CB5845485CAE486&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
 ## 现代数据栈
 * [Breaking State and Local Data Silos with Modern Data Architectures](https://blog.cloudera.com/breaking-state-and-local-data-silos-with-modern-data-architectures/)
@@ -432,6 +433,7 @@
 * [Building Reliable Systems From Unreliable Components](https://engineering.salesforce.com/building-reliable-systems-from-unreliable-components-3218d453fb77/)
   * [Argus](https://github.com/salesforce/Argus)
 * [Guaranteed Data Delivery System for Distributed Services](https://engineering.salesforce.com/guaranteed-data-delivery-system-for-distributed-services-3b07fd24775d/)
+* [How eBay’s Notification Platform Used Fault Injection in New Ways](https://tech.ebayinc.com/engineering/how-ebays-notification-platform-used-fault-injection-in-new-ways/)
 
 ## 演讲
 * [public-presentations](https://github.com/zalando/public-presentations)
