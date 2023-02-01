@@ -30,6 +30,7 @@
 
 * [Chat App System Design](https://medium.com/@BalajiSA/whatsapp-system-design-3d8566bb2e6c)
 * [How to Build Messaging capability for live video streams at scale!](https://medium.com/@surfd1001/system-design-build-messaging-capability-for-live-video-streams-b9fdb7ce9ff8)
+* [带答案的 12 大系统设计面试问题](https://medium.com/geekculture/top-12-system-design-interview-questions-with-answers-2022-dc2b6599f39a)
 
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
@@ -73,6 +74,7 @@
 * [Java Raft: Apache Ratis源码阅读](https://zhuanlan.zhihu.com/p/476876447)
 * [Distributed Consensus Reading List](https://github.com/heidihoward/distributed-consensus-reading-list)
 * [Consensus Papers](https://dancres.github.io/Pages/)
+* [Implementing Raft consensus algorithm in Go](https://distributed-computing-musings.com/2022/03/implementing-raft-consensus-algorithm-in-go/)
 
 ## 一致性
 * [Consistency Models paper](https://dancres.github.io/Pages/)
@@ -118,6 +120,9 @@
 * [技术天地 | FreeWheel核心业务系统的分布式事务方案和实践](https://mp.weixin.qq.com/s/OreNUm9t1lb79ic2PI3mtg#at)
 * [10 Principles for Architecture at Salesforce](https://engineering.salesforce.com/10-principles-for-architecture-at-salesforce-82105d5399a8/)
 
+## 架构
+* [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
+* [A new software architecture metamodel inspired by C4, Agile and TOGAF](https://nikolaschou.medium.com/a-new-software-architecture-metamodel-inspired-by-c4-agile-and-togaf-b3f21ab9848)
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
@@ -259,7 +264,7 @@
   * [Real-time Data Infrastructure at Uber](https://arxiv.org/abs/2104.00087)
 
 * [Large Scale Ad Data Systems at Booking.com using the Public Cloud](https://medium.com/booking-com-development/large-scale-ad-data-systems-at-booking-com-using-the-public-cloud-c2f2c49fa7f2)
-## 延迟服务 & 优先级队列
+## 延迟服务 & 优先级队列 & 通知
 
 * [Dynein: Building an Open-source Distributed Delayed Job Queueing System](https://medium.com/airbnb-engineering/dynein-building-a-distributed-delayed-job-queueing-system-93ab10f05f99)
   * [dynein](https://github.com/airbnb/dynein)
@@ -285,6 +290,8 @@
 * 得物App消息服务平台化建设演化
 * 日均数亿推送稳定性监控实践 ｜ 得物技术
 
+* [Notification System: Design that scales](https://blog.devgenius.io/notification-system-design-that-scales-361e03b1d9e0)
+
 
 ## 业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
@@ -305,6 +312,7 @@
 
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
+
 
 ## DynamoDB
 * [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
@@ -388,7 +396,7 @@
 * [Cache warming: Agility for a stateful service](https://netflixtechblog.com/cache-warming-agility-for-a-stateful-service-2d3b1da82642)
 * [大量数据的操作应该使用什么缓存策略？](https://www.zhihu.com/question/22336651/answer/2694018364)
 * Redis数据倾斜与JD开源hotkey源码分析揭秘
-
+* [How To Solve the Data Consistency Issues Between Redis And MySQL](https://betterprogramming.pub/how-to-solve-the-data-consistency-issues-between-redis-and-mysql-702f9ffa2452)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
@@ -445,6 +453,7 @@
 * [直播场景下 高并发的热点处理实践](https://www.bilibili.com/read/cv15278397?from=search&spm_id_from=333.337.0.0)
 * [Designing Live Commenting in youtube/Facebook/Instagram live stream Video](https://dev.to/kutanti/designing-live-commenting-in-youtube-facebook-instagram-live-stream-video-4bec)
 * [How do you build a scalable commenting system?](https://www.quora.com/How-do-you-build-a-scalable-commenting-system)
+* [Scaling our customer review system for peak traffic](https://medium.com/booking-com-development/scaling-our-customer-review-system-for-peak-traffic-cb19be434edf)
 
 ## 索引 & 搜索
 * [如何设计一个搜索系统？](https://zhuanlan.zhihu.com/p/578622190)
@@ -513,7 +522,9 @@
 * [美团技术：交易平台建设实践](https://www.toutiao.com/article/7064580801240908291/?app=news_article&timestamp=1673192038&use_new_style=1&req_id=20230108233358BEA1B70DD5C85AE4D111&group_id=7064580801240908291&share_token=282d7de5-7593-408c-9f3b-0ad34781ba13&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [vivo 全球商城：订单中心架构设计与实践](https://zhuanlan.zhihu.com/p/339755414)
 * [订单逆向履约系统的建模与PaaS化落地实践](https://mp.weixin.qq.com/s/fT4Yy5v8IEe_hypzmAhwuw)
-
+* [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
+* [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
+* [Processing Payments in a Distributed System](https://betterprogramming.pub/processing-payments-in-a-distributed-system-3fdb73041286)
 ## 流系统
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
   * [数据库和流式数据处理：整合的未来](https://zhuanlan.zhihu.com/p/393802225)
