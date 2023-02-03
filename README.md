@@ -18,6 +18,7 @@
 ## system design link
 * [design example](http://highscalability.com/blog/category/example)
 * [system-design-primer](https://github.com/donnemartin/system-design-primer)
+* [Learning System Design in 2023: Seven Must-Read Papers](https://levelup.gitconnected.com/learning-system-design-in-2023-seven-must-read-papers-9c2f95aedf3a)
 * [Grokking-System-Design](https://github.com/Jeevan-kumar-Raj/Grokking-System-Design)
 * [Freewheel首席工程师：我对软件分层设计的思考](https://new.qq.com/rain/a/20210802A0635P00)
 * [System Design Interviews: A Step-By-Step Guide](https://interviewnoodle.com/system-design-interviews-a-step-by-step-guide-cb30496f31a5)
@@ -31,6 +32,15 @@
 * [Chat App System Design](https://medium.com/@BalajiSA/whatsapp-system-design-3d8566bb2e6c)
 * [How to Build Messaging capability for live video streams at scale!](https://medium.com/@surfd1001/system-design-build-messaging-capability-for-live-video-streams-b9fdb7ce9ff8)
 * [带答案的 12 大系统设计面试问题](https://medium.com/geekculture/top-12-system-design-interview-questions-with-answers-2022-dc2b6599f39a)
+* [How to Increase Your Chances of Success in System Design Interviews by 3X?](https://medium.com/geekculture/how-to-increase-your-chances-of-success-in-system-design-interviews-by-3x-a60e7698f818)
+
+## 架构& 设计文档
+* [Design Docs at Google](https://www.industrialempathy.com/posts/design-docs-at-google/)
+* [System design document template without BS](https://medium.com/@rd9699/system-design-document-template-without-bs-1523899f2eb9)
+* [Software Architecture](https://medium.com/pareture/software-architecture-8ccb9924aacd)
+* [14 software architecture design patterns to know](https://www.redhat.com/architect/14-software-architecture-patterns)
+* [Software architects: 12 hard and soft skills needed to become a leader](https://www.redhat.com/architect/what-is-software-architect)
+* [microservice Architectural_pattern](https://microservices.io/patterns/index.html)
 
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
@@ -87,6 +97,10 @@
   * [Spanner：TrueTime 和外部一致性](https://cloud.google.com/spanner/docs/true-time-external-consistency)
 * [分布式系统一致性的发展历史 (一)](https://danielw.cn/history-of-distributed-systems-1)
 * [Survey on consistency conditions](https://projects.ics.forth.gr/tech-reports/2013/2013.TR439_Survey_on_Consistency_Conditions.pdf)
+
+## 一致性检查
+* [Improve user experience: solving core data inconsistencies at Pinterest](https://medium.com/pinterest-engineering/improve-user-experience-solving-core-data-inconsistencies-at-pinterest-d4b64b5d79a1)
+* [揭露数据不一致的利器 —— 实时核对系统](https://blog.csdn.net/weixin_47388410/article/details/125543039)
 
 ## 分布式事务
 * [two phase commit & raft](https://zhuanlan.zhihu.com/p/597456066)
@@ -386,9 +400,16 @@
 * [KIP-500: Replace ZooKeeper with a Self-Managed Metadata Quorum](https://cwiki.apache.org/confluence/display/KAFKA/KIP-500%3A+Replace+ZooKeeper+with+a+Self-Managed+Metadata+Quorum)
 * [翟佳：高可用、强一致、低延迟——BookKeeper的存储实现](https://cloud.tencent.com/developer/article/2054521)
 
+* [Apache BookKeeper Internals — Part 1 — High Level](https://medium.com/splunk-maas/apache-bookkeeper-internals-part-1-high-level-6dce62269125)
+* [Apache BookKeeper Internals — Part 2 — Writes](https://medium.com/splunk-maas/apache-bookkeeper-internals-part-2-writes-359ffc17c497)
+* [Apache BookKeeper Internals — Part 3 — Reads](https://medium.com/splunk-maas/apache-bookkeeper-internals-part-3-reads-31637b118bf)
+* [Apache BookKeeper Internals — Part 4 — Back Pressure](https://medium.com/splunk-maas/apache-bookkeeper-internals-part-4-back-pressure-7847bd6d1257)
+
+
 ## Cache
 * [Caching for a Global Netflix](https://netflixtechblog.com/caching-for-a-global-netflix-7bcc457012f1)
   * [EVCache](https://github.com/Netflix/EVCache)
+* [Cache warming: Leveraging EBS for moving petabytes of data](https://netflixtechblog.medium.com/cache-warming-leveraging-ebs-for-moving-petabytes-of-data-adcf7a4a78c3)
 * [Improving Distributed Caching Performance and Efficiency at Pinterest](https://medium.com/pinterest-engineering/improving-distributed-caching-performance-and-efficiency-at-pinterest-92484b5fe39b)
 * [Scaling Memcache at Facebook](https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf)
 * [Introducing mcrouter: A memcached protocol router for scaling memcached deployments](https://engineering.fb.com/2014/09/15/web/introducing-mcrouter-a-memcached-protocol-router-for-scaling-memcached-deployments/)
@@ -397,6 +418,7 @@
 * [大量数据的操作应该使用什么缓存策略？](https://www.zhihu.com/question/22336651/answer/2694018364)
 * Redis数据倾斜与JD开源hotkey源码分析揭秘
 * [How To Solve the Data Consistency Issues Between Redis And MySQL](https://betterprogramming.pub/how-to-solve-the-data-consistency-issues-between-redis-and-mysql-702f9ffa2452)
+
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
@@ -442,6 +464,7 @@
   * [Argus](https://github.com/salesforce/Argus)
 * [Guaranteed Data Delivery System for Distributed Services](https://engineering.salesforce.com/guaranteed-data-delivery-system-for-distributed-services-3b07fd24775d/)
 * [How eBay’s Notification Platform Used Fault Injection in New Ways](https://tech.ebayinc.com/engineering/how-ebays-notification-platform-used-fault-injection-in-new-ways/)
+* [Ensuring High Availability of Ads Realtime Streaming Services](https://medium.com/pinterest-engineering/ensuring-high-availability-of-ads-realtime-streaming-services-ea3889420490)
 
 ## 演讲
 * [public-presentations](https://github.com/zalando/public-presentations)
