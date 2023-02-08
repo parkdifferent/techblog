@@ -85,6 +85,9 @@
 * [Distributed Consensus Reading List](https://github.com/heidihoward/distributed-consensus-reading-list)
 * [Consensus Papers](https://dancres.github.io/Pages/)
 * [Implementing Raft consensus algorithm in Go](https://distributed-computing-musings.com/2022/03/implementing-raft-consensus-algorithm-in-go/)
+* [分布式系统中的领导选举](https://aws.amazon.com/cn/builders-library/leader-election-in-distributed-systems/)
+* [Implementing leader election on Google Cloud Storage](https://cloud.google.com/blog/topics/developers-practitioners/implementing-leader-election-google-cloud-storage)
+* [Leader Election pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/leader-election)
 
 ## 一致性
 * [Consistency Models paper](https://dancres.github.io/Pages/)
@@ -418,7 +421,7 @@
 * [大量数据的操作应该使用什么缓存策略？](https://www.zhihu.com/question/22336651/answer/2694018364)
 * Redis数据倾斜与JD开源hotkey源码分析揭秘
 * [How To Solve the Data Consistency Issues Between Redis And MySQL](https://betterprogramming.pub/how-to-solve-the-data-consistency-issues-between-redis-and-mysql-702f9ffa2452)
-
+* [4 Microservices Caching Patterns at Wix](https://medium.com/wix-engineering/4-microservices-caching-patterns-at-wix-b4dfee1ae22f)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
