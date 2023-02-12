@@ -80,6 +80,7 @@
 
 ## 共识
 * [In Search of an Understandable Consensus Algorithm](https://raft.github.io/raft.pdf)
+* [raft zh_cn](https://github.com/OneSizeFitsQuorum/raft-thesis-zh_cn)
 * [Implementing Raft: Part 0 - Introduction](https://eli.thegreenplace.net/2020/implementing-raft-part-0-introduction/)
 * [Java Raft: Apache Ratis源码阅读](https://zhuanlan.zhihu.com/p/476876447)
 * [Distributed Consensus Reading List](https://github.com/heidihoward/distributed-consensus-reading-list)
@@ -140,11 +141,14 @@
 ## 架构
 * [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
 * [A new software architecture metamodel inspired by C4, Agile and TOGAF](https://nikolaschou.medium.com/a-new-software-architecture-metamodel-inspired-by-c4-agile-and-togaf-b3f21ab9848)
+* [Ready for changes with Hexagonal Architecture](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749)
+
 ## 网关
 * [The Architecture of Uber’s API gateway](https://www.uber.com/blog/architecture-api-gateway/)
 * [Scaling of Uber’s API gateway](https://www.uber.com/blog/scaling-api-gateway/)  
 * [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
 * [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
+* [Open Sourcing Zuul 2](https://netflixtechblog.com/open-sourcing-zuul-2-82ea476cb2b3)
 * [Scaling Push Messaging for Millions of Devices @Netflix](https://qconnewyork.com/ny2018/presentation/architectures-youve-always-wondered-about-presentation)
 * [Apache ShenYu]
 * [The Journey of Building a Scalable API](https://engineering.salesforce.com/the-journey-of-building-a-scalable-api-df7ecf2f233e/)
@@ -164,6 +168,8 @@
 * [Message Queuing and the Database: Solving the Dual Write Problem](https://www.cockroachlabs.com/blog/message-queuing-database-kafka/#the-transactional-outbox-pattern)
 * [Utilizing Amazon DynamoDB and AWS Lambda for Asynchronous Event Publication](https://engineering.zalando.com/posts/2022/02/transactional-outbox-with-aws-lambda-and-dynamodb.html)
 * [DBLog: A Generic Change-Data-Capture Framework](https://netflixtechblog.com/dblog-a-generic-change-data-capture-framework-69351fb9099b)
+* [Delta: A highly available, strongly consistent storage service using chain replication](https://engineering.fb.com/2022/05/04/data-infrastructure/delta/)
+* [Delta: A Data Synchronization and Enrichment Platform](https://netflixtechblog.com/delta-a-data-synchronization-and-enrichment-platform-e82c36a79aee)
 * [How Airbnb, Uber, Netflix, Shopify, and Reddit Use Change Data Capture to Drive Breakthrough Advantages](https://www.arcion.io/blog/brands-using-change-data-capture)
 
 * [Leveraging CockroachDB’s Change Feed for Real-Time Inventory Data Processing](https://doordash.engineering/2022/11/21/leveraging-cockroachdbs-change-feed-for-real-time-inventory-data-processing/)
@@ -231,9 +237,6 @@
 * [Creating High-Quality Staging Data with a NoSQL Data Migration System](https://tech.ebayinc.com/engineering/creating-high-quality-staging-data-with-a-nosql-data-migration-system/)
 * [Making our user storage more scalable and secure](https://www.intercom.com/blog/updating-our-user-storage/)
 * [Our Top 4 Tips for Massive Data Migrations](https://engineering.salesforce.com/our-top-4-tips-for-massive-data-migrations-565daaa83cfc/)
-* [Delta: A highly available, strongly consistent storage service using chain replication](https://engineering.fb.com/2022/05/04/data-infrastructure/delta/)
-* [Delta: A Data Synchronization and Enrichment Platform](https://netflixtechblog.com/delta-a-data-synchronization-and-enrichment-platform-e82c36a79aee)
-
 
 * [New Recruiter & Jobs: The largest enterprise data migration at LinkedIn](https://engineering.linkedin.com/blog/2021/new-recruiter---jobs--the-largest-enterprise-data-migration-at-l)
 
@@ -254,6 +257,7 @@
 
 * [From Postgres to Amazon DynamoDB](https://tech.instacart.com/from-postgres-to-amazon-dynamodb-4791220b2d5d)
 * [MuleSoft’s Online Migration on DynamoDB](https://engineering.salesforce.com/mulesofts-online-migration-on-dynamodb-25e438c146c/)
+* [MySQL to MyRocks Migration in Uber’s Distributed Datastores](https://www.uber.com/blog/mysql-to-myrocks-migration-in-uber-distributed-datastores/)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -307,8 +311,13 @@
 * 得物App消息服务平台化建设演化
 * 日均数亿推送稳定性监控实践 ｜ 得物技术
 
+* [How Razorpay scaled their Notification Service](https://medium.com/@SaiRahulAkarapu/how-razorpay-scaled-their-notification-service-d077f7345fa0)
 * [Notification System: Design that scales](https://blog.devgenius.io/notification-system-design-that-scales-361e03b1d9e0)
+* [Uber’s Real-Time Push Platform](https://www.uber.com/blog/real-time-push-platform/)
+* [Uber’s Next Gen Push Platform on gRPC](https://www.uber.com/blog/ubers-next-gen-push-platform-on-grpc/)
 
+* [Open-sourcing PinLater: An asynchronous job execution system](https://medium.com/pinterest-engineering/open-sourcing-pinlater-an-asynchronous-job-execution-system-d8ec4e39859a)
+* [pinlater](https://github.com/pinterest/pinlater)
 
 ## 业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
@@ -330,7 +339,7 @@
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 
-
+* [How we scaled the size of Pinterest’s ad corpus by 60x](https://medium.com/pinterest-engineering/how-we-scaled-the-size-of-pinterests-ad-corpus-by-60x-d6d5bfa6bf16)
 ## DynamoDB
 * [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
 * [Amazon DynamoDB – a Fast and Scalable NoSQL Database Service Designed for Internet Scale Applications](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)
@@ -507,6 +516,16 @@
 * [Getting Started with Elasticsearch](https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd)
 * [Deep Dive into Querying Elasticsearch. Filter vs Query. Full-text search](https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0)
 
+## 推荐系统
+* [System Architectures for Personalization and Recommendation](https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8)
+* [Netflix Recommendations: Beyond the 5 stars (Part 1)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429)
+* [Netflix Recommendations: Beyond the 5 stars (Part 2)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5)
+* [RecSysOps: Best Practices for Operating a Large-Scale Recommender System](https://netflixtechblog.medium.com/recsysops-best-practices-for-operating-a-large-scale-recommender-system-95bbe195a841)
+
+## 规则引擎
+* [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
+* [Growth Engineering at Netflix- Creating a Scalable Offers Platform](https://netflixtechblog.com/growth-engineering-at-netflix-creating-a-scalable-offers-platform-69330136dd87)
+* [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
