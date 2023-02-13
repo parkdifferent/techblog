@@ -149,6 +149,7 @@
 * [Designing Edge Gateway, Uber’s API Lifecycle Management Platform](https://www.uber.com/blog/gatewayuberapi/)
 * [zuul](https://github.com/Netflix/zuul/wiki/Push-Messaging)
 * [Open Sourcing Zuul 2](https://netflixtechblog.com/open-sourcing-zuul-2-82ea476cb2b3)
+* [Zuul 2 : The Netflix Journey to Asynchronous, Non-Blocking Systems](https://netflixtechblog.com/zuul-2-the-netflix-journey-to-asynchronous-non-blocking-systems-45947377fb5c)
 * [Scaling Push Messaging for Millions of Devices @Netflix](https://qconnewyork.com/ny2018/presentation/architectures-youve-always-wondered-about-presentation)
 * [Apache ShenYu]
 * [The Journey of Building a Scalable API](https://engineering.salesforce.com/the-journey-of-building-a-scalable-api-df7ecf2f233e/)
@@ -499,6 +500,8 @@
 * [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
 * [eBay’s Global Secondary Indexes](https://tech.ebayinc.com/engineering/ebays-global-secondary-indexes/)
 * [Modernizing Business Data Indexing](https://engineeringblog.yelp.com/2021/06/modernizing-business-data-indexing.html)
+
+* [Implementing the Netflix Media Database](https://netflixtechblog.com/implementing-the-netflix-media-database-53b5a840b42a)
 * [How Netflix Content Engineering makes a federated graph searchable](https://netflixtechblog.com/how-netflix-content-engineering-makes-a-federated-graph-searchable-5c0c1c7d7eaf)
 * [How Netflix Content Engineering makes a federated graph searchable (Part 2)](https://netflixtechblog.com/how-netflix-content-engineering-makes-a-federated-graph-searchable-part-2-49348511c06c)
 * [GraphQL Search Indexing](https://netflixtechblog.com/graphql-search-indexing-334c92e0d8d5)
@@ -521,6 +524,8 @@
 * [Netflix Recommendations: Beyond the 5 stars (Part 1)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429)
 * [Netflix Recommendations: Beyond the 5 stars (Part 2)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5)
 * [RecSysOps: Best Practices for Operating a Large-Scale Recommender System](https://netflixtechblog.medium.com/recsysops-best-practices-for-operating-a-large-scale-recommender-system-95bbe195a841)
+* [Netflix’s New Algorithm Offers Optimal Recommendation Lists for Users with Finite Time Budget](https://www.infoq.com/news/2022/09/Netflix-optimal-recommendation/?itm_source=infoq&itm_medium=related_content_link&itm_campaign=relatedContent_presentations_clk)
+* [推荐系统实践](https://mp.weixin.qq.com/s/TcOPPOsUVJKYBaf2SldXnA?st=4C9C5C462DACA14E0F619AF8D1090FEF6699BAF56B8B3270BD0B84C91D28F28024CE607589ACFAB41FAC8F07D0586843B236EAB2542CDFACF55210F882CB16F894A61E9147AE3CC6F485356CE376FB17B4DACF532DA109C5FD1CBC62916D92B114C508B18190A2D046AB70CAE89A2A3316A22D1E7239B0C580FBEBD8416624BF8BFAC9772032E2D932A7C80C6083D0CB06BDCE80637CABFA1A242F650CA59E3C8AE5758F38F9D657EAF465B735ADB5F57DC8EAC735ABBE2C464DB9A5736A1F607E98724F59CE60B0B536710129900AE2&vid=1688856684375525&cst=8BB62BA79B8E62528F84D154DA4CA3E201D053433AD3B55268D08568F8EAE0E74F70B2A9BA664DB1BCCDC4CE6F246504&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
