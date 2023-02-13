@@ -440,9 +440,6 @@
 * [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
 * [Building a Distributed Job Scheduler for Microservices](https://medium.com/@mesutpiskin/building-a-distributed-job-scheduler-for-microservices-8b7ab2ce5f91)
 
-## 规则引擎
-* [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
-* [Growth Engineering at Netflix- Creating a Scalable Offers Platform](https://netflixtechblog.com/growth-engineering-at-netflix-creating-a-scalable-offers-platform-69330136dd87)
 
 ## 性能优化
 * [Netflix FlameScope](https://netflixtechblog.com/netflix-flamescope-a57ca19d47bb)
@@ -532,10 +529,6 @@
 * [Growth Engineering at Netflix- Creating a Scalable Offers Platform](https://netflixtechblog.com/growth-engineering-at-netflix-creating-a-scalable-offers-platform-69330136dd87)
 * [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
 
-## 流系统
-* [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
-* [An Introduction to Apache Flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
-* [Building Scalable Streaming Pipelines for Near Real-Time Features](https://www.uber.com/blog/building-scalable-streaming-pipelines/)
 
 ## ID生成
 * [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
@@ -575,7 +568,12 @@
 * [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
 * [Processing Payments in a Distributed System](https://betterprogramming.pub/processing-payments-in-a-distributed-system-3fdb73041286)
+
 ## 流系统
+* [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
+* [An Introduction to Apache Flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
+* [Building Scalable Streaming Pipelines for Near Real-Time Features](https://www.uber.com/blog/building-scalable-streaming-pipelines/)
+
 * [Databases and Stream Processing: a Future of Consolidation](https://www.infoq.com/presentations/streaming-databases/)
   * [数据库和流式数据处理：整合的未来](https://zhuanlan.zhihu.com/p/393802225)
   * [slide](https://ress.infoq.com/downloads/pdfdownloads/presentations/QConLon2020-BenStopford-DatabasesAndStreamProcessingAFutureOfConsolidation.pdf?Expires=1672901255&Signature=MoxdsyVuiTASCwxNy3-sA0qlEqUYwzXJa7AAzhVSpitlR2dEsFahtaqE3~syXcWv9ImFzsT2I3Ba8nqENj8Q9tgMkIy2Vep9yS2rzmvSGYGVFjk38kl0CMQFH7F0fh4CRFUgQLa24ynhDuiDrdd~tkg3R9Gaf7R3TSlkM0QFJ~E_&Key-Pair-Id=APKAIMZVI7QH4C5YKH6Q)
