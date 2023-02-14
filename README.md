@@ -294,6 +294,7 @@
 * [FOQS: Scaling a distributed priority queue](https://engineering.fb.com/2021/02/22/production-engineering/foqs-scaling-a-distributed-priority-queue/)
 * [FOQS: Making a distributed priority queue disaster-ready](https://engineering.fb.com/2022/01/18/production-engineering/foqs-disaster-ready/)
 * [Scaling services with Shard Manager](https://engineering.fb.com/2020/08/24/production-engineering/scaling-services-with-shard-manager/)
+* [Asynchronous computing at Meta: Overview and learnings](https://engineering.fb.com/2023/01/31/production-engineering/meta-asynchronous-computing/)
 * [Distributed delay queues based on Dynomite](https://netflixtechblog.com/distributed-delay-queues-based-on-dynomite-6b31eca37fbc)
   * [dynomite](https://github.com/Netflix/dynomite/wiki/Architecture)
   * [dyno-queues](https://github.com/Netflix/dyno-queues)
