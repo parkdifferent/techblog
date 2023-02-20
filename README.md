@@ -341,7 +341,6 @@
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 
-* [How we scaled the size of Pinterest’s ad corpus by 60x](https://medium.com/pinterest-engineering/how-we-scaled-the-size-of-pinterests-ad-corpus-by-60x-d6d5bfa6bf16)
 ## DynamoDB
 * [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
 * [Amazon DynamoDB – a Fast and Scalable NoSQL Database Service Designed for Internet Scale Applications](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)
@@ -517,6 +516,35 @@
 * [Getting Started with Elasticsearch](https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd)
 * [Deep Dive into Querying Elasticsearch. Filter vs Query. Full-text search](https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0)
 
+* [How to Reindex One Billion Documents in One Hour at SoundCloud](https://developers.soundcloud.com/blog/how-to-reindex-1-billion-documents-in-1-hour-at-soundcloud)
+* [How we scaled the size of Pinterest’s ad corpus by 60x](https://medium.com/pinterest-engineering/how-we-scaled-the-size-of-pinterests-ad-corpus-by-60x-d6d5bfa6bf16)
+* [How We Improved Our Performance Using ElasticSearch Plugins: Part 1](https://medium.com/tinder/how-we-improved-our-performance-using-elasticsearch-plugins-part-1-b0850a7e5224)
+* [How We Improved Our Performance Using ElasticSearch Plugins: Part 2](https://medium.com/tinder/how-we-improved-our-performance-using-elasticsearch-plugins-part-2-b051da2ee85b)
+
+* [搜索引擎分布式系统思考实践 ｜ 得物技术](https://mp.weixin.qq.com/s/InVDBLBBVcPDN62F3sVwVw?st=48D5417528A5EFC0464E7C575DEBAA4F643A64AC1343A5E1EE160A0B81ADF0CA052809E198A3CBC98E390D200BC77D945E1B94CFCB7483794B904C02CF61F075B2645E946CA135F0201CC589F8FB4832B5D0BE63270B49EAA4D3FA0E2CA9B47AA08F1D93F677D75B5372991E4D6D1BA74F1CC41BB68306F71D5F0AE76837613CC0A26CA980005520919C89C7E1CA1739894161C465BB582B1A605F6B456028E9136AEA4E6C8B937F122CE6DEAA5820A93DDBBAAD8C24322AC2F83A851C0E26BBE5D0E94477048FD6104731A6517C7159&vid=1688856684375525&cst=9BA25E764EAC7361B78CBDF1EBECBE1D3D972817177CDA16C829D140FFF7385833A77E259B0A731EFF25F0E1BCAE9544&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [得物榜单｜全链路生产迁移及B/C端数据存储隔离](B146BFD2B9150BA7893F191D2113A28E0DE68A0D865117EF3A9633A2A9C6AB534A7D874D00307ED8490B7684B3AAC354DB1B47FA0BC17C99DF8E526996E6F13E01F925B8F783C234912D6376E5C9728D9A43C2CF983B73DD668F4869100642EF0901ED8E5EB0E523D4A6A21AB5AF93B6EEC55354B75402BFAE99FDFFE8E874E0F4175291999062A1F17E80487B7F8F7A997A8CEA3E835DC735B728472197F94CF7BBC960AE8321A476EF9737C3538FD264B6F271F1F786D5DF7CF97C37993CFF936CB3AAF66815E16754B7250A9D642F)
+* [精选文章｜搜索引擎技术简介](https://mp.weixin.qq.com/s/3HX41uMxTHgaDgR7BkWFHg?st=7ABFE3A52EE4D91354BC2670AD5AF54973D8961254436EB53E813695520FD3E69AE201C2F2057D320E215EB96E35D55F40F52FEC8DD10E19F8BA78DA9B6C131A442A4FFE5C80C3C0223AD3B2A2034D53DF558DCFDC0027770F160E639B4FFC05B53D6AC4DD939FC9DF06A1BB9C94F5C52DBC48B446C20759086EEEADC78425A021FBD2AA008BFA9CBCAC7A25A452CECA427FCAADF55BA5627B7440CE9603F49079EAB77C19510A7DAE0F43FCF677887D7B50E7A704AE133F3721667C5DE193C36001FE60124A2D69AC47593FCB806D1B&vid=1688856684375525&cst=1C2E4FA07AC22F8EC4B45A12A527F5CB1935ABAB6EFB12128A2032773B241F743D80D60C7CA4C45CD0ED2D9270A50B57&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [精选文章｜为什么搜索服务使用Caffeine Cache做本地缓存](https://mp.weixin.qq.com/s/I9TLLg9QPYB50zKi1bqaXg?st=4A6AE4D3306EB8D6341AD484F3ED0134B304E9312EC1F9A16F9B8F424F8FB09483ED11940FE7717E90EB3A6D7A0DFFF548511DDFB4D449F87B16763877A3DED51BDAE84681DEB8AF250CFC9A23725BB78203E722258B0602F0562F526044F5A086A49910622AE074A7884E21168CC9B5E9AE6BB4086C2641B20F6918F650E02BC012B1D796A7E44C35A2744E0424D4B64F2A10343B39DA88C1629F8847A5185F32A305478D4B597C68C1727941684EC462344E72E040576D47E716B61438E4A9A7B076658B80FCE8092484443C896B13&vid=1688856684375525&cst=6FF44AB73E0582D7255354E92259EA91534F5BBF02CEF7EB249C6DF5227CED3F2C932116FD2EA2F03800098006AA591E&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [电商搜索工程：工程架构篇](https://zhuanlan.zhihu.com/p/452759774)
+
+* [How MDN’s site-search works](https://hacks.mozilla.org/2021/03/how-mdns-site-search-works/)
+* [How scoring works in Elasticsearch](https://www.compose.com/articles/how-scoring-works-in-elasticsearch/)
+  * [Elasticsearch Query-Time Strategies and Techniques for Relevance: Part I](https://compose.com/articles/elasticsearch-query-time-strategies-and-techniques-for-relevance-part-i/)
+  * [Elasticsearch Query-Time Strategies and Techniques for Relevance: Part II](https://compose.com/articles/elasticsearch-query-time-strategies-and-techniques-for-relevance-part-ii/)
+* [function score query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#query-dsl-function-score-query)
+
+* [elasticsearch-learning-to-rank](https://github.com/o19s/elasticsearch-learning-to-rank)
+* [Better ways to combine relevance signals](https://github.com/elastic/elasticsearch/issues/23850)
+* 工程实践
+  * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
+  * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
+  * [Search Architecture](https://instagram-engineering.com/search-architecture-eeb34a936d3a)
+  * [Learning to Boost — Query-time relevance signal boosting @ Cookpad](https://sourcediving.com/learning-to-boost-query-time-relevance-signal-boosting-cookpad-6af9eb206f38)
+
+* 地理相关
+* [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
+
 ## 推荐系统
 * [System Architectures for Personalization and Recommendation](https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8)
 * [Netflix Recommendations: Beyond the 5 stars (Part 1)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429)
@@ -524,6 +552,11 @@
 * [RecSysOps: Best Practices for Operating a Large-Scale Recommender System](https://netflixtechblog.medium.com/recsysops-best-practices-for-operating-a-large-scale-recommender-system-95bbe195a841)
 * [Netflix’s New Algorithm Offers Optimal Recommendation Lists for Users with Finite Time Budget](https://www.infoq.com/news/2022/09/Netflix-optimal-recommendation/?itm_source=infoq&itm_medium=related_content_link&itm_campaign=relatedContent_presentations_clk)
 * [推荐系统实践](https://mp.weixin.qq.com/s/TcOPPOsUVJKYBaf2SldXnA?st=4C9C5C462DACA14E0F619AF8D1090FEF6699BAF56B8B3270BD0B84C91D28F28024CE607589ACFAB41FAC8F07D0586843B236EAB2542CDFACF55210F882CB16F894A61E9147AE3CC6F485356CE376FB17B4DACF532DA109C5FD1CBC62916D92B114C508B18190A2D046AB70CAE89A2A3316A22D1E7239B0C580FBEBD8416624BF8BFAC9772032E2D932A7C80C6083D0CB06BDCE80637CABFA1A242F650CA59E3C8AE5758F38F9D657EAF465B735ADB5F57DC8EAC735ABBE2C464DB9A5736A1F607E98724F59CE60B0B536710129900AE2&vid=1688856684375525&cst=8BB62BA79B8E62528F84D154DA4CA3E201D053433AD3B55268D08568F8EAE0E74F70B2A9BA664DB1BCCDC4CE6F246504&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [交互式推荐在外卖场景的探索与应用](https://zhuanlan.zhihu.com/p/607089421)
+* [端智能在大众点评搜索重排序的应用实践](https://tech.meituan.com/2022/06/16/edge-search-rerank.html)
+* [得物社区推荐多目标排序初探](https://mp.weixin.qq.com/s/3_RmSyl_3wIAH3lW_XKEyA?st=660865DA24648F4E89DDFF338CAA182A287FA68C42678CF6D8D3E12A6F168C489F31E27D6AE039B323341F1230417BC2262FF2FD3C9A2A9E035EB5B3245577BF62750610B7E55284F3C6B14FEDC506D7AEFDC9BC288C4C6AA3EB1ADFA2433E2FB97587B321E8FB8F0502FFD68C6059B0CD0D08723D7C575A5749B606D5C1E5F1EDB99892AD753442497A3EF97127AA86CB5168AE70990716A509B20304C9F6B5F98CA94E5DAC2786DEDE0905303AA4639B325E929B492A217BCCC755870C2F9C192DBF0B100EB170A4BF3E9C413A0668&vid=1688856684375525&cst=CF207169C7CA54D2DA0E30A48F2F2D89DC757ED8512627206E224629AC5789A04E5201026F882AEC2D1BBCAA1E1682F9&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [vivo 短视频推荐去重服务的设计实践](https://mp.weixin.qq.com/s/_2bH8bi9I2hrffM2DkWq7Q?st=4DFED065682BCC4A5B71EC972C0675EB43A777409450324B0FF072443830DDF31FB320B3B5182F493A6466C24706BEE2B540A0FABF37C91947ED7FAA1F1F62D48BA04E51834F83E35985CCFB3019012369B3C4D8804A39F166385738E5EA097CCA2B2D780927894478302F2392D1039B83B4C24027BFE5023D313E89AC0F13520C9C407621FAB0751AEBC89F6DC9C1DA058C37F2AC61192EDA5C33C29FE3E8A3872F88E0156F3EA3D0D6BD009B05C7E8D7E111687C9A5A0EE8C50BC62C0BB82FAD749537503D49790D38D365BFB68302&vid=1688856684375525&cst=8F41818264D8B5E45264645537134EA8FF624071F4F20378A8AC020A57E39A82B0FDBCB79375607F7B9D4DB979E06238&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
