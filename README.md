@@ -493,7 +493,6 @@
 * [Building scalable near-real time indexing on HBase](https://medium.com/pinterest-engineering/building-scalable-near-real-time-indexing-on-hbase-7b5eeb411888)
 * [Online Data Migration from HBase to TiDB with Zero Downtime](https://medium.com/pinterest-engineering/online-data-migration-from-hbase-to-tidb-with-zero-downtime-43f0fb474b84)
 
-* [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
 * [How ads indexing works at Pinterest](https://medium.com/pinterest-engineering/how-ads-indexing-works-at-pinterest-99b4796f289f)
 * [eBay’s Global Secondary Indexes](https://tech.ebayinc.com/engineering/ebays-global-secondary-indexes/)
 * [Modernizing Business Data Indexing](https://engineeringblog.yelp.com/2021/06/modernizing-business-data-indexing.html)
@@ -540,10 +539,15 @@
   * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
   * [Search Architecture](https://instagram-engineering.com/search-architecture-eeb34a936d3a)
   * [Learning to Boost — Query-time relevance signal boosting @ Cookpad](https://sourcediving.com/learning-to-boost-query-time-relevance-signal-boosting-cookpad-6af9eb206f38)
+  * [From News to Newsfeed](https://robinhood.engineering/from-news-to-newsfeed-7fe80732b961)
+  * [Homepage Recommendation with Exploitation and Exploration](https://doordash.engineering/2022/10/05/homepage-recommendation-with-exploitation-and-exploration/)
+  * [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
+  * [Using Microservices to Power Fashion Search and Discovery](https://engineering.zalando.com/posts/2017/02/using-microservices-to-power-fashion-search-and-discovery.html)
+  * [Improving the Grocery Search Experience with Query and Index Normalization](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/#Normalization)
 
 * 地理相关
-* [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
-* [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
+  * [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+  * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
 
 ## 推荐系统
 * [System Architectures for Personalization and Recommendation](https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8)
@@ -592,6 +596,7 @@
 * [春节钱包大流量奖励系统入账及展示的设计与实现](https://blog.csdn.net/ByteDanceTech/article/details/123911428?spm=1001.2014.3001.5501)
 * [会员购促销工具平台](https://www.bilibili.com/read/cv18951410)
 * [电商系统在双十一大促活动下的架构](https://www.toutiao.com/article/7095393898037690921/?app=news_article&timestamp=1673188468&use_new_style=1&req_id=20230108223427DD912AF9F85E8EE5A990&group_id=7095393898037690921&share_token=2607e7ca-d359-41b4-b03b-dd5b46bb6ad2&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
 
 ## 电商
 * [高并发、高可用系统设计](https://www.toutiao.com/article/7088512444104245795/?app=news_article&timestamp=1673191865&use_new_style=1&req_id=20230108233105F675E679390E9DE0D8DD&group_id=7088512444104245795&share_token=815452a2-d2f6-469d-b96f-da8b45940f9b&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
@@ -602,6 +607,7 @@
 * [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
 * [Processing Payments in a Distributed System](https://betterprogramming.pub/processing-payments-in-a-distributed-system-3fdb73041286)
+* [How DoorDash Designed a Successful Write-Heavy Scalable and Reliable Inventory Platform](https://doordash.engineering/2023/02/22/how-doordash-designed-a-successful-write-heavy-scalable-and-reliable-inventory-platform/)
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
