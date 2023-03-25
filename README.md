@@ -567,6 +567,18 @@
 * [Improving Shopping Recommendations for Customers Through eBay’s Relevance Cascade Model](https://tech.ebayinc.com/engineering/improving-shopping-recommendations-for-customers-through-ebays-relevance-cascade-model/)
 * [Building a Deep Learning Based Retrieval System for Personalized Recommendations](https://tech.ebayinc.com/engineering/building-a-deep-learning-based-retrieval-system-for-personalized-recommendations/)
 
+* [Improving the Quality of Recommended Pins with Lightweight Ranking](https://medium.com/pinterest-engineering/improving-the-quality-of-recommended-pins-with-lightweight-ranking-8ff5477b20e3)
+* [Pinterest Home Feed Unified Lightweight Scoring: A Two-tower Approach](https://medium.com/pinterest-engineering/pinterest-home-feed-unified-lightweight-scoring-a-two-tower-approach-b3143ac70b55)
+
+
+* [Rex: Medium’s Go Recommendations Microservice](https://medium.engineering/rex-mediums-go-recommendation-microservice-e077bc9582a)
+
+* [How Instagram suggests new content](https://engineering.fb.com/2020/12/10/web/how-instagram-suggests-new-content/)
+* [Advertiser Recommendation Systems at Pinterest](https://medium.com/pinterest-engineering/advertiser-recommendation-systems-at-pinterest-ccb255fbde20)
+* [Leveraging the Pipeline Design Pattern to Modularize Recommendation Services](https://doordash.engineering/2021/07/07/pipeline-design-pattern-recommendation/)
+* [Expedia Group @ RecSys 2021](https://medium.com/expedia-group-tech/expedia-group-recsys-2021-ff791f42ba07)
+
+
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
 * [Growth Engineering at Netflix- Creating a Scalable Offers Platform](https://netflixtechblog.com/growth-engineering-at-netflix-creating-a-scalable-offers-platform-69330136dd87)
