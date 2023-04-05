@@ -534,6 +534,8 @@
 
 * [elasticsearch-learning-to-rank](https://github.com/o19s/elasticsearch-learning-to-rank)
 * [Better ways to combine relevance signals](https://github.com/elastic/elasticsearch/issues/23850)
+* [Building Airbnb Categories with ML & Human in the Loop](https://medium.com/airbnb-engineering/building-airbnb-categories-with-ml-human-in-the-loop-35b78a837725)
+
 * 工程实践
   * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
   * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
@@ -561,6 +563,11 @@
 * [得物社区推荐多目标排序初探](https://mp.weixin.qq.com/s/3_RmSyl_3wIAH3lW_XKEyA?st=660865DA24648F4E89DDFF338CAA182A287FA68C42678CF6D8D3E12A6F168C489F31E27D6AE039B323341F1230417BC2262FF2FD3C9A2A9E035EB5B3245577BF62750610B7E55284F3C6B14FEDC506D7AEFDC9BC288C4C6AA3EB1ADFA2433E2FB97587B321E8FB8F0502FFD68C6059B0CD0D08723D7C575A5749B606D5C1E5F1EDB99892AD753442497A3EF97127AA86CB5168AE70990716A509B20304C9F6B5F98CA94E5DAC2786DEDE0905303AA4639B325E929B492A217BCCC755870C2F9C192DBF0B100EB170A4BF3E9C413A0668&vid=1688856684375525&cst=CF207169C7CA54D2DA0E30A48F2F2D89DC757ED8512627206E224629AC5789A04E5201026F882AEC2D1BBCAA1E1682F9&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [vivo 短视频推荐去重服务的设计实践](https://mp.weixin.qq.com/s/_2bH8bi9I2hrffM2DkWq7Q?st=4DFED065682BCC4A5B71EC972C0675EB43A777409450324B0FF072443830DDF31FB320B3B5182F493A6466C24706BEE2B540A0FABF37C91947ED7FAA1F1F62D48BA04E51834F83E35985CCFB3019012369B3C4D8804A39F166385738E5EA097CCA2B2D780927894478302F2392D1039B83B4C24027BFE5023D313E89AC0F13520C9C407621FAB0751AEBC89F6DC9C1DA058C37F2AC61192EDA5C33C29FE3E8A3872F88E0156F3EA3D0D6BD009B05C7E8D7E111687C9A5A0EE8C50BC62C0BB82FAD749537503D49790D38D365BFB68302&vid=1688856684375525&cst=8F41818264D8B5E45264645537134EA8FF624071F4F20378A8AC020A57E39A82B0FDBCB79375607F7B9D4DB979E06238&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
+* [Building a Recommender System using Machine Learning](https://towardsdatascience.com/building-a-recommender-system-using-machine-learning-2eefba9a692e)
+* [Learning To Rank Diversely](https://medium.com/airbnb-engineering/learning-to-rank-diversely-add6b1929621)
+* [Learning To Rank Diversely Paper](https://arxiv.org/pdf/2210.07774.pdf)
+
+* [Prioritizing Home Attributes Based on Guest Interest](https://medium.com/airbnb-engineering/prioritizing-home-attributes-based-on-guest-interest-3c49b827e51a)
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
