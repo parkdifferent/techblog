@@ -536,6 +536,12 @@
 * [Better ways to combine relevance signals](https://github.com/elastic/elasticsearch/issues/23850)
 * [Building Airbnb Categories with ML & Human in the Loop](https://medium.com/airbnb-engineering/building-airbnb-categories-with-ml-human-in-the-loop-35b78a837725)
 
+* [Que2Search: Fast and Accurate Query and Document Understanding for Search at Facebook 阅读笔记](https://zhuanlan.zhihu.com/p/521332976)
+* [KDD'21 | 淘宝搜索中语义向量检索技术](https://zhuanlan.zhihu.com/p/409390150)
+* [KDD 21 工业界搜推广nlp论文整理](https://zhuanlan.zhihu.com/p/388115800)
+* [Recsys2021 | 推荐系统论文分类整理和导读](https://zhuanlan.zhihu.com/p/417652612)
+
+
 * 工程实践
   * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
   * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
