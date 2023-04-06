@@ -598,9 +598,10 @@
 * [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
 
 
-## ID生成
+## ID生成 & 基础服务
 * [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
 * [分布式唯一 ID 生成方案浅谈](https://cloud.tencent.com/developer/article/2034844)
+* [从角色迁移到基于属性的访问控制](https://www.toutiao.com/article/7217288023170417163/?app=news_article&timestamp=1680797948&use_new_style=1&req_id=20230407001907FCA58259AD35D1202F04&group_id=7217288023170417163&share_token=30bef372-a5fe-459d-95f7-37171e736774&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 
 ## 财务
 * [百度交易中台之钱包系统架构浅析](https://xie.infoq.cn/article/349d90982dc3e591ada016ba3)
@@ -638,6 +639,8 @@
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
 * [Processing Payments in a Distributed System](https://betterprogramming.pub/processing-payments-in-a-distributed-system-3fdb73041286)
 * [How DoorDash Designed a Successful Write-Heavy Scalable and Reliable Inventory Platform](https://doordash.engineering/2023/02/22/how-doordash-designed-a-successful-write-heavy-scalable-and-reliable-inventory-platform/)
+* [电商交易场景状态机方案探索及应用](https://www.toutiao.com/article/7186885015404282402/?app=news_article&timestamp=1680795872&use_new_style=1&req_id=20230406234431CF7D60B9E4C1301D25CF&group_id=7186885015404282402&share_token=66ba6b16-b628-4455-bda5-2070231de888&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [Q-calculator 高性能优惠叠加计算框架](https://github.com/CyrilFeng/Q-calculator)
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
