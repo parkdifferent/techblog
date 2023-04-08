@@ -137,6 +137,8 @@
 * [当技术重构遇上DDD，如何实现业务、技术双赢？](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247508593&idx=1&sn=88b5dd38e5c72525112cc364e84b8a23&scene=21#wechat_redirect)
 * [技术天地 | FreeWheel核心业务系统的分布式事务方案和实践](https://mp.weixin.qq.com/s/OreNUm9t1lb79ic2PI3mtg#at)
 * [10 Principles for Architecture at Salesforce](https://engineering.salesforce.com/10-principles-for-architecture-at-salesforce-82105d5399a8/)
+* [How We Implemented Domain-Driven Development in Golang](https://engineering.grab.com/domain-driven-development-in-golang)
+
 
 ## 架构
 * [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
@@ -161,6 +163,8 @@
 
 * [Data Mesh — A Data Movement and Processing Platform](https://netflixtechblog.com/data-mesh-a-data-movement-and-processing-platform-netflix-1288bcab2873)
 * [Flink CDC 如何加速海量数据的实时集成？](https://zhuanlan.zhihu.com/p/578930446)
+* [Real-time data ingestion in Grab](https://engineering.grab.com/real-time-data-ingestion)
+
 
 ## event-driven-architecture & CDC
 
@@ -553,6 +557,9 @@
   * [Building Faster Indexing with Apache Kafka and Elasticsearch](https://doordash.engineering/2021/07/14/open-source-search-indexing/)
   * [Using Microservices to Power Fashion Search and Discovery](https://engineering.zalando.com/posts/2017/02/using-microservices-to-power-fashion-search-and-discovery.html)
   * [Improving the Grocery Search Experience with Query and Index Normalization](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/#Normalization)
+  * [Query expansion based on user behaviour](https://engineering.grab.com/query-expansion-based-on-user-behaviour)
+  * [search-indexing-optimisation](https://engineering.grab.com/search-indexing-optimisation)
+
 
 * 地理相关
   * [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
@@ -596,7 +603,7 @@
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
 * [Growth Engineering at Netflix- Creating a Scalable Offers Platform](https://netflixtechblog.com/growth-engineering-at-netflix-creating-a-scalable-offers-platform-69330136dd87)
 * [Building a Rule-Based Platform to Manage Netflix Membership SKUs at Scale](https://netflixtechblog.com/building-a-rule-based-platform-to-manage-netflix-membership-skus-at-scale-e3c0f82aa7bc)
-
+* [Griffin, an Anti-fraud Risk Rule Engine Making Billions of Predictions Daily](https://engineering.grab.com/griffin)
 
 ## ID生成 & 基础服务
 * [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
@@ -641,6 +648,9 @@
 * [How DoorDash Designed a Successful Write-Heavy Scalable and Reliable Inventory Platform](https://doordash.engineering/2023/02/22/how-doordash-designed-a-successful-write-heavy-scalable-and-reliable-inventory-platform/)
 * [电商交易场景状态机方案探索及应用](https://www.toutiao.com/article/7186885015404282402/?app=news_article&timestamp=1680795872&use_new_style=1&req_id=20230406234431CF7D60B9E4C1301D25CF&group_id=7186885015404282402&share_token=66ba6b16-b628-4455-bda5-2070231de888&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [Q-calculator 高性能优惠叠加计算框架](https://github.com/CyrilFeng/Q-calculator)
+* [How we store and process millions of orders daily](https://engineering.grab.com/how-we-store-millions-orders)
+* [电商通用型商品中心设计](https://zhuanlan.zhihu.com/p/618405659)
+
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
