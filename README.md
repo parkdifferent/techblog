@@ -33,6 +33,7 @@
 * [How to Build Messaging capability for live video streams at scale!](https://medium.com/@surfd1001/system-design-build-messaging-capability-for-live-video-streams-b9fdb7ce9ff8)
 * [带答案的 12 大系统设计面试问题](https://medium.com/geekculture/top-12-system-design-interview-questions-with-answers-2022-dc2b6599f39a)
 * [How to Increase Your Chances of Success in System Design Interviews by 3X?](https://medium.com/geekculture/how-to-increase-your-chances-of-success-in-system-design-interviews-by-3x-a60e7698f818)
+* [系统设计需要考虑哪些方面？](https://zhuanlan.zhihu.com/p/586870699)
 
 ## 架构& 设计文档
 * [Design Docs at Google](https://www.industrialempathy.com/posts/design-docs-at-google/)
@@ -41,6 +42,7 @@
 * [14 software architecture design patterns to know](https://www.redhat.com/architect/14-software-architecture-patterns)
 * [Software architects: 12 hard and soft skills needed to become a leader](https://www.redhat.com/architect/what-is-software-architect)
 * [microservice Architectural_pattern](https://microservices.io/patterns/index.html)
+* [一名架构师应该思考和解决的问题](https://zhuanlan.zhihu.com/p/618833119)
 
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
@@ -598,6 +600,7 @@
 * [Learning To Rank Diversely Paper](https://arxiv.org/pdf/2210.07774.pdf)
 
 * [Prioritizing Home Attributes Based on Guest Interest](https://medium.com/airbnb-engineering/prioritizing-home-attributes-based-on-guest-interest-3c49b827e51a)
+* [搜推广的特征工程该怎么做？](https://zhuanlan.zhihu.com/p/620287679)
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
