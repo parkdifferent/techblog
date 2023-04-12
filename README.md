@@ -548,6 +548,7 @@
 * [KDD 21 工业界搜推广nlp论文整理](https://zhuanlan.zhihu.com/p/388115800)
 * [Recsys2021 | 推荐系统论文分类整理和导读](https://zhuanlan.zhihu.com/p/417652612)
 
+* [From structured search to learning-to-rank-and-retrieve](https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve)
 
 * 工程实践
   * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
@@ -561,7 +562,8 @@
   * [Improving the Grocery Search Experience with Query and Index Normalization](https://doordash.engineering/2022/10/26/2022-doordash-summer-intern-projects-article-2/#Normalization)
   * [Query expansion based on user behaviour](https://engineering.grab.com/query-expansion-based-on-user-behaviour)
   * [search-indexing-optimisation](https://engineering.grab.com/search-indexing-optimisation)
-
+  * [Matching duplicate items to improve catalog quality](https://medium.com/coupang-engineering/matching-duplicate-items-to-improve-catalog-quality-ca4abc827f94)
+  * [Fueling the Coupang search engine](https://medium.com/coupang-engineering/the-evolution-of-search-discovery-indexing-platform-fa43e41305f9)
 
 * 地理相关
   * [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
@@ -594,6 +596,7 @@
 * [Advertiser Recommendation Systems at Pinterest](https://medium.com/pinterest-engineering/advertiser-recommendation-systems-at-pinterest-ccb255fbde20)
 * [Leveraging the Pipeline Design Pattern to Modularize Recommendation Services](https://doordash.engineering/2021/07/07/pipeline-design-pattern-recommendation/)
 * [Expedia Group @ RecSys 2021](https://medium.com/expedia-group-tech/expedia-group-recsys-2021-ff791f42ba07)
+* [Booking.com @ RecSys 2022](https://booking.ai/booking-coms-publications-at-the-16th-acm-conference-on-recommender-systems-6a1dacda57e8)
 
 * [Building a Recommender System using Machine Learning](https://towardsdatascience.com/building-a-recommender-system-using-machine-learning-2eefba9a692e)
 * [Learning To Rank Diversely](https://medium.com/airbnb-engineering/learning-to-rank-diversely-add6b1929621)
@@ -601,6 +604,7 @@
 
 * [Prioritizing Home Attributes Based on Guest Interest](https://medium.com/airbnb-engineering/prioritizing-home-attributes-based-on-guest-interest-3c49b827e51a)
 * [搜推广的特征工程该怎么做？](https://zhuanlan.zhihu.com/p/620287679)
+* [The Recommendation System at Lyft](https://eng.lyft.com/the-recommendation-system-at-lyft-67bc9dcc1793)
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
@@ -671,6 +675,7 @@
 * [迈向云原生：FreeWheel应用架构演进](https://mp.weixin.qq.com/s/RQ51IhvVOxwh62fnBczuog?st=9A563BA5984D614F6C57712E93D440D967D675168F722F6E794EB2FC5BF10B19C9D08AF049DBAFDC2CAA0E5E302A33773003E1232506711CC25B029F3485AD287E34D2727ECD5284B5B3019BA449165877873810AFA400359E4DF8C02FAA801AC13837F3FC59BC090ED523D4FC5D33767DC6230360D652B2EEF3B709EF42F97E2D61E77BCDB38F888FC4B9CE7785766CE6ABAF001498E7D34BEC32A2A4C803C56092FB49D4183E1A71EB548058AA2010AF65A39684E97611106534FAE90D739EF5D3E4B93E9C4650AB2729CE604EF843&vid=1688856684375525&cst=23DE356FD40072D95EFDA6CE5CC2B931DED3BBA746083246D1DBE6813812A427E85AC8F725B95960A068D9939F40FDA8&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [Architectural Patterns for Microservices With Kubernetes](https://dzone.com/articles/architectural-patterns-for-microservices-with-kube)
 * [技术天地 |从0开始构建核心业务微服务治理平台的实践](https://mp.weixin.qq.com/s/-ZkrHPZigMsb2B3AwwzeRg?st=38E1095D281D7142464514FB1C7D2C0CA5C0EF663E1005055B9A154B9BC33EC176E08FD998F608AF365AEE39A2E524DA1006A02F11073FD4E21E503908B583891363A7468ABE08E1FD8BCB430F16116E05F730389D45ED3FF1CD0FEB63F3EE31627D6E91F6E8F3B9AE77CA77113BD81F7380AF7CB0847BDF8792365DC08D3A3BA5FAE5120E505138DDA9C6035573898C7584FB07C606E24E00D4B9F02C76BBBF769DDFB4C0283062005B607555035E3DD855F1194C551AE7E349E84CFB4E32DC05F59D75CA9CFCDD6393211982F4286C&vid=1688856684375525&cst=22B6071A992B434906D666D4AF2D194D8CA7F0CC257C5A10D5964F493B01C098DF2A74B00A11E4C7414EAF5A6E045B52&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [Cloud Native Application Architecture](https://medium.com/walmartglobaltech/cloud-native-application-architecture-a84ddf378f82)
 
 
 ------------------------------------------------------
