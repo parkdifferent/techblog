@@ -166,7 +166,8 @@
 * [Data Mesh — A Data Movement and Processing Platform](https://netflixtechblog.com/data-mesh-a-data-movement-and-processing-platform-netflix-1288bcab2873)
 * [Flink CDC 如何加速海量数据的实时集成？](https://zhuanlan.zhihu.com/p/578930446)
 * [Real-time data ingestion in Grab](https://engineering.grab.com/real-time-data-ingestion)
-
+* [Eats data platform: Empowering businesses with data](https://medium.com/coupang-engineering/eats-data-platform-empowering-businesses-with-data-3cc00fa9968d)
+* [Eats data platform: Services for machine learning and audience segmentation](https://medium.com/coupang-engineering/daas-accelerating-food-delivery-business-at-eats-65e4ccce6470)
 
 ## event-driven-architecture & CDC
 
