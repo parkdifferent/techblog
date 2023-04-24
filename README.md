@@ -141,6 +141,9 @@
 * [10 Principles for Architecture at Salesforce](https://engineering.salesforce.com/10-principles-for-architecture-at-salesforce-82105d5399a8/)
 * [How We Implemented Domain-Driven Development in Golang](https://engineering.grab.com/domain-driven-development-in-golang)
 
+* [Service Architecture at SoundCloud — Part 1: Backends for Frontends](https://developers.soundcloud.com/blog/service-architecture-1)
+* [Service Architecture at SoundCloud — Part 2: Value-Added Services](https://developers.soundcloud.com/blog/service-architecture-2)
+* [Service Architecture at SoundCloud — Part 3: Domain Gateways](https://developers.soundcloud.com/blog/service-architecture-3)
 
 ## 架构
 * [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
@@ -267,6 +270,8 @@
 * [MuleSoft’s Online Migration on DynamoDB](https://engineering.salesforce.com/mulesofts-online-migration-on-dynamodb-25e438c146c/)
 * [MySQL to MyRocks Migration in Uber’s Distributed Datastores](https://www.uber.com/blog/mysql-to-myrocks-migration-in-uber-distributed-datastores/)
 
+* [Online migrations at scale](https://stripe.com/blog/online-migrations)
+
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
 * [Unified Flink Source at Pinterest: Streaming Data Processing](https://medium.com/pinterest-engineering/unified-flink-source-at-pinterest-streaming-data-processing-c9d4e89f2ed6)
@@ -348,6 +353,7 @@
 
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
+* [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
 
 ## DynamoDB
 * [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
@@ -440,6 +446,7 @@
 * Redis数据倾斜与JD开源hotkey源码分析揭秘
 * [How To Solve the Data Consistency Issues Between Redis And MySQL](https://betterprogramming.pub/how-to-solve-the-data-consistency-issues-between-redis-and-mysql-702f9ffa2452)
 * [4 Microservices Caching Patterns at Wix](https://medium.com/wix-engineering/4-microservices-caching-patterns-at-wix-b4dfee1ae22f)
+* [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
@@ -678,5 +685,7 @@
 * [技术天地 |从0开始构建核心业务微服务治理平台的实践](https://mp.weixin.qq.com/s/-ZkrHPZigMsb2B3AwwzeRg?st=38E1095D281D7142464514FB1C7D2C0CA5C0EF663E1005055B9A154B9BC33EC176E08FD998F608AF365AEE39A2E524DA1006A02F11073FD4E21E503908B583891363A7468ABE08E1FD8BCB430F16116E05F730389D45ED3FF1CD0FEB63F3EE31627D6E91F6E8F3B9AE77CA77113BD81F7380AF7CB0847BDF8792365DC08D3A3BA5FAE5120E505138DDA9C6035573898C7584FB07C606E24E00D4B9F02C76BBBF769DDFB4C0283062005B607555035E3DD855F1194C551AE7E349E84CFB4E32DC05F59D75CA9CFCDD6393211982F4286C&vid=1688856684375525&cst=22B6071A992B434906D666D4AF2D194D8CA7F0CC257C5A10D5964F493B01C098DF2A74B00A11E4C7414EAF5A6E045B52&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [Cloud Native Application Architecture](https://medium.com/walmartglobaltech/cloud-native-application-architecture-a84ddf378f82)
 
-
+## 机器学习 & 特征工程
+* [Railyard: how we rapidly train machine learning models with Kubernetes](https://stripe.com/blog/railyard-training-models)
+* [primus](https://github.com/bytedance/primus)
 ------------------------------------------------------
