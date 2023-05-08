@@ -44,6 +44,7 @@
 * [microservice Architectural_pattern](https://microservices.io/patterns/index.html)
 * [一名架构师应该思考和解决的问题](https://zhuanlan.zhihu.com/p/618833119)
 
+* [book-notes](https://github.com/mgp/book-notes)
 ## 分布式系统
 * [Metadata blog](http://muratbuffalo.blogspot.com/search/label/paper-review)
   * [Learning about distributed systems: where to start?](http://muratbuffalo.blogspot.com/2020/06/learning-about-distributed-systems.html)
@@ -390,6 +391,9 @@
 * [三篇文章了解 TiDB 技术内幕 - 说计算](https://cn.pingcap.com/blog/tidb-internal-2)
 * [三篇文章了解 TiDB 技术内幕 - 谈调度](https://cn.pingcap.com/blog/tidb-internal-3)
 * [PingCAP CTO谈数据库发展新趋势](https://mp.weixin.qq.com/s/gQA-35AcMlTMwop1p35-kw?st=095F02CEA19E801B9831C3C05FA8AB6DDD1D1176EEA5B3D97EB9EBBE7F41DAA1F59C572825667B514FC6F81FFC13E0B75B3BD9C97F15791EBFE058B9CCDE374D81B71B48C1761212CCD95DD976EC007E226F412DDBB7C18E88B3F0AA3931D9A048FD13EFC15DD62F68996AD7756557B8BE5E089D9C5C452C84F17406EBDBA1A9FD1A7F6E9293B11607E693373208A050ABF7EB33C6C5596961CE8DCDCC0A48E4B8F344BF1B10376FFE79C1A633FC167753AE09911BB7E304D241910C4147CF023DA91FB18CAC0FB225D5C0B1B916F443&vid=1688856684375525&cst=80FF99C07D49EA7A0F19A83385C84494B691A560AC2F450E94BD7F25EA86B87D163319B7CE3DB6C40CB5845485CAE486&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [https://www.cockroachlabs.com/blog/cockroachdb-on-rocksd/#what-is-a-storage-engine](https://www.cockroachlabs.com/blog/cockroachdb-on-rocksd/#what-is-a-storage-engine)
+* [Introducing Pebble: A RocksDB-inspired key-value store written in Go](https://www.cockroachlabs.com/blog/pebble-rocksdb-kv-store/)
+
 
 ## 现代数据栈
 * [Breaking State and Local Data Silos with Modern Data Architectures](https://blog.cloudera.com/breaking-state-and-local-data-silos-with-modern-data-architectures/)
@@ -557,7 +561,7 @@
 * [Recsys2021 | 推荐系统论文分类整理和导读](https://zhuanlan.zhihu.com/p/417652612)
 
 * [From structured search to learning-to-rank-and-retrieve](https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve)
-
+* [SearchSage: Learning Search Query Representations at Pinterest](https://medium.com/pinterest-engineering/searchsage-learning-search-query-representations-at-pinterest-654f2bb887fc)
 * 工程实践
   * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
   * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
@@ -578,6 +582,7 @@
   * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
 
 ## 推荐系统
+* [推荐系统技术综述](https://zhuanlan.zhihu.com/p/627664537)
 * [System Architectures for Personalization and Recommendation](https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8)
 * [Netflix Recommendations: Beyond the 5 stars (Part 1)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429)
 * [Netflix Recommendations: Beyond the 5 stars (Part 2)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5)
@@ -596,7 +601,7 @@
 
 * [Improving the Quality of Recommended Pins with Lightweight Ranking](https://medium.com/pinterest-engineering/improving-the-quality-of-recommended-pins-with-lightweight-ranking-8ff5477b20e3)
 * [Pinterest Home Feed Unified Lightweight Scoring: A Two-tower Approach](https://medium.com/pinterest-engineering/pinterest-home-feed-unified-lightweight-scoring-a-two-tower-approach-b3143ac70b55)
-
+* [How Pinterest Leverages Realtime User Actions in Recommendation to Boost Homefeed Engagement Volume](https://medium.com/pinterest-engineering/how-pinterest-leverages-realtime-user-actions-in-recommendation-to-boost-homefeed-engagement-volume-165ae2e8cde8)
 
 * [Rex: Medium’s Go Recommendations Microservice](https://medium.engineering/rex-mediums-go-recommendation-microservice-e077bc9582a)
 
@@ -656,6 +661,7 @@
 * [9个电商场景下的解决方案](https://www.toutiao.com/article/7088883768949260835/?app=news_article&timestamp=1673191287&use_new_style=1&req_id=20230108232126F1789285E7B7A5E623FC&group_id=7088883768949260835&share_token=33cb17ee-663f-4598-8bf5-f98512b72544&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [美团技术：交易平台建设实践](https://www.toutiao.com/article/7064580801240908291/?app=news_article&timestamp=1673192038&use_new_style=1&req_id=20230108233358BEA1B70DD5C85AE4D111&group_id=7064580801240908291&share_token=282d7de5-7593-408c-9f3b-0ad34781ba13&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [vivo 全球商城：订单中心架构设计与实践](https://zhuanlan.zhihu.com/p/339755414)
+* [vivo全球商城：电商交易平台设计](https://mp.weixin.qq.com/s/YDPZi1D8EDtv-C72_LRsog?st=5416B1FB1CD9B68C184A1143E6E456B228710F1E3E4673370632DC7C8425134A36D38652A44BD4CF61D31BBBA7B9DE34889FD70535A963C633CECFA12012E3AD496DFB7E2F347A7553F823DB3CF466A3A0BED77513E182BE67FCDB13D3A0E369E1A79B7EA8014DC747195BBDC53E1D42FC80C6EF67FD638EF7F62863A849856561EA1A5E26D6A5DF16418A7C9E29F8E995CF66C47534AF5F24F4F0DBBB02635B8334DAF35075D710F9BDD99D4702CF682EEE5929F89C044D16E10A0C5AF3B5F4&vid=1688856684375525&cst=77DC77ED8A8947D3D1B158445D7ED0D47EDE2D739265DA3CACC3A48F80EAE452C3015F247F7AE2A280000649D5FB08F4&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [订单逆向履约系统的建模与PaaS化落地实践](https://mp.weixin.qq.com/s/fT4Yy5v8IEe_hypzmAhwuw)
 * [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
