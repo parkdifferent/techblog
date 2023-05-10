@@ -576,7 +576,7 @@
   * [search-indexing-optimisation](https://engineering.grab.com/search-indexing-optimisation)
   * [Matching duplicate items to improve catalog quality](https://medium.com/coupang-engineering/matching-duplicate-items-to-improve-catalog-quality-ca4abc827f94)
   * [Fueling the Coupang search engine](https://medium.com/coupang-engineering/the-evolution-of-search-discovery-indexing-platform-fa43e41305f9)
-
+  * [得物社区亿级ES数据搜索性能调优实践](https://mp.weixin.qq.com/s/K8yaJzjwF8h-5hFUXwcFow?st=E2960D9DEF3D3665A0BE3FB29632E6B30524802066824F8AF90BE3008280C855D43B7CF778835635827AD870802216AB04FD6A800C5172D4439B7BD12DC0F5295C392D8F82EFD0715FC1EE3671CFCC6F1EE34C22B65BBA5C8A9DD9C691F5ADDD919BE6F2F30442336C2EC0EDCBD133BDDCAC7F229EBF0A5332F5C3F2C27011D1371490E92492172E35665D01D1784BBCA7CFD8A8310F1E5BE0E9F78CA16B901206AACCDAE265C27BB3C2C76ECB96E1C3A065BB2D7F27F01C3D0E18BD14C78F2B&vid=1688856684375525&cst=49ED4DFD9E3A1AAF22A180250D3EC59364E6F2BB40E3FB75FF05CE2386A588273A350F2512363665E967E1F689B39C26&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * 地理相关
   * [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
   * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
@@ -655,6 +655,7 @@
 * [会员购促销工具平台](https://www.bilibili.com/read/cv18951410)
 * [电商系统在双十一大促活动下的架构](https://www.toutiao.com/article/7095393898037690921/?app=news_article&timestamp=1673188468&use_new_style=1&req_id=20230108223427DD912AF9F85E8EE5A990&group_id=7095393898037690921&share_token=2607e7ca-d359-41b4-b03b-dd5b46bb6ad2&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
+* [兼顾可扩展、高并发与数据一致性：咸鱼优惠系统设计实践](https://www.toutiao.com/article/7231365791701025317/?app=news_article&timestamp=1683708623&use_new_style=1&req_id=20230510165022C3065B2A0F02A10313F0&group_id=7231365791701025317&share_token=ceed9eeb-5f0c-4bfc-befd-562694b0e146&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 
 ## 电商
 * [高并发、高可用系统设计](https://www.toutiao.com/article/7088512444104245795/?app=news_article&timestamp=1673191865&use_new_style=1&req_id=20230108233105F675E679390E9DE0D8DD&group_id=7088512444104245795&share_token=815452a2-d2f6-469d-b96f-da8b45940f9b&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
