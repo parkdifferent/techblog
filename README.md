@@ -272,6 +272,7 @@
 * [MySQL to MyRocks Migration in Uber’s Distributed Datastores](https://www.uber.com/blog/mysql-to-myrocks-migration-in-uber-distributed-datastores/)
 
 * [Online migrations at scale](https://stripe.com/blog/online-migrations)
+* [Scaling Datastores at Slack with Vitess](https://slack.engineering/scaling-datastores-at-slack-with-vitess/)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -334,6 +335,7 @@
 
 * [Open-sourcing PinLater: An asynchronous job execution system](https://medium.com/pinterest-engineering/open-sourcing-pinlater-an-asynchronous-job-execution-system-d8ec4e39859a)
 * [pinlater](https://github.com/pinterest/pinlater)
+* [Real-time Messaging](https://slack.engineering/real-time-messaging/)
 
 ## 业务系统设计
 * [Rebuilding Payment Orchestration at Airbnb](https://medium.com/airbnb-engineering/rebuilding-payment-orchestration-at-airbnb-341d194a781b)
@@ -562,6 +564,8 @@
 
 * [From structured search to learning-to-rank-and-retrieve](https://www.amazon.science/blog/from-structured-search-to-learning-to-rank-and-retrieve)
 * [SearchSage: Learning Search Query Representations at Pinterest](https://medium.com/pinterest-engineering/searchsage-learning-search-query-representations-at-pinterest-654f2bb887fc)
+* [Unsupervised competing neural language model for word segmentation](https://medium.com/coupang-engineering/unsupervised-competing-neural-language-model-for-word-segmentation-12becc1015bf)
+
 * 工程实践
   * [Things Not Strings: Understanding Search Intent with Better Recall](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)
   * [3 Changes to Expand DoorDash’s Product Search Beyond Delivery](https://doordash.engineering/2022/05/10/3-changes-to-expand-doordashs-product-search/)
@@ -618,6 +622,7 @@
 * [Prioritizing Home Attributes Based on Guest Interest](https://medium.com/airbnb-engineering/prioritizing-home-attributes-based-on-guest-interest-3c49b827e51a)
 * [搜推广的特征工程该怎么做？](https://zhuanlan.zhihu.com/p/620287679)
 * [The Recommendation System at Lyft](https://eng.lyft.com/the-recommendation-system-at-lyft-67bc9dcc1793)
+* [Recommend API](https://slack.engineering/recommend-api/)
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
@@ -695,4 +700,6 @@
 ## 机器学习 & 特征工程
 * [Railyard: how we rapidly train machine learning models with Kubernetes](https://stripe.com/blog/railyard-training-models)
 * [primus](https://github.com/bytedance/primus)
+* [字节跳动湖平台在批计算和特征场景的实践](https://zhuanlan.zhihu.com/p/628552494)
+
 ------------------------------------------------------
