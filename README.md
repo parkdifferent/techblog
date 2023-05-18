@@ -146,6 +146,7 @@
 * [Service Architecture at SoundCloud — Part 2: Value-Added Services](https://developers.soundcloud.com/blog/service-architecture-2)
 * [Service Architecture at SoundCloud — Part 3: Domain Gateways](https://developers.soundcloud.com/blog/service-architecture-3)
 
+* [领域驱动设计问题域分析-以bilibili OGV业务为例](https://mp.weixin.qq.com/s/sEN57LXO4Dl6gEZPbXuftQ?st=FCA92ABCFF696B4BAFEA6656084794DDD7464C609CA3163E610BE716553CF48A416FCE567CA26D0A31E4134B084FEE81B55DF028E1E520B5DA138413FED245697DFAA7AC5BB9A28D2F851817ED33F9645BEC76636545E88416515EEE8F92C9F59C8411EE57F71A4FEC356F8C6580A9323E459F96B7DA00155FA54CCEAA878FAA08FC79176AE69E07E2505719A73C49C5FD95A09627313C9478960B8C274435BAD25812A5B915CEC49A1253D99C77ABF986EA20C2F1C5539B82F663368A6E8C94&vid=1688856684375525&cst=1BBEA97C8BBCC4EE1823813CF086FE04BBDB98FE9ADAA9EC476B1C8CE538AFB8FE43BCAC5BBB608503748B6DDEA02D2A&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 ## 架构
 * [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
 * [A new software architecture metamodel inspired by C4, Agile and TOGAF](https://nikolaschou.medium.com/a-new-software-architecture-metamodel-inspired-by-c4-agile-and-togaf-b3f21ab9848)
@@ -587,6 +588,7 @@
 
 ## 推荐系统
 * [推荐系统技术综述](https://zhuanlan.zhihu.com/p/627664537)
+* [2023 推荐系统&因果推断 大厂经验梳理（上）](https://zhuanlan.zhihu.com/p/595476222)
 * [System Architectures for Personalization and Recommendation](https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8)
 * [Netflix Recommendations: Beyond the 5 stars (Part 1)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-1-55838468f429)
 * [Netflix Recommendations: Beyond the 5 stars (Part 2)](https://netflixtechblog.com/netflix-recommendations-beyond-the-5-stars-part-2-d9b96aa399f5)
