@@ -104,6 +104,7 @@
   * [Spanner：TrueTime 和外部一致性](https://cloud.google.com/spanner/docs/true-time-external-consistency)
 * [分布式系统一致性的发展历史 (一)](https://danielw.cn/history-of-distributed-systems-1)
 * [Survey on consistency conditions](https://projects.ics.forth.gr/tech-reports/2013/2013.TR439_Survey_on_Consistency_Conditions.pdf)
+* [9th Workshop on Principles and Practice of Consistency for Distributed Data](https://papoc-workshop.github.io/2023/)
 
 ## 一致性检查
 * [Improve user experience: solving core data inconsistencies at Pinterest](https://medium.com/pinterest-engineering/improve-user-experience-solving-core-data-inconsistencies-at-pinterest-d4b64b5d79a1)
@@ -250,7 +251,7 @@
 * [Creating High-Quality Staging Data with a NoSQL Data Migration System](https://tech.ebayinc.com/engineering/creating-high-quality-staging-data-with-a-nosql-data-migration-system/)
 * [Making our user storage more scalable and secure](https://www.intercom.com/blog/updating-our-user-storage/)
 * [Our Top 4 Tips for Massive Data Migrations](https://engineering.salesforce.com/our-top-4-tips-for-massive-data-migrations-565daaa83cfc/)
-
+* [Breaking an Endless Cycle - Huge Migrations Done Right](https://www.wix.engineering/post/braking-an-endless-cycle-huge-migrations-done-right)
 * [New Recruiter & Jobs: The largest enterprise data migration at LinkedIn](https://engineering.linkedin.com/blog/2021/new-recruiter---jobs--the-largest-enterprise-data-migration-at-l)
 
 * [How Uber Migrated Financial Data from DynamoDB to Docstore](https://www.uber.com/blog/dynamodb-to-docstore-migration/)
@@ -358,6 +359,7 @@
 * [How Uber handles millions of ride/food requests efficiently part 2](https://medium.com/nerd-for-tech/how-uber-handles-millions-of-ride-food-requests-efficiently-part-2-270f84d2c3c0)
 * [How Uber handles millions of ride/food requests efficiently part 1](https://megtechcorner.medium.com/how-uber-handles-millions-of-ride-food-requests-efficiently-part-1-2aa8db436204)
 * [Our backend strategy to handle massive traffic](https://medium.com/coupang-engineering/our-backend-strategy-to-handle-massive-traffic-d30cd6cc4fb2)
+* [Pinterest System Architecture](https://jinlow.medium.com/pinterest-system-architecture-fb49bd534424)
 
 ## DynamoDB
 * [Dynamo: Amazon’s Highly Available Key-value Store](https://arthurchiao.art/blog/amazon-dynamo-zh/)
@@ -422,7 +424,7 @@
 
 * [字节跳动自研强一致在线 KV&表格存储实践 - 上篇](https://juejin.cn/post/6844904178335088654)
 * [字节跳动自研强一致在线 KV &表格存储实践 - 下篇](https://juejin.cn/post/6844904187239759886)
-* 
+* [Unlocking the Power of JunoDB: PayPal’s Key-Value Store Goes Open-Source](https://medium.com/paypal-tech/unlocking-the-power-of-junodb-paypals-key-value-store-goes-open-source-ee85f935bdc1)
 
 ## MQ
 
