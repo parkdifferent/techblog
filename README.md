@@ -148,6 +148,8 @@
 * [Service Architecture at SoundCloud — Part 3: Domain Gateways](https://developers.soundcloud.com/blog/service-architecture-3)
 
 * [领域驱动设计问题域分析-以bilibili OGV业务为例](https://mp.weixin.qq.com/s/sEN57LXO4Dl6gEZPbXuftQ?st=FCA92ABCFF696B4BAFEA6656084794DDD7464C609CA3163E610BE716553CF48A416FCE567CA26D0A31E4134B084FEE81B55DF028E1E520B5DA138413FED245697DFAA7AC5BB9A28D2F851817ED33F9645BEC76636545E88416515EEE8F92C9F59C8411EE57F71A4FEC356F8C6580A9323E459F96B7DA00155FA54CCEAA878FAA08FC79176AE69E07E2505719A73C49C5FD95A09627313C9478960B8C274435BAD25812A5B915CEC49A1253D99C77ABF986EA20C2F1C5539B82F663368A6E8C94&vid=1688856684375525&cst=1BBEA97C8BBCC4EE1823813CF086FE04BBDB98FE9ADAA9EC476B1C8CE538AFB8FE43BCAC5BBB608503748B6DDEA02D2A&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [Evolving the LinkedIn Business Platform](https://engineering.linkedin.com/blog/2023/evolving-the-linkedin-business-platform)
+
 ## 架构
 * [Let us revise the C4-model for software architecture diagrams](https://nikolaschou.medium.com/let-us-revise-the-c4-model-for-software-architecture-diagrams-e2ae0d3de41c)
 * [A new software architecture metamodel inspired by C4, Agile and TOGAF](https://nikolaschou.medium.com/a-new-software-architecture-metamodel-inspired-by-c4-agile-and-togaf-b3f21ab9848)
@@ -275,6 +277,8 @@
 
 * [Online migrations at scale](https://stripe.com/blog/online-migrations)
 * [Scaling Datastores at Slack with Vitess](https://slack.engineering/scaling-datastores-at-slack-with-vitess/)
+* [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
+
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -463,7 +467,9 @@
 
 * [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
 * [Building a Distributed Job Scheduler for Microservices](https://medium.com/@mesutpiskin/building-a-distributed-job-scheduler-for-microservices-8b7ab2ce5f91)
-
+* [如何设计一个海量任务调度系统](https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ?st=84947B987DDEABEC88DB7DB0D8EC2C804808B6F0CC9927A997F28C5317C142EFBE80F052C69013D7BBDE15C2923585A032336AAD72DD9F5B904037531E95C9FA1873D4F2F43EC43E8EB849CF44FC3DEF4B6D11BA4C9CBD1329504B02B3CFB9AC6AE5B9DA9FDF301A886B8A5967699A79F881655EECAAA842041A6346205F03520BB13E3800D390636C5F17E9D74B8EBE06EFD8A4ACE11DF818DC79B04A387536A2A287DA5D9FF9199F05F91D1E33CC06CDFA01830D378627234FDDD64B44F783&vid=1688856684375525&cst=50D372A521D3F9741F2BC5D0BC412CC838432DA63A2707462BD54A36858896BB24396A41972D062C017E159075B78A51&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [如何做好分布式任务调度——Scheduler 的一些探索](https://juejin.cn/post/7132753859134357534)
+* [OA 审批任务中心性能优化 —— 复杂业务系统重构实践](https://juejin.cn/post/7117213168559980552)
 
 ## 性能优化
 * [Netflix FlameScope](https://netflixtechblog.com/netflix-flamescope-a57ca19d47bb)
@@ -627,6 +633,9 @@
 * [搜推广的特征工程该怎么做？](https://zhuanlan.zhihu.com/p/620287679)
 * [The Recommendation System at Lyft](https://eng.lyft.com/the-recommendation-system-at-lyft-67bc9dcc1793)
 * [Recommend API](https://slack.engineering/recommend-api/)
+* [eBay推荐系统的多样性优化](https://mp.weixin.qq.com/s/ujRA-3h5ynYbHVrt7PCKdA?st=F3E9EE07718FC6612B789539E5A429FF78DB61A9AC5B32D8B9471DE787AA7F0091145925694849BA08E9983F23B5DE6BF6ABC2F1EBB5F802652680D48253647A4E716D4E046618EF0E0811FF08CFE52E8292B2DA01B5F2F1DF896449A1438ACD598680DFA5C33EDEDEBE94738FA0200EE4FF5191FF63CF822C8CE403FC195CF0C027F106530F08E59D6A4C3B8A1ADDA3046626361CDF5F5CFFBDFA8B1B749D2E6DB812F04F8F02C1A2EFE2527C847155AC2BD099756884665D1E2C20D47F2533&vid=1688856684375525&cst=6B4CBA6A7DD642C4B560F2E8768732A3652F2ED16E3F38A388937B00A419192439AA780327A97842AAAC1014E66D4F4E&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+* [From Service to Platform: A Ranking System in Go](https://www.reddit.com/r/RedditEng/comments/z137m3/from_service_to_platform_a_ranking_system_in_go/)
+
 
 ## 规则引擎
 * [Growth Engineering at Netflix — Accelerating Innovation](https://netflixtechblog.com/growth-engineering-at-netflix-accelerating-innovation-90eb8e70ce59)
@@ -681,7 +690,7 @@
 * [Q-calculator 高性能优惠叠加计算框架](https://github.com/CyrilFeng/Q-calculator)
 * [How we store and process millions of orders daily](https://engineering.grab.com/how-we-store-millions-orders)
 * [电商通用型商品中心设计](https://zhuanlan.zhihu.com/p/618405659)
-
+* [交易履约之产品中心实践](https://mp.weixin.qq.com/s/T22-HcteAyNu_LYPHL3d-A?st=E8E94C4126D201CC9A4572D916DDF19CBD2F3F6603EA0E7565F2E1A2C5F2D677A760B83FDF6A16998DB8EADBF95EE83B1B646CCD8661707353C30F32387CDE4A345AA5555B2FC365946D337C56B2E37C4CD51AC4A79C8809243042CAFE73186684F0ED1D58C3C3D0B28979B65521CCF27EDC0A36736AA3692A6A3A2F727A2BD368D9F570AAD421A40EB7BCCCBC4B7F39F0843171BD153C04F41A7148F0F0B6A6B8BB5C97EF14432601A3EAF234227BA8DB3C98E40BD20FBCBDE498DC8B071E5E&vid=1688856684375525&cst=ADD71415BC4BF93B1D8E33B33F9006ADA796F1A19B4578EBB782B39C97443EAC1AC99B81A953BC9F6795D67E6EE726F2&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
 ## 流系统
 * [Building Scalable Real Time Event Processing with Kafka and Flink￼](https://doordash.engineering/2022/08/02/building-scalable-real-time-event-processing-with-kafka-and-flink/)
