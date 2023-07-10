@@ -278,7 +278,11 @@
 * [Online migrations at scale](https://stripe.com/blog/online-migrations)
 * [Scaling Datastores at Slack with Vitess](https://slack.engineering/scaling-datastores-at-slack-with-vitess/)
 * [Parallel Run Pattern - A Migration Technique in Microservices Architecture](https://engineering.zalando.com/posts/2021/11/parallel-run.html)
-
+* 
+* [Migrating Critical Traffic At Scale with No Downtime — Part 1](https://netflixtechblog.com/migrating-critical-traffic-at-scale-with-no-downtime-part-1-ba1c7a1c7835)
+* [Migrating Critical Traffic At Scale with No Downtime — Part 2](https://netflixtechblog.com/migrating-critical-traffic-at-scale-with-no-downtime-part-2-4b1c8c7155c1)
+* [Ensuring the Successful Launch of Ads on Netflix](https://netflixtechblog.com/ensuring-the-successful-launch-of-ads-on-netflix-f99490fdf1ba)
+* [Migrating Netflix to GraphQL Safely](https://netflixtechblog.com/migrating-netflix-to-graphql-safely-8e1e4d4f1e72)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
@@ -332,6 +336,7 @@
 * 技术夜校｜从0到1构建一个完整的消息系统
 * 得物App消息服务平台化建设演化
 * 日均数亿推送稳定性监控实践 ｜ 得物技术
+* [效率消息中心从0-1搭建与思考|得物技术](https://mp.weixin.qq.com/s/SWenfaa7obt6XrSA5gZA1A?st=1442692E671C0DFC774BAEE75F59DB6AFE259A0A9D1AAB7468EBE658C3E205B9D8FDB984EF71B11CDB75E7D7E39B3CB60848E1F5A52708CFC85A57BDF67EA6162B8D8F200E23D8F09E2BC0A21CB38D8475DCB02EF144EA96F197F230D58A5DC4728914057256498A382BFFA95C09DD84CC3A23698470761C7708E8EBD9EE0EE9DDD506F40C18533EE64DF8F956C10E0E208905E759E10AD2B42E209A3624F0AC2094E4057F45E12E2C235E1D573977E3F93D987BE49763E1A8A90D5656442D50&vid=1688856684375525&cst=3883179AB812C07E27832CCBD8AF0EBA80C4E9EB1EF51361720A468D188CBAD3C61A87BDDB7C10805CE8F979AAEA5670&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [eBay's Notification Streaming Platform: How eBay Handles Real-Time Push Notifications at Scale](https://tech.ebayinc.com/engineering/ebays-notification-streaming-platform-how-ebay-handles-real-time-push-notifications-at-scale/)
 
 * [How Razorpay scaled their Notification Service](https://medium.com/@SaiRahulAkarapu/how-razorpay-scaled-their-notification-service-d077f7345fa0)
@@ -470,6 +475,7 @@
 * [如何设计一个海量任务调度系统](https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ?st=84947B987DDEABEC88DB7DB0D8EC2C804808B6F0CC9927A997F28C5317C142EFBE80F052C69013D7BBDE15C2923585A032336AAD72DD9F5B904037531E95C9FA1873D4F2F43EC43E8EB849CF44FC3DEF4B6D11BA4C9CBD1329504B02B3CFB9AC6AE5B9DA9FDF301A886B8A5967699A79F881655EECAAA842041A6346205F03520BB13E3800D390636C5F17E9D74B8EBE06EFD8A4ACE11DF818DC79B04A387536A2A287DA5D9FF9199F05F91D1E33CC06CDFA01830D378627234FDDD64B44F783&vid=1688856684375525&cst=50D372A521D3F9741F2BC5D0BC412CC838432DA63A2707462BD54A36858896BB24396A41972D062C017E159075B78A51&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 * [如何做好分布式任务调度——Scheduler 的一些探索](https://juejin.cn/post/7132753859134357534)
 * [OA 审批任务中心性能优化 —— 复杂业务系统重构实践](https://juejin.cn/post/7117213168559980552)
+* [定时任务原理方案综述](https://zhuanlan.zhihu.com/p/635874981)
 
 ## 性能优化
 * [Netflix FlameScope](https://netflixtechblog.com/netflix-flamescope-a57ca19d47bb)
@@ -505,6 +511,7 @@
 * [Guaranteed Data Delivery System for Distributed Services](https://engineering.salesforce.com/guaranteed-data-delivery-system-for-distributed-services-3b07fd24775d/)
 * [How eBay’s Notification Platform Used Fault Injection in New Ways](https://tech.ebayinc.com/engineering/how-ebays-notification-platform-used-fault-injection-in-new-ways/)
 * [Ensuring High Availability of Ads Realtime Streaming Services](https://medium.com/pinterest-engineering/ensuring-high-availability-of-ads-realtime-streaming-services-ea3889420490)
+* [AWS re:Invent 2022 - The evolution of chaos engineering at Netflix (NFX303)](https://www.youtube.com/watch?v=Xbn65E-BQhA)
 
 ## 演讲
 * [public-presentations](https://github.com/zalando/public-presentations)
@@ -647,6 +654,7 @@
 * [分布式ID生成服务的技术原理和项目实战](https://mp.weixin.qq.com/s?__biz=Mzg5MjU0NTI5OQ==&mid=2247534784&idx=1&sn=78c90003b5f5b1b22dad64dae67d765d&scene=21#wechat_redirect)
 * [分布式唯一 ID 生成方案浅谈](https://cloud.tencent.com/developer/article/2034844)
 * [从角色迁移到基于属性的访问控制](https://www.toutiao.com/article/7217288023170417163/?app=news_article&timestamp=1680797948&use_new_style=1&req_id=20230407001907FCA58259AD35D1202F04&group_id=7217288023170417163&share_token=30bef372-a5fe-459d-95f7-37171e736774&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [vivo 自研鲁班分布式 ID 服务实践](https://mp.weixin.qq.com/s/bDId_jfUqjMhAHoV35K-wA?st=775EF549BCF5BA3D0377D0F699838A0F45161C858CF58EEBD4AF25BD0F262FF82E8367F526161DD782931D713E9448125AC0C21E41FE6967E1A4F4FF6A369561F2E6B4E49BBEAA4D5455486DB4AC4DCE65923173A9D1A9DBF51C572530DB525362EA80AB87029CC2A6D89F7C1FE5880278DCEFCCCA704592E13D677CA1ACB391C644FD020CCD91E0259DC4E0E1466106C2060652A82CE46048F3656E79A4E1B061E277F9B064E68A22AFEDD9880C2AA31D16A493A426B366F08ED5182AA3BCE9&vid=1688856684375525&cst=70053B71CA544BD03E508D7461778BF2EC97EFAD853AF06E9428ED9228646886598EC152A8C3F635B50220FE5838B777&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
 
 ## 财务
 * [百度交易中台之钱包系统架构浅析](https://xie.infoq.cn/article/349d90982dc3e591ada016ba3)
@@ -674,6 +682,8 @@
 * [电商系统在双十一大促活动下的架构](https://www.toutiao.com/article/7095393898037690921/?app=news_article&timestamp=1673188468&use_new_style=1&req_id=20230108223427DD912AF9F85E8EE5A990&group_id=7095393898037690921&share_token=2607e7ca-d359-41b4-b03b-dd5b46bb6ad2&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
 * [Airbnb’s Promotions and Communications Platform](https://medium.com/airbnb-engineering/airbnbs-promotions-and-communications-platform-6266f1ffe2bd)
 * [兼顾可扩展、高并发与数据一致性：咸鱼优惠系统设计实践](https://www.toutiao.com/article/7231365791701025317/?app=news_article&timestamp=1683708623&use_new_style=1&req_id=20230510165022C3065B2A0F02A10313F0&group_id=7231365791701025317&share_token=ceed9eeb-5f0c-4bfc-befd-562694b0e146&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
+* [微盟WOS促销中台体系设计之道](https://mp.weixin.qq.com/s/7IQSZQRcHIOspogyfFsMHg?st=48694864C41B9BFF4BCBD1D32B63BB8CBC9C98E9386E63F7023D10EDBF0238BBD00218CAB264F4CAE091362AFCF009FB31BFD001A125B50B2094DCEE0E8F5C79DD7111ECDA7D31CB5D8BB22F894C70413992568AA80669A0F0665C627D80E4EDF6E29421BF41CA3CD4D68EEF102E20469DEE7380712E37A5E1D9B1E5D617C0AF53E5A09E9E39E42DEE3C5C379FC47E6B6736B0489559F4E21B8444833BC49D15C86F423E24E3E9482D435351C13F45C038D5B9233804D1760212BC77EF71F52E&vid=1688856684375525&cst=B1950B849493116AE950842DBF80AD42C6A559705BE63B78F672C67C366384F1C879001B74E29CDD40CE0A5B93B6B2D2&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+
 
 ## 电商
 * [高并发、高可用系统设计](https://www.toutiao.com/article/7088512444104245795/?app=news_article&timestamp=1673191865&use_new_style=1&req_id=20230108233105F675E679390E9DE0D8DD&group_id=7088512444104245795&share_token=815452a2-d2f6-469d-b96f-da8b45940f9b&tt_from=copy_link&utm_source=copy_link&utm_medium=toutiao_android&utm_campaign=client_share&source=m_redirect)
