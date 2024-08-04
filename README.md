@@ -241,6 +241,7 @@
 * [Cadence Multi-Tenant Task Processing](https://www.uber.com/blog/cadence-multi-tenant-task-processing/)  
 * [Workflow Comparison: Uber Cadence vs Netflix Conductor](https://www.instaclustr.com/blog/workflow-comparison-uber-cadence-vs-netflix-conductor/)
 * [Enabling Faster Financial Partnership Integrations Using Cadence](https://doordash.engineering/2022/05/18/enabling-faster-financial-partnership-integrations-using-cadence/)
+* [awesome-cadence-temporal-workflow](https://github.com/firdaus/awesome-cadence-temporal-workflow)
 
 
 ## Observability
@@ -474,7 +475,8 @@
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
 * [Part 2: Scheduling Notebooks at Netflix](https://netflixtechblog.com/scheduling-notebooks-348e6c14cfd6)
-
+* [Go-Job让你的任务调度不再繁琐](https://tech.dewu.com/article?id=117)
+* [京东百万级调度系统(Buffalo)架构解密](https://mp.weixin.qq.com/s/KKQC0g2-BqJ4ypiaJra_wQ)
 * [Meson: Workflow Orchestration for Netflix Recommendations](https://netflixtechblog.com/meson-workflow-orchestration-for-netflix-recommendations-fc932625c1d9)
 * [Building a Distributed Job Scheduler for Microservices](https://medium.com/@mesutpiskin/building-a-distributed-job-scheduler-for-microservices-8b7ab2ce5f91)
 * [如何设计一个海量任务调度系统](https://mp.weixin.qq.com/s/hv3tTOAdD-SiCq2owCdxZQ?st=84947B987DDEABEC88DB7DB0D8EC2C804808B6F0CC9927A997F28C5317C142EFBE80F052C69013D7BBDE15C2923585A032336AAD72DD9F5B904037531E95C9FA1873D4F2F43EC43E8EB849CF44FC3DEF4B6D11BA4C9CBD1329504B02B3CFB9AC6AE5B9DA9FDF301A886B8A5967699A79F881655EECAAA842041A6346205F03520BB13E3800D390636C5F17E9D74B8EBE06EFD8A4ACE11DF818DC79B04A387536A2A287DA5D9FF9199F05F91D1E33CC06CDFA01830D378627234FDDD64B44F783&vid=1688856684375525&cst=50D372A521D3F9741F2BC5D0BC412CC838432DA63A2707462BD54A36858896BB24396A41972D062C017E159075B78A51&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
