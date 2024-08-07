@@ -123,6 +123,7 @@
 * [Qunar 酒店基础数据重构DDD落地实践](https://zhuanlan.zhihu.com/p/587791640)
   * [COLA](https://github.com/alibaba/COLA)
 * [亚马逊云基础架构 16 年创新史](https://www.infoq.cn/article/qo7WWdh7xPzDm76MDh9j)
+* [awesome-grpc](https://github.com/grpc-ecosystem/awesome-grpc)
 
 * [Domain-Oriented Microservice Architecture at Uber](https://eng.uber.com/microservice-architecture/)
 
@@ -242,6 +243,8 @@
 * [Workflow Comparison: Uber Cadence vs Netflix Conductor](https://www.instaclustr.com/blog/workflow-comparison-uber-cadence-vs-netflix-conductor/)
 * [Enabling Faster Financial Partnership Integrations Using Cadence](https://doordash.engineering/2022/05/18/enabling-faster-financial-partnership-integrations-using-cadence/)
 * [awesome-cadence-temporal-workflow](https://github.com/firdaus/awesome-cadence-temporal-workflow)
+* [在现代化架构中，如何处理长时间运行的流程](https://mp.weixin.qq.com/s/pET92VKWsaBgh-oQPr5a6Q)
+* [awesome-workflow-engines](https://github.com/meirwah/awesome-workflow-engines)
 
 
 ## Observability
