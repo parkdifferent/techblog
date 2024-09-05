@@ -245,6 +245,9 @@
 * [awesome-cadence-temporal-workflow](https://github.com/firdaus/awesome-cadence-temporal-workflow)
 * [在现代化架构中，如何处理长时间运行的流程](https://mp.weixin.qq.com/s/pET92VKWsaBgh-oQPr5a6Q)
 * [awesome-workflow-engines](https://github.com/meirwah/awesome-workflow-engines)
+* [Workflow orchestration using Netflix Conductor](https://nitish1503.medium.com/workflow-orchestration-using-netflix-conductor-1047cff467d9)
+* [Decoding challenges with Netflix Conductor](https://nitish1503.medium.com/decoding-challenges-with-netflix-conductor-6a623b47291f)
+* [Netflix Maestro and Apache Airflow — Competitors or Companions in Workflow Orchestration?](https://blog.det.life/netflix-maestro-and-apache-airflow-competitors-or-companions-in-workflow-orchestration-2bce948956a5)
 
 
 ## Observability
@@ -474,6 +477,7 @@
 * [How To Solve the Data Consistency Issues Between Redis And MySQL](https://betterprogramming.pub/how-to-solve-the-data-consistency-issues-between-redis-and-mysql-702f9ffa2452)
 * [4 Microservices Caching Patterns at Wix](https://medium.com/wix-engineering/4-microservices-caching-patterns-at-wix-b4dfee1ae22f)
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
+* [How Uber Serves Over 40 Million Reads Per Second from Online Storage Using an Integrated Cache](https://www.uber.com/en-TW/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/?uclick_id=ba20efd0-d83e-48ff-a4e9-3f3d772f3a07)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
@@ -486,6 +490,7 @@
 * [如何做好分布式任务调度——Scheduler 的一些探索](https://juejin.cn/post/7132753859134357534)
 * [OA 审批任务中心性能优化 —— 复杂业务系统重构实践](https://juejin.cn/post/7117213168559980552)
 * [定时任务原理方案综述](https://zhuanlan.zhihu.com/p/635874981)
+* [Distributed Job Scheduler: Journey Zero to 20K+ Concurrent Jobs](https://engg.glance.com/distributed-job-scheduler-journey-zero-to-20k-concurrent-jobs-1fe8cf8ed288)
 
 ## 性能优化
 * [Netflix FlameScope](https://netflixtechblog.com/netflix-flamescope-a57ca19d47bb)
@@ -607,6 +612,9 @@
   * [Matching duplicate items to improve catalog quality](https://medium.com/coupang-engineering/matching-duplicate-items-to-improve-catalog-quality-ca4abc827f94)
   * [Fueling the Coupang search engine](https://medium.com/coupang-engineering/the-evolution-of-search-discovery-indexing-platform-fa43e41305f9)
   * [得物社区亿级ES数据搜索性能调优实践](https://mp.weixin.qq.com/s/K8yaJzjwF8h-5hFUXwcFow?st=E2960D9DEF3D3665A0BE3FB29632E6B30524802066824F8AF90BE3008280C855D43B7CF778835635827AD870802216AB04FD6A800C5172D4439B7BD12DC0F5295C392D8F82EFD0715FC1EE3671CFCC6F1EE34C22B65BBA5C8A9DD9C691F5ADDD919BE6F2F30442336C2EC0EDCBD133BDDCAC7F229EBF0A5332F5C3F2C27011D1371490E92492172E35665D01D1784BBCA7CFD8A8310F1E5BE0E9F78CA16B901206AACCDAE265C27BB3C2C76ECB96E1C3A065BB2D7F27F01C3D0E18BD14C78F2B&vid=1688856684375525&cst=49ED4DFD9E3A1AAF22A180250D3EC59364E6F2BB40E3FB75FF05CE2386A588273A350F2512363665E967E1F689B39C26&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
+  * [从 0 到 1 搭建亿级商品 ES 搜索引擎](https://mp.weixin.qq.com/s/zooHb5BuiYO2hx5Ii73wnw)
+  * [电商场景下 ES 搜索引擎的稳定性治理实践](https://mp.weixin.qq.com/s/fAgAgWWYJbbfcGGx1BpLsw)
+  * [如何基于 Elasticsearch 实现排序沉底或前置](https://mp.weixin.qq.com/s?__biz=MzkxODM0NzQ4Mg==&mid=2247486351&idx=1&sn=9d5f8e7f0b1f7724225a28949615df76&chksm=c1b3803af6c4092c0f5d8a03453fa4cc62a5d1293431179fd833967930f7fa451924620e7275&cur_album_id=2686752005779914757&scene=189#wechat_redirect)
 * 地理相关
   * [Elasticsearch 在地理信息空间索引的探索和演进](https://mp.weixin.qq.com/s/y33FQjFN-f58h1_TIwgMAw?st=21D128576B3463D68E6FC00E630F2B2A3545641FA628639D984F173AD5120C0BCC15E24AA44DEF3970FB5632D581F8C1A272EE475894A8BF3043BF7C08A5B98544F22DDFCAA5AA7884C5B4BCCA177A088B4947CBB254FCA28071EC9D30B3465CDB6EFABDA40C9D3DABB5F3ECA7421C3F32D86090342A9A8FE78C8DBBA0913B3B6C537E45F4A9ED4936EC6774730DE82B5DAC4D07D8600A533C5C927F5DB6FEC38F42A8A6CD705630B3F6A50B70AEA89DDE7C5783C63D17D89C8E80F28C0CF18A88F64B2CCEACC62DA38CFB5B2069FFBA&vid=1688856684375525&cst=7FB2BFF5BAF263F33AFE70DC718323C0E714F8255B6A948EDC123BB36AE5897A304115020DFB836A6987C3E7C4FBCF12&deviceid=dea4a7d5-1ab0-4ff5-9bbb-a5e551cb62ca&version=4.0.8.90588&platform=mac)
   * [Taming Content Discovery Scaling Challenges with Hexagons and Elasticsearch](https://doordash.engineering/2022/06/28/taming-content-discovery-scaling-challenges-with-hexagons-and-elasticsearch/)
@@ -684,7 +692,7 @@
 * [Designing a Payment System : Part 1](https://souravsnigdha.medium.com/designing-a-payment-system-part-1-6b53732d7e03)
 * [订单视角看支付｜得物技术](https://mp.weixin.qq.com/s/NvG9wR_GwEnKTHMfkTJWng)
 * [空中云汇博客｜Airwallex 空中云汇如何用 Rust 构建新一代分布式账务系统](https://mp.weixin.qq.com/s/f4WE_d4PZWB09S1VCcrAtQ)
-  
+* [Designing a Payment System](https://newsletter.pragmaticengineer.com/p/designing-a-payment-system)  
   
 
 ## 营销系统
