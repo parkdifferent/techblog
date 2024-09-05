@@ -43,6 +43,7 @@
 * [Software architects: 12 hard and soft skills needed to become a leader](https://www.redhat.com/architect/what-is-software-architect)
 * [microservice Architectural_pattern](https://microservices.io/patterns/index.html)
 * [一名架构师应该思考和解决的问题](https://zhuanlan.zhihu.com/p/618833119)
+* [怎么提高自己的系统设计和架构理论水平？](https://www.zhihu.com/question/395652253/answer/3579736948?utm_psn=1802324796773625856)
 
 * [book-notes](https://github.com/mgp/book-notes)
 ## 分布式系统
@@ -693,7 +694,7 @@
 * [订单视角看支付｜得物技术](https://mp.weixin.qq.com/s/NvG9wR_GwEnKTHMfkTJWng)
 * [空中云汇博客｜Airwallex 空中云汇如何用 Rust 构建新一代分布式账务系统](https://mp.weixin.qq.com/s/f4WE_d4PZWB09S1VCcrAtQ)
 * [Designing a Payment System](https://newsletter.pragmaticengineer.com/p/designing-a-payment-system)  
-  
+* [设计千万级高可用分布式对账系统](https://mp.weixin.qq.com/s/DYu78o0Tav6r3CVDwP7UGQ)  
 
 ## 营销系统
 * [大厂的优惠券系统是如何设计的？](https://zhuanlan.zhihu.com/p/511822092)
