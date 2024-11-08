@@ -1,0 +1,227 @@
+--------------------参考主流互联网公司解决方案，编码实现高性能高并发扣减库存？--------------------
+
+根据文章中提到的快手电商交易系统的架构设计,实现高性能高并发扣减库存的关键步骤如下:
+
+1. 双存储架构优化:
+
+- 对于热点商品(大V定期推出的低价福利品),提前维护在Redis中,使用Redis进行高并发的快速库存扣减。
+- 对于非热点商品,则使用MySQL作为主要存储,通过优化MySQL单行更新性能(如SQL合并、索引优化等),将单热点商品的扣减性能提升到10万/秒以上。
+
+2. 数据一致性保障:
+
+- 定期进行Redis和MySQL库存数据的全量对账,确保数据一致性。
+- 利用商品库存变更的MQ消息,实时比对Redis和MySQL的库存数据,发现不一致时进行修复。
+
+3. 容灾和降级方案:
+
+- 大V福利品秒杀期间,将Redis作为主要的库存扣减通道,MySQL作为容灾的备用通道。
+- 设置Redis扣减失败的降级策略,将请求切换到MySQL进行扣减,确保最终一致性。
+
+总的来说,快手采用了一种"双引擎,智能切换"的方案,充分发挥Redis的高性能优势,同时利用MySQL的数据可靠性,构建了一套高可用、高性能的库存扣减架构。通过技术优化和容灾方案的设计,有效应对了大V直播带来的超高并发压力。
+
+
+基于文档以及主流互联网公司的实践,我来设计一个高性能高并发扣减库存的解决方案。
+
+核心设计原则:
+1. 双存储架构(Redis + MySQL)结合各自优势
+2. 数据一致性保障
+3. MySQL 性能深度优化
+4. 完善的容灾和监控机制
+
+具体实现方案:
+
+1. 存储层设计:
+```java
+public interface InventoryStorage {
+    boolean deduct(String productId, int quantity);
+    int query(String productId);
+}
+
+// Redis存储实现
+@Service
+public class RedisInventoryStorage implements InventoryStorage {
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
+    private static final String INVENTORY_KEY = "inventory:";
+
+    @Override
+    public boolean deduct(String productId, int quantity) {
+        String key = INVENTORY_KEY + productId;
+        // lua脚本保证原子性
+        String script = "if redis.call('get',KEYS[1]) >= ARGV[1] then" +
+                       "   redis.call('decrby',KEYS[1],ARGV[1])" +
+                       "   return 1" +
+                       "else" +
+                       "   return 0" +
+                       "end";
+        return redisTemplate.execute(new DefaultRedisScript<>(script, Boolean.class),
+            Arrays.asList(key), String.valueOf(quantity));
+    }
+
+    @Override
+    public int query(String productId) {
+        String key = INVENTORY_KEY + productId;
+        String value = redisTemplate.opsForValue().get(key);
+        return value == null ? 0 : Integer.parseInt(value);
+    }
+}
+
+// MySQL存储实现
+@Service
+public class MysqlInventoryStorage implements InventoryStorage {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @Override
+    @Transactional
+    public boolean deduct(String productId, int quantity) {
+        // 乐观锁更新
+        String sql = "UPDATE inventory SET stock = stock - ? " +
+                    "WHERE product_id = ? AND stock >= ?";
+        int rows = jdbcTemplate.update(sql, quantity, productId, quantity);
+        return rows > 0;
+    }
+
+    @Override
+    public int query(String productId) {
+        String sql = "SELECT stock FROM inventory WHERE product_id = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, productId);
+    }
+}
+```
+
+2. 路由层设计:
+```java
+@Service
+public class InventoryRouter {
+    @Autowired
+    private RedisInventoryStorage redisStorage;
+    @Autowired
+    private MysqlInventoryStorage mysqlStorage;
+
+    // 热点商品名单
+    private Set<String> hotProducts = new ConcurrentHashSet<>();
+
+    public boolean deduct(String productId, int quantity) {
+        if(isHotProduct(productId)) {
+            // 热点商品走Redis
+            return redisStorage.deduct(productId, quantity);
+        } else {
+            // 普通商品走MySQL
+            return mysqlStorage.deduct(productId, quantity);
+        }
+    }
+
+    private boolean isHotProduct(String productId) {
+        return hotProducts.contains(productId);
+    }
+
+    // 动态更新热点商品名单
+    public void updateHotProducts(Set<String> products) {
+        hotProducts.clear();
+        hotProducts.addAll(products);
+    }
+}
+```
+
+3. 一致性保障:
+```java
+@Service
+public class InventoryConsistencyChecker {
+    @Autowired
+    private RedisInventoryStorage redisStorage;
+    @Autowired
+    private MysqlInventoryStorage mysqlStorage;
+
+    // 定时全量对账
+    @Scheduled(cron = "0 0 2 * * ?")
+    public void fullCheck() {
+        // 获取所有商品ID
+        List<String> productIds = getAllProductIds();
+
+        for(String productId : productIds) {
+            int redisStock = redisStorage.query(productId);
+            int mysqlStock = mysqlStorage.query(productId);
+
+            if(redisStock != mysqlStock) {
+                // 记录差异并报警
+                logInconsistency(productId, redisStock, mysqlStock);
+                // 以MySQL为准进行修复
+                syncToRedis(productId, mysqlStock);
+            }
+        }
+    }
+
+    // 消息队列监听变更进行实时对账
+    @KafkaListener(topics = "inventory_change")
+    public void onInventoryChange(InventoryChangeEvent event) {
+        String productId = event.getProductId();
+        checkConsistency(productId);
+    }
+}
+```
+
+4. 性能优化:
+```java
+@Configuration
+public class MysqlOptimization {
+    @Bean
+    public DataSource dataSource() {
+        HikariConfig config = new HikariConfig();
+        // 设置更大的连接池
+        config.setMaximumPoolSize(100);
+        // 设置合适的超时时间
+        config.setConnectionTimeout(3000);
+        return new HikariDataSource(config);
+    }
+
+    // SQL优化 - 批量更新
+    public void batchDeduct(List<DeductRequest> requests) {
+        String sql = "UPDATE inventory SET stock = CASE product_id " +
+                    "WHEN ? THEN stock - ? " +
+                    "END WHERE product_id IN (?)";
+        jdbcTemplate.batchUpdate(sql, requests);
+    }
+}
+```
+
+5. 监控告警:
+```java
+@Aspect
+@Component
+public class InventoryMonitor {
+    private Counter deductCounter = Counter.build()
+        .name("inventory_deduct_total")
+        .help("Inventory deduction counter")
+        .register();
+
+    @Around("execution(* com.xx.InventoryStorage.deduct(..))")
+    public Object monitor(ProceedingJoinPoint pjp) {
+        long start = System.currentTimeMillis();
+        try {
+            Object result = pjp.proceed();
+            deductCounter.inc();
+            return result;
+        } finally {
+            // 记录耗时
+            recordLatency(System.currentTimeMillis() - start);
+        }
+    }
+}
+```
+
+这个方案的主要特点:
+
+1. 采用 Redis + MySQL 双存储架构,充分利用 Redis 的高性能和 MySQL 的数据可靠性
+
+2. 通过路由层动态将热点商品导向 Redis 处理,普通商品走 MySQL
+
+3. 使用定时任务和消息队列实现双存储的数据一致性检查
+
+4. 针对 MySQL 做了连接池、SQL 批处理等多项性能优化
+
+5. 实现了完善的监控指标采集,可及时发现和处理异常
+
+这个方案能够很好地支撑高并发场景下的库存扣减,同时保证数据一致性和系统可用性。
+--------------------------------------------------------------------
