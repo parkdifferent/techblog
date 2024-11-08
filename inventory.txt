@@ -225,3 +225,569 @@ public class InventoryMonitor {
 
 这个方案能够很好地支撑高并发场景下的库存扣减,同时保证数据一致性和系统可用性。
 --------------------------------------------------------------------
+
+我来帮你实现一个高性能高并发的库存扣减系统。根据文档内容和主流实践，我们采用Redis+MySQL双存储的方案，以应对高并发秒杀场景。
+
+
+
+```java
+package com.example.inventory.service;
+
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class InventoryService {
+
+    private final StringRedisTemplate redisTemplate;
+    private final JdbcTemplate jdbcTemplate;
+    private final String STOCK_KEY_PREFIX = "stock:";
+    private final String HOT_PRODUCT_PREFIX = "hot:";
+
+    public InventoryService(StringRedisTemplate redisTemplate, JdbcTemplate jdbcTemplate) {
+        this.redisTemplate = redisTemplate;
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    /**
+     * 扣减库存主方法
+     */
+    public boolean deductStock(Long productId, Integer quantity) {
+        // 判断是否为热点商品
+        if (isHotProduct(productId)) {
+            return deductStockInRedis(productId, quantity);
+        } else {
+            return deductStockInDB(productId, quantity);
+        }
+    }
+
+    /**
+     * 判断是否为热点商品
+     */
+    private boolean isHotProduct(Long productId) {
+        return Boolean.TRUE.equals(redisTemplate.hasKey(HOT_PRODUCT_PREFIX + productId));
+    }
+
+    /**
+     * Redis扣减库存
+     */
+    private boolean deductStockInRedis(Long productId, Integer quantity) {
+        String stockKey = STOCK_KEY_PREFIX + productId;
+
+        // Redis Lua脚本保证原子性
+        String script = "if tonumber(redis.call('get', KEYS[1]) or 0) >= tonumber(ARGV[1]) then " +
+                       "return redis.call('decrby', KEYS[1], ARGV[1]) " +
+                       "else return -1 end";
+
+        try {
+            Long result = redisTemplate.execute(
+                (RedisConnection connection) -> connection.eval(
+                    script.getBytes(),
+                    ReturnType.INTEGER,
+                    1,
+                    stockKey.getBytes(),
+                    quantity.toString().getBytes()
+                )
+            );
+
+            return result != null && result >= 0;
+        } catch (Exception e) {
+            log.error("Redis deduct stock failed for product: " + productId, e);
+            // Redis失败后降级到MySQL
+            return deductStockInDB(productId, quantity);
+        }
+    }
+
+    /**
+     * MySQL扣减库存 - 使用悲观锁
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public boolean deductStockInDB(Long productId, Integer quantity) {
+        try {
+            // 使用select for update加锁查询
+            Integer stock = jdbcTemplate.queryForObject(
+                "SELECT stock FROM product_stock WHERE product_id = ? FOR UPDATE",
+                Integer.class,
+                productId
+            );
+
+            if (stock == null || stock < quantity) {
+                return false;
+            }
+
+            // 更新库存
+            int affected = jdbcTemplate.update(
+                "UPDATE product_stock SET stock = stock - ?, version = version + 1 WHERE product_id = ? AND stock >= ?",
+                quantity,
+                productId,
+                quantity
+            );
+
+            return affected > 0;
+        } catch (Exception e) {
+            log.error("MySQL deduct stock failed for product: " + productId, e);
+            throw e;
+        }
+    }
+
+    /**
+     * 预热热点商品库存到Redis
+     */
+    public void preloadHotProductStock(Long productId) {
+        try {
+            Integer stock = jdbcTemplate.queryForObject(
+                "SELECT stock FROM product_stock WHERE product_id = ?",
+                Integer.class,
+                productId
+            );
+
+            if (stock != null) {
+                String stockKey = STOCK_KEY_PREFIX + productId;
+                redisTemplate.opsForValue().set(stockKey, stock.toString());
+                redisTemplate.opsForValue().set(HOT_PRODUCT_PREFIX + productId, "1");
+            }
+        } catch (Exception e) {
+            log.error("Preload hot product stock failed for product: " + productId, e);
+        }
+    }
+
+    /**
+     * Redis和MySQL库存数据对账
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void reconcileStock(Long productId) {
+        String stockKey = STOCK_KEY_PREFIX + productId;
+
+        try {
+            // 获取Redis库存
+            String redisStock = redisTemplate.opsForValue().get(stockKey);
+
+            // 获取MySQL库存
+            Integer mysqlStock = jdbcTemplate.queryForObject(
+                "SELECT stock FROM product_stock WHERE product_id = ?",
+                Integer.class,
+                productId
+            );
+
+            if (redisStock != null && mysqlStock != null) {
+                int redisStockNum = Integer.parseInt(redisStock);
+
+                // 如果不一致，以MySQL为准
+                if (redisStockNum != mysqlStock) {
+                    redisTemplate.opsForValue().set(stockKey, mysqlStock.toString());
+                    log.warn("Stock inconsistency found for product: " + productId +
+                            ", Redis: " + redisStockNum + ", MySQL: " + mysqlStock);
+                }
+            }
+        } catch (Exception e) {
+            log.error("Reconcile stock failed for product: " + productId, e);
+        }
+    }
+}
+
+// 配置类
+@Configuration
+public class RedisConfig {
+
+    @Bean
+    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory connectionFactory) {
+        StringRedisTemplate template = new StringRedisTemplate();
+        template.setConnectionFactory(connectionFactory);
+
+        // 配置序列化方式
+        RedisSerializer<String> stringSerializer = new StringRedisSerializer();
+        template.setKeySerializer(stringSerializer);
+        template.setValueSerializer(stringSerializer);
+        template.setHashKeySerializer(stringSerializer);
+        template.setHashValueSerializer(stringSerializer);
+
+        return template;
+    }
+}
+
+```
+
+这个实现包含以下核心特性：
+
+1. 双存储架构
+- Redis作为热点商品的主存储，处理高并发场景
+- MySQL作为基础存储，处理常规库存操作
+- 支持Redis故障时自动降级到MySQL
+
+2. 高性能设计
+- 使用Redis Lua脚本实现原子性操作
+- MySQL使用悲观锁(SELECT FOR UPDATE)保证并发安全
+- 预加载机制将热点商品提前加载到Redis
+
+3. 数据一致性保障
+- 实现Redis和MySQL的库存数据对账功能
+- 异常情况下以MySQL数据为准
+- 事务管理确保数据操作的原子性
+
+4. 可用性保障
+- Redis操作失败后自动降级到MySQL
+- 完善的异常处理和日志记录
+- 版本号控制防止并发更新问题
+
+使用方式：
+
+```java
+// 注入服务
+@Autowired
+private InventoryService inventoryService;
+
+// 预热热点商品
+inventoryService.preloadHotProductStock(productId);
+
+// 扣减库存
+boolean success = inventoryService.deductStock(productId, quantity);
+
+// 定时对账
+inventoryService.reconcileStock(productId);
+```
+
+建议优化方向：
+
+1. 缓存预热：可以增加定时任务，定期扫描热点商品并预热
+2. 监控告警：添加库存变更监控和异常情况告警
+3. 限流保护：增加接口级别的限流措施
+4. 分库分表：对MySQL库存表进行分库分表以提升性能
+5. 异步同步：可以考虑使用消息队列异步同步Redis和MySQL的数据
+
+这个实现适合处理秒杀等高并发场景，同时也能很好地支持常规库存操作。如果你需要任何具体功能的细节实现，我很乐意继续帮你完善。
+
+------------------------------------------------------------------------
+
+热点商品的库存如何同步到MySQL?
+
+我来帮你实现热点商品库存从Redis同步到MySQL的解决方案。根据高并发系统设计原则，我们采用异步消息队列的方式来实现数据同步，以保证性能和数据一致性。
+
+
+
+```java
+package com.example.inventory.sync;
+
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 库存变更消息
+ */
+@Data
+@AllArgsConstructor
+public class StockChangeMessage {
+    private Long productId;
+    private Integer quantity;
+    private String operation; // DEDUCT-扣减 ADD-增加
+    private Long timestamp;
+    private String transactionId;
+}
+
+/**
+ * 库存同步服务
+ */
+@Slf4j
+@Service
+public class InventorySyncService {
+
+    private final StringRedisTemplate redisTemplate;
+    private final JdbcTemplate jdbcTemplate;
+    private final RabbitTemplate rabbitTemplate;
+    private final ObjectMapper objectMapper;
+
+    private static final String STOCK_KEY_PREFIX = "stock:";
+    private static final String STOCK_CHANGE_EXCHANGE = "stock.change";
+    private static final String STOCK_SYNC_QUEUE = "stock.sync";
+    private static final String STOCK_SYNC_LOCK_PREFIX = "stock:sync:lock:";
+
+    public InventorySyncService(StringRedisTemplate redisTemplate,
+                              JdbcTemplate jdbcTemplate,
+                              RabbitTemplate rabbitTemplate,
+                              ObjectMapper objectMapper) {
+        this.redisTemplate = redisTemplate;
+        this.jdbcTemplate = jdbcTemplate;
+        this.rabbitTemplate = rabbitTemplate;
+        this.objectMapper = objectMapper;
+    }
+
+    /**
+     * 发送库存变更消息
+     */
+    public void sendStockChangeMessage(Long productId, Integer quantity, String operation) {
+        try {
+            StockChangeMessage message = new StockChangeMessage(
+                productId,
+                quantity,
+                operation,
+                System.currentTimeMillis(),
+                generateTransactionId()
+            );
+
+            rabbitTemplate.convertAndSend(
+                STOCK_CHANGE_EXCHANGE,
+                "stock.change",
+                objectMapper.writeValueAsString(message)
+            );
+
+            log.info("Send stock change message success: {}", message);
+        } catch (Exception e) {
+            log.error("Send stock change message failed", e);
+            // 可以考虑重试或者告警
+        }
+    }
+
+    /**
+     * 消费库存变更消息
+     */
+    @RabbitListener(queues = STOCK_SYNC_QUEUE)
+    public void handleStockChangeMessage(Message message) {
+        try {
+            StockChangeMessage stockChange = objectMapper.readValue(
+                message.getBody(),
+                StockChangeMessage.class
+            );
+
+            // 获取分布式锁
+            String lockKey = STOCK_SYNC_LOCK_PREFIX + stockChange.getProductId();
+            boolean locked = redisTemplate.opsForValue()
+                .setIfAbsent(lockKey, "1", 30, TimeUnit.SECONDS);
+
+            if (!locked) {
+                // 稍后重试
+                requeue(message);
+                return;
+            }
+
+            try {
+                // 检查是否是重复消息
+                if (isDuplicateMessage(stockChange)) {
+                    return;
+                }
+
+                // 同步库存到MySQL
+                syncStockToMySQL(stockChange);
+
+                // 记录处理成功的消息
+                markMessageAsProcessed(stockChange);
+
+            } finally {
+                // 释放锁
+                redisTemplate.delete(lockKey);
+            }
+
+        } catch (Exception e) {
+            log.error("Handle stock change message failed", e);
+            // 重试或死信队列处理
+            handleError(message);
+        }
+    }
+
+    /**
+     * 同步库存到MySQL
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void syncStockToMySQL(StockChangeMessage stockChange) {
+        try {
+            // 获取Redis当前库存
+            String stockKey = STOCK_KEY_PREFIX + stockChange.getProductId();
+            String currentStock = redisTemplate.opsForValue().get(stockKey);
+
+            if (currentStock == null) {
+                log.warn("Redis stock not found for product: {}", stockChange.getProductId());
+                return;
+            }
+
+            // 更新MySQL库存
+            int affected = jdbcTemplate.update(
+                "UPDATE product_stock SET stock = ?, " +
+                "last_sync_time = ?, version = version + 1 " +
+                "WHERE product_id = ?",
+                Integer.parseInt(currentStock),
+                stockChange.getTimestamp(),
+                stockChange.getProductId()
+            );
+
+            if (affected == 0) {
+                log.error("Update MySQL stock failed for product: {}", stockChange.getProductId());
+                throw new RuntimeException("Update MySQL stock failed");
+            }
+
+            // 记录同步日志
+            jdbcTemplate.update(
+                "INSERT INTO stock_sync_log (product_id, old_stock, new_stock, " +
+                "operation, transaction_id, sync_time) VALUES (?, ?, ?, ?, ?, ?)",
+                stockChange.getProductId(),
+                null, // 老库存，可以查询后填充
+                currentStock,
+                stockChange.getOperation(),
+                stockChange.getTransactionId(),
+                stockChange.getTimestamp()
+            );
+
+        } catch (Exception e) {
+            log.error("Sync stock to MySQL failed", e);
+            throw e;
+        }
+    }
+
+    /**
+     * 检查是否重复消息
+     */
+    private boolean isDuplicateMessage(StockChangeMessage message) {
+        Integer count = jdbcTemplate.queryForObject(
+            "SELECT COUNT(*) FROM stock_sync_log WHERE transaction_id = ?",
+            Integer.class,
+            message.getTransactionId()
+        );
+        return count != null && count > 0;
+    }
+
+    /**
+     * 标记消息已处理
+     */
+    private void markMessageAsProcessed(StockChangeMessage message) {
+        String processedKey = "processed:message:" + message.getTransactionId();
+        redisTemplate.opsForValue().set(processedKey, "1", 7, TimeUnit.DAYS);
+    }
+
+    /**
+     * 重新入队
+     */
+    private void requeue(Message message) {
+        rabbitTemplate.convertAndSend(
+            STOCK_SYNC_QUEUE,
+            message,
+            new MessagePostProcessor() {
+                @Override
+                public Message postProcessMessage(Message message) {
+                    MessageProperties props = message.getMessageProperties();
+                    Integer retryCount = (Integer) props.getHeaders().get("retry-count");
+                    if (retryCount == null) {
+                        retryCount = 0;
+                    }
+                    props.getHeaders().put("retry-count", retryCount + 1);
+                    return message;
+                }
+            }
+        );
+    }
+
+    /**
+     * 错误处理
+     */
+    private void handleError(Message message) {
+        MessageProperties props = message.getMessageProperties();
+        Integer retryCount = (Integer) props.getHeaders().get("retry-count");
+
+        if (retryCount == null || retryCount < 3) {
+            // 重试
+            requeue(message);
+        } else {
+            // 发送到死信队列
+            rabbitTemplate.convertAndSend("stock.change.dlx", message);
+        }
+    }
+
+    /**
+     * 生成事务ID
+     */
+    private String generateTransactionId() {
+        return UUID.randomUUID().toString();
+    }
+}
+
+/**
+ * 数据库表结构
+ */
+/*
+CREATE TABLE product_stock (
+    product_id BIGINT PRIMARY KEY,
+    stock INT NOT NULL,
+    version INT NOT NULL DEFAULT 0,
+    last_sync_time BIGINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE stock_sync_log (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_id BIGINT NOT NULL,
+    old_stock INT,
+    new_stock INT NOT NULL,
+    operation VARCHAR(20) NOT NULL,
+    transaction_id VARCHAR(36) NOT NULL,
+    sync_time BIGINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_transaction_id (transaction_id),
+    INDEX idx_product_sync (product_id, sync_time)
+);
+*/
+
+```
+
+这个实现提供了完整的热点商品库存同步方案，主要特点包括：
+
+1. 异步消息队列
+- 使用RabbitMQ作为消息队列
+- 通过消息异步同步Redis库存到MySQL
+- 支持消息重试和死信队列处理
+
+2. 数据一致性保证
+- 使用分布式锁避免并发同步问题
+- 事务保证MySQL数据更新的原子性
+- 消息幂等性处理，避免重复同步
+- 同步日志记录，支持问题排查和数据修复
+
+3. 高可用设计
+- 消息重试机制
+- 死信队列处理无法处理的消息
+- 完善的异常处理和日志记录
+
+4. 性能优化
+- 异步处理，不影响主流程性能
+- 分布式锁控制并发
+- 批量处理能力（可以扩展）
+
+使用示例：
+
+```java
+@Autowired
+private InventorySyncService inventorySyncService;
+
+// 库存扣减后，发送同步消息
+public void deductStock(Long productId, Integer quantity) {
+    // 执行Redis扣减逻辑
+    ...
+
+    // 发送同步消息
+    inventorySyncService.sendStockChangeMessage(
+        productId,
+        quantity,
+        "DEDUCT"
+    );
+}
+```
+
+建议优化方向：
+
+1. 批量同步：可以实现批量同步机制，提升性能
+2. 补偿机制：添加定时任务，定期检查并补偿未同步的数据
+3. 监控告警：增加同步延迟、失败率等监控指标
+4. 数据校验：增加Redis和MySQL数据一致性校验
+5. 性能优化：可以考虑使用批量SQL、线程池等优化手段
+
+使用这个方案可以保证热点商品的库存数据最终一致性，同时不会影响主流程的性能。系统通过消息队列、分布式锁等机制保证数据同步的可靠性，并提供了完善的异常处理机制。
+
+--------------------------------------------------------------------------------------------------------
