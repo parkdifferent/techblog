@@ -296,6 +296,8 @@
 * [Migrating Critical Traffic At Scale with No Downtime — Part 2](https://netflixtechblog.com/migrating-critical-traffic-at-scale-with-no-downtime-part-2-4b1c8c7155c1)
 * [Ensuring the Successful Launch of Ads on Netflix](https://netflixtechblog.com/ensuring-the-successful-launch-of-ads-on-netflix-f99490fdf1ba)
 * [Migrating Netflix to GraphQL Safely](https://netflixtechblog.com/migrating-netflix-to-graphql-safely-8e1e4d4f1e72)
+* [The Great Rewrite - How Wix is Preparing to Rewrite 100s of Systems - Part 2](https://www.wix.engineering/post/are-the-great-rewrite-how-wix-is-preparing-to-rewrite-100s-of-systems-part-2)
+* [Migrating Critical Traffic At Scale with No Downtime — Part 2](https://netflixtechblog.com/migrating-critical-traffic-at-scale-with-no-downtime-part-2-4b1c8c7155c1)
 
 ## Big Data
 * [flink](https://tech.ebayinc.com/engineering/an-introduction-to-apache-flink/)
