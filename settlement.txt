@@ -1510,3 +1510,1713 @@ public class CelSettlementCalculator {
 
 这个改进版本更加健壮、安全，并且支持更复杂的结算规则。  记住，实际应用中，你可能需要根据业务需求定义更复杂的规则，并进行更全面的测试。  此外，还可以考虑将 CEL 表达式存储在数据库或配置文件中，实现动态配置。
 -----------------------------------------------
+
+--------------------------claude-3-5-sonnet-20240620--------------------------
+电商c端，财务结算系统，结算模块如何实现结算规则引擎，根据配置的规则计算结算金额？结合谷歌cel
+
+对于电商C端财务结算系统的结算模块，使用规则引擎来实现灵活的结算规则是一个很好的选择。结合Google CEL (Common Expression Language)，我们可以设计一个强大而灵活的结算规则引擎。以下是一个实现方案：
+
+1. 规则配置存储
+
+首先，我们需要一个地方来存储和管理结算规则。可以使用数据库表来存储规则，例如：
+
+```sql
+CREATE TABLE settlement_rules (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    rule_name VARCHAR(100),
+    rule_expression TEXT,
+    priority INT,
+    is_active BOOLEAN
+);
+```
+
+2. 规则引擎核心
+
+使用 Java 实现规则引擎核心，集成 Google CEL：
+
+```java
+import com.google.api.expr.v1alpha1.Expr;
+import com.google.api.expr.v1alpha1.Value;
+import com.google.api.expr.v1alpha1.Eval;
+
+public class SettlementRuleEngine {
+    private final Eval eval;
+
+    public SettlementRuleEngine() {
+        this.eval = new Eval();
+    }
+
+    public double calculateSettlement(Map<String, Object> context, String ruleExpression) {
+        Expr expr = Expr.parse(ruleExpression);
+        Value result = eval.eval(expr, context);
+        return result.getNumberValue();
+    }
+}
+```
+
+3. 结算规则模型
+
+创建一个结算规则模型来表示数据库中的规则：
+
+```java
+public class SettlementRule {
+    private int id;
+    private String ruleName;
+    private String ruleExpression;
+    private int priority;
+    private boolean isActive;
+
+    // Getters and setters
+}
+```
+
+4. 结算服务
+
+实现一个结算服务，用于加载规则并执行结算计算：
+
+```java
+public class SettlementService {
+    private final SettlementRuleEngine ruleEngine;
+    private final List<SettlementRule> rules;
+
+    public SettlementService(SettlementRuleEngine ruleEngine, List<SettlementRule> rules) {
+        this.ruleEngine = ruleEngine;
+        this.rules = rules;
+    }
+
+    public double calculateSettlement(Map<String, Object> orderContext) {
+        double settlementAmount = 0;
+
+        for (SettlementRule rule : rules) {
+            if (rule.isActive()) {
+                double ruleResult = ruleEngine.calculateSettlement(orderContext, rule.getRuleExpression());
+                settlementAmount += ruleResult;
+            }
+        }
+
+        return settlementAmount;
+    }
+}
+```
+
+5. 使用示例
+
+```java
+public class SettlementExample {
+    public static void main(String[] args) {
+        SettlementRuleEngine ruleEngine = new SettlementRuleEngine();
+
+        List<SettlementRule> rules = new ArrayList<>();
+        rules.add(new SettlementRule(1, "基础结算", "orderAmount * 0.95", 1, true));
+        rules.add(new SettlementRule(2, "促销折扣", "if (promotionCode == 'SUMMER2023') orderAmount * 0.05 else 0", 2, true));
+
+        SettlementService settlementService = new SettlementService(ruleEngine, rules);
+
+        Map<String, Object> orderContext = new HashMap<>();
+        orderContext.put("orderAmount", 100.0);
+        orderContext.put("promotionCode", "SUMMER2023");
+
+        double settlementAmount = settlementService.calculateSettlement(orderContext);
+        System.out.println("Settlement Amount: " + settlementAmount);
+    }
+}
+```
+
+这个方案的优点包括：
+
+1. 灵活性：可以通过修改数据库中的规则来动态调整结算逻辑，无需修改代码。
+
+                  2. 可扩展性：可以轻松添加新的规则或修改现有规则。
+
+                  3. 性能：Google CEL 是一种轻量级的表达式语言，执行效率高。
+
+                  4. 安全性：CEL 提供了沙箱环境，可以安全地执行用户定义的表达式。
+
+                  5. 可读性：规则表达式使用简单的语法，易于理解和维护。
+
+                  为了进一步完善这个系统，我们可以添加以下功能：
+
+                  6. 规则验证
+
+                  在保存规则之前，我们应该验证规则的语法是否正确：
+
+                  ```java
+                  public class RuleValidator {
+                      public static boolean validateRule(String ruleExpression) {
+                          try {
+                              Expr.parse(ruleExpression);
+                              return true;
+                          } catch (Exception e) {
+                              return false;
+                          }
+                      }
+                  }
+                  ```
+
+                  7. 规则缓存
+
+                  为了提高性能，我们可以实现规则缓存：
+
+                  ```java
+                  public class RuleCache {
+                      private Map<Integer, SettlementRule> ruleCache = new ConcurrentHashMap<>();
+
+                      public void addRule(SettlementRule rule) {
+                          ruleCache.put(rule.getId(), rule);
+                      }
+
+                      public SettlementRule getRule(int ruleId) {
+                          return ruleCache.get(ruleId);
+                      }
+
+                      public void removeRule(int ruleId) {
+                          ruleCache.remove(ruleId);
+                      }
+
+                      public void clearCache() {
+                          ruleCache.clear();
+                      }
+                  }
+                  ```
+
+                  8. 规则版本控制
+
+                  实现规则的版本控制，以便追踪规则的变更历史：
+
+                  ```java
+                  public class RuleVersion {
+                      private int id;
+                      private int ruleId;
+                      private String ruleExpression;
+                      private LocalDateTime createdAt;
+                      private String createdBy;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  9. 规则测试功能
+
+                  添加一个测试功能，允许管理员在应用规则之前进行测试：
+
+                  ```java
+                  public class RuleTester {
+                      private final SettlementRuleEngine ruleEngine;
+
+                      public RuleTester(SettlementRuleEngine ruleEngine) {
+                          this.ruleEngine = ruleEngine;
+                      }
+
+                      public double testRule(String ruleExpression, Map<String, Object> testContext) {
+                          return ruleEngine.calculateSettlement(testContext, ruleExpression);
+                      }
+                  }
+                  ```
+
+                  10. 规则优先级处理
+
+                  在结算服务中实现规则优先级处理：
+
+                  ```java
+                  public class SettlementService {
+                      // ... 其他代码 ...
+
+                      public double calculateSettlement(Map<String, Object> orderContext) {
+                          double settlementAmount = 0;
+
+                          List<SettlementRule> sortedRules = rules.stream()
+                              .filter(SettlementRule::isActive)
+                              .sorted(Comparator.comparingInt(SettlementRule::getPriority))
+                              .collect(Collectors.toList());
+
+                          for (SettlementRule rule : sortedRules) {
+                              double ruleResult = ruleEngine.calculateSettlement(orderContext, rule.getRuleExpression());
+                              settlementAmount += ruleResult;
+                          }
+
+                          return settlementAmount;
+                      }
+                  }
+                  ```
+
+                  11. 规则执行日志
+
+                  记录规则执行的详细日志，以便于调试和审计：
+
+                  ```java
+                  public class RuleExecutionLog {
+                      private int id;
+                      private int ruleId;
+                      private String ruleName;
+                      private String ruleExpression;
+                      private Map<String, Object> context;
+                      private double result;
+                      private LocalDateTime executedAt;
+
+                      // Getters and setters
+                  }
+                  继续完善这个系统，我们可以添加以下功能：
+
+                  12. 规则分组
+
+                  为了更好地组织和管理规则，我们可以引入规则分组的概念：
+
+                  ```java
+                  public class RuleGroup {
+                      private int id;
+                      private String groupName;
+                      private String description;
+                      private List<SettlementRule> rules;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  13. 规则依赖关系
+
+                  有时候，某些规则可能依赖于其他规则的执行结果。我们可以实现规则依赖关系：
+
+                  ```java
+                  public class RuleDependency {
+                      private int id;
+                      private int ruleId;
+                      private int dependentRuleId;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  14. 规则执行条件
+
+                  添加规则执行条件，使得规则只在特定条件下执行：
+
+                  ```java
+                  public class SettlementRule {
+                      // ... 其他属性 ...
+                      private String executionCondition;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  更新结算服务以支持执行条件：
+
+                  ```java
+                  public class SettlementService {
+                      // ... 其他代码 ...
+
+                      public double calculateSettlement(Map<String, Object> orderContext) {
+                          double settlementAmount = 0;
+
+                          List<SettlementRule> sortedRules = rules.stream()
+                              .filter(SettlementRule::isActive)
+                              .sorted(Comparator.comparingInt(SettlementRule::getPriority))
+                              .collect(Collectors.toList());
+
+                          for (SettlementRule rule : sortedRules) {
+                              if (shouldExecuteRule(rule, orderContext)) {
+                                  double ruleResult = ruleEngine.calculateSettlement(orderContext, rule.getRuleExpression());
+                                  settlementAmount += ruleResult;
+                              }
+                          }
+
+                          return settlementAmount;
+                      }
+
+                      private boolean shouldExecuteRule(SettlementRule rule, Map<String, Object> context) {
+                          if (rule.getExecutionCondition() == null || rule.getExecutionCondition().isEmpty()) {
+                              return true;
+                          }
+                          return (boolean) ruleEngine.calculateSettlement(context, rule.getExecutionCondition());
+                      }
+                  }
+                  ```
+
+                  15. 规则模板
+
+                  创建规则模板，以便快速创建常用的规则：
+
+                  ```java
+                  public class RuleTemplate {
+                      private int id;
+                      private String templateName;
+                      private String templateExpression;
+                      private List<String> requiredVariables;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  16. 规则导入/导出
+
+                  实现规则的导入和导出功能，方便在不同环境间迁移规则：
+
+                  ```java
+                  public class RuleImportExport {
+                      public String exportRules(List<SettlementRule> rules) {
+                          // 将规则转换为 JSON 或其他格式
+                      }
+
+                      public List<SettlementRule> importRules(String rulesData) {
+                          // 从 JSON 或其他格式解析规则
+                      }
+                  }
+                  ```
+
+                  17. 规则审批流程
+
+                  对于重要的规则变更，可以实现审批流程：
+
+                  ```java
+                  public class RuleApproval {
+                      private int id;
+                      private int ruleId;
+                      private String approvalStatus; // PENDING, APPROVED, REJECTED
+                      private String approver;
+                      private LocalDateTime approvedAt;
+                      private String comments;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  18. 规则性能监控
+
+                  监控规则的执行性能，以便优化低效的规则：
+
+                  ```java
+                  public class RulePerformance {
+                      private int ruleId;
+                      private long totalExecutionTime;
+                      private long executionCount;
+                      private double averageExecutionTime;
+
+                      // Getters and setters
+                  }
+                  ```
+
+                  19. 规则模拟测试
+
+                         为了确保规则在各种情况下都能正确执行，我们可以实现规则模拟测试功能：
+
+                         ```java
+                         public class RuleSimulator {
+                             private final SettlementRuleEngine ruleEngine;
+
+                             public RuleSimulator(SettlementRuleEngine ruleEngine) {
+                                 this.ruleEngine = ruleEngine;
+                             }
+
+                             public SimulationResult simulateRule(SettlementRule rule, List<Map<String, Object>> testCases) {
+                                 SimulationResult result = new SimulationResult();
+                                 for (Map<String, Object> testCase : testCases) {
+                                     double ruleOutput = ruleEngine.calculateSettlement(testCase, rule.getRuleExpression());
+                                     result.addTestResult(testCase, ruleOutput);
+                                 }
+                                 return result;
+                             }
+                         }
+
+                         public class SimulationResult {
+                             private List<TestCaseResult> testResults = new ArrayList<>();
+
+                             public void addTestResult(Map<String, Object> input, double output) {
+                                 testResults.add(new TestCaseResult(input, output));
+                             }
+
+                             // Getters and other methods
+                         }
+
+                         public class TestCaseResult {
+                             private Map<String, Object> input;
+                             private double output;
+
+                             // Constructor, getters, and setters
+                         }
+                         ```
+
+                         20. 规则冲突检测
+
+                         实现规则冲突检测功能，以避免规则之间的潜在冲突：
+
+                         ```java
+                         public class RuleConflictDetector {
+                             public List<RuleConflict> detectConflicts(List<SettlementRule> rules) {
+                                 List<RuleConflict> conflicts = new ArrayList<>();
+                                 // 实现冲突检测逻辑
+                                 return conflicts;
+                             }
+                         }
+
+                         public class RuleConflict {
+                             private SettlementRule rule1;
+                             private SettlementRule rule2;
+                             private String conflictDescription;
+
+                             // Constructor, getters, and setters
+                         }
+                         ```
+
+                         21. 规则版本回滚
+
+                         允许管理员在需要时回滚到之前的规则版本：
+
+                         ```java
+                         public class RuleVersionManager {
+                             public void rollbackToVersion(int ruleId, int versionId) {
+                                 // 实现版本回滚逻辑
+                             }
+
+                             public List<RuleVersion> getRuleVersionHistory(int ruleId) {
+                                 // 获取规则的版本历史
+                             }
+                         }
+                         ```
+
+                         22. 规则执行追踪
+
+                         实现详细的规则执行追踪，以便于调试和审计：
+
+                         ```java
+                         public class RuleExecutionTracer {
+                             public void traceExecution(int ruleId, Map<String, Object> input, double output, long executionTime) {
+                                 // 记录规则执行详情
+                             }
+
+                             public List<RuleExecutionTrace> getExecutionTraces(int ruleId, LocalDateTime startTime, LocalDateTime endTime) {
+                                 // 获取指定时间范围内的规则执行追踪
+                             }
+                         }
+
+                         public class RuleExecutionTrace {
+                             private int ruleId;
+                             private Map<String, Object> input;
+                             private double output;
+                             private long executionTime;
+                             private LocalDateTime executedAt;
+
+                             // Constructor, getters, and setters
+                         }
+                         ```
+
+                         23. 规则执行预览
+
+                         在应用规则之前，允许管理员预览规则的执行结果：
+
+                         ```java
+                         public class RulePreviewService {
+                             private final SettlementRuleEngine ruleEngine;
+
+                             public RulePreviewService(SettlementRuleEngine ruleEngine) {
+                                 this.ruleEngine = ruleEngine;
+                             }
+
+                             public PreviewResult previewRule(SettlementRule rule, Map<String, Object> sampleContext) {
+                                 double result = ruleEngine.calculateSettlement(sampleContext, rule.getRuleExpression());
+                                 return new PreviewResult(rule, sampleContext, result);
+                             }
+                         }
+
+                         public class PreviewResult {
+
+                         }
+                         继续完善 RuleResultCache 类和添加更多功能：
+
+                         ```java
+                                 return Optional.empty();
+                             }
+
+                             private String generateCacheKey(String ruleExpression, Map<String, Object> context) {
+                                 // 生成唯一的缓存键，可以使用规则表达式和上下文的哈希值
+                                 return ruleExpression.hashCode() + "_" + context.hashCode();
+                             }
+
+                             private boolean isExpired(CachedResult cachedResult) {
+                                 // 检查缓存结果是否过期，可以根据需求设置过期时间
+                                 return System.currentTimeMillis() - cachedResult.getTimestamp() > 60000; // 1分钟过期
+                             }
+
+                             private static class CachedResult {
+                                 private final double result;
+                                 private final long timestamp;
+
+                                 // Constructor, getters
+                             }
+                         }
+                         ```
+
+                         继续完善 PreviewResult 类和添加更多功能：
+
+                         ```java
+                         public class PreviewResult {
+                             private SettlementRule rule;
+                             private Map<String, Object> sampleContext;
+                             private double result;
+
+                             // Constructor, getters, and setters
+                         }
+                         ```
+
+                         24. 规则依赖图可视化
+
+                         为了更好地理解规则之间的关系，我们可以实现规则依赖图的可视化：
+
+                         ```java
+                         public class RuleDependencyVisualizer {
+                             public String generateDependencyGraph(List<SettlementRule> rules, List<RuleDependency> dependencies) {
+                                 // 使用图形库（如 GraphViz）生成依赖图
+                                 // 返回图形的 DOT 语言表示或 SVG
+                             }
+                         }
+                         ```
+
+                         25. 规则执行统计
+
+                         实现规则执行统计功能，以便了解各个规则的使用情况：
+
+                         ```java
+                         public class RuleExecutionStatistics {
+                             private Map<Integer, RuleStats> ruleStatsMap = new HashMap<>();
+
+                             public void recordExecution(int ruleId, double result, long executionTime) {
+                                 RuleStats stats = ruleStatsMap.computeIfAbsent(ruleId, k -> new RuleStats());
+                                 stats.recordExecution(result, executionTime);
+                             }
+
+                             public RuleStats getStatsForRule(int ruleId) {
+                                 return ruleStatsMap.get(ruleId);
+                             }
+                         }
+
+                         public class RuleStats {
+                             private long executionCount;
+                             private double totalResult;
+                             private long totalExecutionTime;
+
+                             public void recordExecution(double result, long executionTime) {
+                                 executionCount++;
+                                 totalResult += result;
+                                 totalExecutionTime += executionTime;
+                             }
+
+                             // Getters for average result, average execution time, etc.
+                         }
+                         ```
+
+                         26. 规则执行超时处理
+
+                         为了防止某些规则执行时间过长影响整体性能，我们可以实现规则执行超时处理：
+
+                         ```java
+                         public class TimeoutAwareSettlementRuleEngine {
+                             private final SettlementRuleEngine ruleEngine;
+                             private final long timeoutMillis;
+
+                             public TimeoutAwareSettlementRuleEngine(SettlementRuleEngine ruleEngine, long timeoutMillis) {
+                                 this.ruleEngine = ruleEngine;
+                                 this.timeoutMillis = timeoutMillis;
+                             }
+
+                             public double calculateSettlementWithTimeout(Map<String, Object> context, String ruleExpression) throws TimeoutException {
+                                 Future<Double> future = Executors.newSingleThreadExecutor().submit(() ->
+                                     ruleEngine.calculateSettlement(context, ruleExpression));
+
+                                 try {
+                                     return future.get(timeoutMillis, TimeUnit.MILLISECONDS);
+                                 } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                                     throw new TimeoutException("Rule execution timed out");
+                                 }
+                             }
+                         }
+                         ```
+
+                         27. 规则执行结果缓存
+
+                         对于某些频繁执行且输入相同的规则，我们可以实现结果缓存以提高性能：
+
+                         ```java
+                         public class RuleResultCache {
+                             private Map<String, CachedResult> cache = new ConcurrentHashMap<>();
+
+                             public void cacheResult(String ruleExpression, Map<String, Object> context, double result) {
+                                 String key = generateCacheKey(ruleExpression, context);
+                                 cache.put(key, new CachedResult(result, System.currentTimeMillis()));
+                             }
+
+                             public Optional<Double> getCachedResult(String ruleExpression, Map<String, Object> context) {
+                                 String key = generateCacheKey(ruleExpression, context);
+                                 CachedResult cachedResult = cache.get(key);
+                                 if (cachedResult != null && !isExpired(cachedResult)) {
+                                     return Optional.of(cachedResult.getResult());
+                                 }
+
+                         28. 规则执行并行化
+
+                         对于互不依赖的规则，我们可以实现并行执行以提高性能：
+
+                         ```java
+                         public class ParallelRuleExecutor {
+                             private final SettlementRuleEngine ruleEngine;
+                             private final ExecutorService executorService;
+
+                             public ParallelRuleExecutor(SettlementRuleEngine ruleEngine, int threadPoolSize) {
+                                 this.ruleEngine = ruleEngine;
+                                 this.executorService = Executors.newFixedThreadPool(threadPoolSize);
+                             }
+
+                             public Map<Integer, Double> executeRulesInParallel(List<SettlementRule> rules, Map<String, Object> context) {
+                                 List<Callable<RuleExecutionResult>> tasks = rules.stream()
+                                     .map(rule -> (Callable<RuleExecutionResult>) () -> {
+                                         double result = ruleEngine.calculateSettlement(context, rule.getRuleExpression());
+                                         return new RuleExecutionResult(rule.getId(), result);
+                                     })
+                                     .collect(Collectors.toList());
+
+                                 try {
+                                     List<Future<RuleExecutionResult>> futures = executorService.invokeAll(tasks);
+                                     Map<Integer, Double> results = new HashMap<>();
+                                     for (Future<RuleExecutionResult> future : futures) {
+                                         RuleExecutionResult result = future.get();
+                                         results.put(result.getRuleId(), result.getResult());
+                                     }
+                                     return results;
+                                 } catch (InterruptedException | ExecutionException e) {
+                                     throw new RuntimeException("Error executing rules in parallel", e);
+                                 }
+                             }
+
+                             private static class RuleExecutionResult {
+                                 private final int ruleId;
+                                 private final double result;
+
+                                 // Constructor, getters
+                             }
+                         }
+                         ```
+
+                         29. 规则执行审计日志
+
+                         实现详细的规则执行审计日志，以便追踪所有规则执行的历史记录：
+
+                         ```java
+                         public class RuleExecutionAuditor {
+                             private final AuditLogRepository auditLogRepository;
+
+                             public RuleExecutionAuditor(AuditLogRepository auditLogRepository) {
+                                 this.auditLogRepository = auditLogRepository;
+                             }
+
+                             public void logRuleExecution(int ruleId, Map<String, Object> context, double result, String executedBy) {
+                                 AuditLog auditLog = new AuditLog(ruleId, context, result, executedBy, LocalDateTime.now());
+                                 auditLogRepository.save(auditLog);
+                             }
+
+                             public List<AuditLog> getAuditLogs(int ruleId, LocalDateTime startTime, LocalDateTime endTime) {
+                                 return auditLogRepository.findByRuleIdAndExecutionTimeBetween(ruleId, startTime, endTime);
+                             }
+                         }
+
+                         public class AuditLog {
+                             private int id;
+                             private int ruleId;
+                             private Map<String, Object> context;
+                             private double result;
+                             private String executedBy;
+                             private LocalDateTime executionTime;
+
+                             // Constructor, getters, and setters
+                         }
+
+                         public interface AuditLogRepository {
+                             void save(AuditLog
+
+                             继续完善 AuditLogRepository 接口和添加更多功能：
+
+                             ```java
+                             public interface AuditLogRepository {
+                                 void save(AuditLog auditLog);
+                                 List<AuditLog> findByRuleIdAndExecutionTimeBetween(int ruleId, LocalDateTime startTime, LocalDateTime endTime);
+                             }
+                             ```
+
+                             30. 规则执行异常处理
+
+                             实现更加健壮的异常处理机制，以便在规则执行过程中出现问题时能够优雅地处理：
+
+                             ```java
+                             public class RuleExecutionExceptionHandler {
+                                 private final Logger logger = LoggerFactory.getLogger(RuleExecutionExceptionHandler.class);
+
+                                 public double handleException(SettlementRule rule, Map<String, Object> context, Exception e) {
+                                     logger.error("Error executing rule {}: {}", rule.getId(), e.getMessage(), e);
+
+                                     // 根据异常类型和规则配置决定如何处理
+                                     if (e instanceof TimeoutException) {
+                                         return handleTimeoutException(rule, context);
+                                     } else if (e instanceof ArithmeticException) {
+                                         return handleArithmeticException(rule, context);
+                                     }
+
+                                     // 默认返回0或其他预设的默认值
+                                     return 0;
+                                 }
+
+                                 private double handleTimeoutException(SettlementRule rule, Map<String, Object> context) {
+                                     // 实现超时异常的处理逻辑
+                                     return rule.getDefaultValueOnTimeout();
+                                 }
+
+                                 private double handleArithmeticException(SettlementRule rule, Map<String, Object> context) {
+                                     // 实现算术异常的处理逻辑
+                                     return rule.getDefaultValueOnArithmeticError();
+                                 }
+                             }
+                             ```
+
+                             31. 规则执行监控和告警
+
+                             实现规则执行的实时监控和告警机制：
+
+                             ```java
+                             public class RuleExecutionMonitor {
+                                 private final AlertService alertService;
+                                 private final Map<Integer, RuleExecutionStats> ruleStats = new ConcurrentHashMap<>();
+
+                                 public RuleExecutionMonitor(AlertService alertService) {
+                                     this.alertService = alertService;
+                                 }
+
+                                 public void recordExecution(int ruleId, long executionTime, boolean success) {
+                                     RuleExecutionStats stats = ruleStats.computeIfAbsent(ruleId, k -> new RuleExecutionStats());
+                                     stats.recordExecution(executionTime, success);
+
+                                     if (stats.getErrorRate() > 0.1) { // 错误率超过10%
+                                         alertService.sendAlert("Rule " + ruleId + " has high error rate: " + stats.getErrorRate());
+                                     }
+
+                                     if (stats.getAverageExecutionTime() > 1000) { // 平均执行时间超过1秒
+                                         alertService.sendAlert("Rule " + ruleId + " has high average execution time: " + stats.getAverageExecutionTime() + "ms");
+                                     }
+                                 }
+                             }
+
+                             public class RuleExecutionStats {
+                                 private long totalExecutions;
+                                 private long totalExecutionTime;
+                                 private long failedExecutions;
+
+                                 public void recordExecution(long executionTime, boolean success) {
+                                     totalExecutions++;
+                                     totalExecutionTime += executionTime;
+                                     if (!success) {
+                                         failedExecutions++;
+                                     }
+                                 }
+
+                                 public double getErrorRate() {
+                                     return (double) failedExecutions / totalExecutions;
+                                 }
+
+                                 public double getAverageExecutionTime() {
+                                     return (double) totalExecutionTime / totalExecutions;
+                                 }
+                             }
+
+                             public interface AlertService {
+                                 void sendAlert(String message);
+                             }
+                             ```
+
+                             32. 规则执行优化建议
+
+                             基于规则执行统计和性能数据，提供优化建议：
+
+                             ```java
+                             public class RuleOptimizationAdvisor {
+                                 private final RuleExecutionStatistics statistics;
+
+                                 public RuleOptimizationAdvisor(RuleExecutionStatistics statistics) {
+                                     this
+                                     继续完善 RuleOptimizationAdvisor 类和添加更多功能：
+
+                                     ```java
+                                     public class RuleOptimizationAdvisor {
+                                         private final RuleExecutionStatistics statistics;
+
+                                         public RuleOptimizationAdvisor(RuleExecutionStatistics statistics) {
+                                             this.statistics = statistics;
+                                         }
+
+                                         public List<OptimizationSuggestion> getOptimizationSuggestions() {
+                                             List<OptimizationSuggestion> suggestions = new ArrayList<>();
+
+                                             for (Map.Entry<Integer, RuleStats> entry : statistics.getAllRuleStats().entrySet()) {
+                                                 int ruleId = entry.getKey();
+                                                 RuleStats stats = entry.getValue();
+
+                                                 if (stats.getAverageExecutionTime() > 500) { // 如果平均执行时间超过500ms
+                                                     suggestions.add(new OptimizationSuggestion(ruleId, "High execution time",
+                                                         "Consider simplifying the rule or optimizing its logic."));
+                                                 }
+
+                                                 if (stats.getExecutionCount() > 10000 && stats.getAverageExecutionTime() > 100) { // 如果执行次数很多且平均时间较长
+                                                     suggestions.add(new OptimizationSuggestion(ruleId, "Frequently executed with moderate execution time",
+                                                         "Consider caching the rule results or pre-computing some values."));
+                                                 }
+
+                                                 if (stats.getErrorRate() > 0.05) { // 如果错误率超过5%
+                                                     suggestions.add(new OptimizationSuggestion(ruleId, "High error rate",
+                                                         "Review the rule logic and input data to reduce errors."));
+                                                 }
+                                             }
+
+                                             return suggestions;
+                                         }
+                                     }
+
+                                     public class OptimizationSuggestion {
+                                         private int ruleId;
+                                         private String issue;
+                                         private String suggestion;
+
+                                         // Constructor, getters, and setters
+                                     }
+                                     ```
+
+                                     33. 规则版本比较
+
+                                     实现规则版本之间的比较功能，以便管理员可以轻松查看规则的变化：
+
+                                     ```java
+                                     public class RuleVersionComparator {
+                                         public RuleVersionDiff compareVersions(RuleVersion oldVersion, RuleVersion newVersion) {
+                                             RuleVersionDiff diff = new RuleVersionDiff();
+                                             diff.setOldVersionId(oldVersion.getId());
+                                             diff.setNewVersionId(newVersion.getId());
+                                             diff.setChanges(generateDiff(oldVersion.getRuleExpression(), newVersion.getRuleExpression()));
+                                             return diff;
+                                         }
+
+                                         private List<String> generateDiff(String oldExpression, String newExpression) {
+                                             // 使用差异比较算法，如最长公共子序列（LCS）算法来生成差异
+                                             // 这里简化处理，实际实现可能更复杂
+                                             List<String> changes = new ArrayList<>();
+                                             if (!oldExpression.equals(newExpression)) {
+                                                 changes.add("Expression changed from: " + oldExpression + " to: " + newExpression);
+                                             }
+                                             return changes;
+                                         }
+                                     }
+
+                                     public class RuleVersionDiff {
+                                         private int oldVersionId;
+                                         private int newVersionId;
+                                         private List<String> changes;
+
+                                         // Getters and setters
+                                     }
+                                     ```
+
+                                     34. 规则执行计划生成
+
+                                     为了优化规则执行顺序，我们可以实现一个规则执行计划生成器：
+
+                                     ```java
+                                     public class RuleExecutionPlanGenerator {
+                                         public List<SettlementRule> generateExecutionPlan(List<SettlementRule> rules, List<RuleDependency> dependencies) {
+                                             // 构建规则依赖图
+                                             Map<Integer, Set<Integer>> dependencyGraph = buildDependencyGraph(rules, dependencies);
+
+                                             // 使用拓扑排序算法生成执行计划
+                                             List<SettlementRule> executionPlan = new ArrayList<>();
+                                             Set<Integer> visited = new HashSet<>();
+                                             继续完善 RuleExecutionPlanGenerator 类并添加更多功能：
+
+                                             ```java
+                                             public class RuleExecutionPlanGenerator {
+                                                 public List<SettlementRule> generateExecutionPlan(List<SettlementRule> rules, List<RuleDependency> dependencies) {
+                                                     // 构建规则依赖图
+                                                     Map<Integer, Set<Integer>> dependencyGraph = buildDependencyGraph(rules, dependencies);
+
+                                                     // 使用拓扑排序算法生成执行计划
+                                                     List<SettlementRule> executionPlan = new ArrayList<>();
+                                                     Set<Integer> visited = new HashSet<>();
+                                                     Set<Integer> recursionStack = new HashSet<>();
+
+                                                     for (SettlementRule rule : rules) {
+                                                         if (!visited.contains(rule.getId())) {
+                                                             if (hasCycle(rule.getId(), dependencyGraph, visited, recursionStack, executionPlan)) {
+                                                                 throw new IllegalStateException("Cyclic dependency detected in rules");
+                                                             }
+                                                         }
+                                                     }
+
+                                                     Collections.reverse(executionPlan);
+                                                     return executionPlan;
+                                                 }
+
+                                                 private Map<Integer, Set<Integer>> buildDependencyGraph(List<SettlementRule> rules, List<RuleDependency> dependencies) {
+                                                     Map<Integer, Set<Integer>> graph = new HashMap<>();
+                                                     for (SettlementRule rule : rules) {
+                                                         graph.put(rule.getId(), new HashSet<>());
+                                                     }
+                                                     for (RuleDependency dependency : dependencies) {
+                                                         graph.get(dependency.getRuleId()).add(dependency.getDependentRuleId());
+                                                     }
+                                                     return graph;
+                                                 }
+
+                                                 private boolean hasCycle(int ruleId, Map<Integer, Set<Integer>> graph, Set<Integer> visited,
+                                                                          Set<Integer> recursionStack, List<SettlementRule> executionPlan) {
+                                                     visited.add(ruleId);
+                                                     recursionStack.add(ruleId);
+
+                                                     for (int dependentRuleId : graph.get(ruleId)) {
+                                                         if (!visited.contains(dependentRuleId)) {
+                                                             if (hasCycle(dependentRuleId, graph, visited, recursionStack, executionPlan)) {
+                                                                 return true;
+                                                             }
+                                                         } else if (recursionStack.contains(dependentRuleId)) {
+                                                             return true;
+                                                         }
+                                                     }
+
+                                                     recursionStack.remove(ruleId);
+                                                     executionPlan.add(getRuleById(ruleId));
+                                                     return false;
+                                                 }
+
+                                                 private SettlementRule getRuleById(int ruleId) {
+                                                     // 实现根据 ID 获取规则的逻辑
+                                                 }
+                                             }
+                                             ```
+
+                                             35. 规则执行上下文管理
+
+                                             为了更好地管理规则执行过程中的上下文数据，我们可以实现一个专门的上下文管理器：
+
+                                             ```java
+                                             public class RuleExecutionContext {
+                                                 private Map<String, Object> globalContext;
+                                                 private Map<String, Object> localContext;
+
+                                                 public RuleExecutionContext(Map<String, Object> globalContext) {
+                                                     this.globalContext = new HashMap<>(globalContext);
+                                                     this.localContext = new HashMap<>();
+                                                 }
+
+                                                 public void setGlobalVariable(String key, Object value) {
+                                                     globalContext.put(key, value);
+                                                 }
+
+                                                 public void setLocalVariable(String key, Object value) {
+                                                     localContext.put(key, value);
+                                                 }
+
+                                                 public Object getVariable(String key) {
+                                                     if (localContext.containsKey(key)) {
+                                                         return localContext.get(key);
+                                                     }
+                                                     return globalContext.get(key);
+                                                 }
+
+                                                 public void clearLocalContext() {
+                                                     localContext.clear();
+                                                 }
+
+                                                 public Map<String, Object> getAllVariables() {
+                                                     Map<String, Object> allVariables = new HashMap<>(globalContext);
+                                                     allVariables.putAll(localContext);
+                                                     return allVariables;
+                                                 }
+                                             }
+                                             ```
+
+                                             36. 规则执行性能分析
+
+                                             实现一个性能分析器，用于
+                                             继续完善规则执行性能分析功能：
+
+                                             ```java
+                                             public class RulePerformanceAnalyzer {
+                                                 private Map<Integer, RulePerformanceData> performanceData = new HashMap<>();
+
+                                                 public void recordPerformance(int ruleId, long executionTime, int inputSize) {
+                                                     RulePerformanceData data = performanceData.computeIfAbsent(ruleId, k -> new RulePerformanceData());
+                                                     data.addExecution(executionTime, inputSize);
+                                                 }
+
+                                                 public PerformanceReport generateReport() {
+                                                     PerformanceReport report = new PerformanceReport();
+                                                     for (Map.Entry<Integer, RulePerformanceData> entry : performanceData.entrySet()) {
+                                                         int ruleId = entry.getKey();
+                                                         RulePerformanceData data = entry.getValue();
+                                                         report.addRulePerformance(ruleId, data.getAverageExecutionTime(), data.getAverageInputSize());
+                                                     }
+                                                     return report;
+                                                 }
+
+                                                 public List<Integer> identifySlowRules(long threshold) {
+                                                     return performanceData.entrySet().stream()
+                                                             .filter(entry -> entry.getValue().getAverageExecutionTime() > threshold)
+                                                             .map(Map.Entry::getKey)
+                                                             .collect(Collectors.toList());
+                                                 }
+                                             }
+
+                                             class RulePerformanceData {
+                                                 private long totalExecutionTime = 0;
+                                                 private int totalInputSize = 0;
+                                                 private int executionCount = 0;
+
+                                                 public void addExecution(long executionTime, int inputSize) {
+                                                     totalExecutionTime += executionTime;
+                                                     totalInputSize += inputSize;
+                                                     executionCount++;
+                                                 }
+
+                                                 public double getAverageExecutionTime() {
+                                                     return executionCount > 0 ? (double) totalExecutionTime / executionCount : 0;
+                                                 }
+
+                                                 public double getAverageInputSize() {
+                                                     return executionCount > 0 ? (double) totalInputSize / executionCount : 0;
+                                                 }
+                                             }
+
+                                             class PerformanceReport {
+                                                 private List<RulePerformanceEntry> entries = new ArrayList<>();
+
+                                                 public void addRulePerformance(int ruleId, double avgExecutionTime, double avgInputSize) {
+                                                     entries.add(new RulePerformanceEntry(ruleId, avgExecutionTime, avgInputSize));
+                                                 }
+
+                                                 public List<RulePerformanceEntry> getEntries() {
+                                                     return entries;
+                                                 }
+                                             }
+
+                                             class RulePerformanceEntry {
+                                                 private int ruleId;
+                                                 private double averageExecutionTime;
+                                                 private double averageInputSize;
+
+                                                 // Constructor, getters, and setters
+                                             }
+                                             ```
+
+                                             37. 规则执行并发控制
+
+                                             为了避免并发执行时的潜在问题，我们可以实现一个并发控制机制：
+
+                                             ```java
+                                             public class RuleConcurrencyManager {
+                                                 private final Map<Integer, Semaphore> ruleSemaphores = new ConcurrentHashMap<>();
+                                                 private final int defaultConcurrency;
+
+                                                 public RuleConcurrencyManager(int defaultConcurrency) {
+                                                     this.defaultConcurrency = defaultConcurrency;
+                                                 }
+
+                                                 public void setRuleConcurrency(int ruleId, int concurrency) {
+                                                     ruleSemaphores.put(ruleId, new Semaphore(concurrency));
+                                                 }
+
+                                                 public void acquirePermit(int ruleId) throws InterruptedException {
+                                                     Semaphore semaphore = ruleSemaphores.computeIfAbsent(ruleId, k -> new Semaphore(defaultConcurrency));
+                                                     semaphore.acquire();
+                                                 }
+
+                                                 public void releasePermit(int ruleId) {
+                                                     Semaphore semaphore = ruleSemaphores.get(ruleId);
+                                                     if (semaphore != null) {
+                                                         semaphore.release();
+                                                     }
+                                                 }
+                                             }
+                                             ```
+
+                                             38. 规则执行回滚机制
+
+                                             实现一个回滚机制，以便在规则执行过程中出现错误时能
+                                             继续完善规则执行回滚机制：
+
+                                             ```java
+                                             public class RuleExecutionRollbackManager {
+                                                 private final Map<Integer, Deque<RuleExecutionState>> executionStates = new ConcurrentHashMap<>();
+
+                                                 public void saveState(int ruleId, RuleExecutionState state) {
+                                                     executionStates.computeIfAbsent(ruleId, k -> new ConcurrentLinkedDeque<>()).push(state);
+                                                 }
+
+                                                 public RuleExecutionState rollback(int ruleId) {
+                                                     Deque<RuleExecutionState> states = executionStates.get(ruleId);
+                                                     if (states != null && !states.isEmpty()) {
+                                                         return states.pop();
+                                                     }
+                                                     return null;
+                                                 }
+
+                                                 public void clearStates(int ruleId) {
+                                                     executionStates.remove(ruleId);
+                                                 }
+                                             }
+
+                                             public class RuleExecutionState {
+                                                 private final Map<String, Object> contextSnapshot;
+                                                 private final double intermediateResult;
+
+                                                 public RuleExecutionState(Map<String, Object> contextSnapshot, double intermediateResult) {
+                                                     this.contextSnapshot = new HashMap<>(contextSnapshot);
+                                                     this.intermediateResult = intermediateResult;
+                                                 }
+
+                                                 // Getters
+                                             }
+                                             ```
+
+                                             39. 规则执行日志记录
+
+                                             实现详细的规则执行日志记录，以便于调试和审计：
+
+                                             ```java
+                                             public class RuleExecutionLogger {
+                                                 private static final Logger logger = LoggerFactory.getLogger(RuleExecutionLogger.class);
+
+                                                 public void logRuleExecution(int ruleId, Map<String, Object> input, double output, long executionTime) {
+                                                     logger.info("Rule {} executed. Input: {}, Output: {}, Execution Time: {} ms",
+                                                                 ruleId, input, output, executionTime);
+                                                 }
+
+                                                 public void logRuleError(int ruleId, Map<String, Object> input, Exception error) {
+                                                     logger.error("Error executing rule {}. Input: {}, Error: {}",
+                                                                  ruleId, input, error.getMessage(), error);
+                                                 }
+
+                                                 public void logRuleWarning(int ruleId, String warningMessage) {
+                                                     logger.warn("Warning for rule {}: {}", ruleId, warningMessage);
+                                                 }
+                                             }
+                                             ```
+
+                                             40. 规则执行监控仪表板
+
+                                             创建一个监控仪表板，用于实时显示规则执行的统计信息和性能指标：
+
+                                             ```java
+                                             public class RuleExecutionDashboard {
+                                                 private final RuleExecutionStatistics statistics;
+                                                 private final RulePerformanceAnalyzer performanceAnalyzer;
+
+                                                 public RuleExecutionDashboard(RuleExecutionStatistics statistics, RulePerformanceAnalyzer performanceAnalyzer) {
+                                                     this.statistics = statistics;
+                                                     this.performanceAnalyzer = performanceAnalyzer;
+                                                 }
+
+                                                 public DashboardData generateDashboardData() {
+                                                     DashboardData data = new DashboardData();
+                                                     data.setTotalExecutions(statistics.getTotalExecutions());
+                                                     data.setAverageExecutionTime(statistics.getAverageExecutionTime());
+                                                     data.setErrorRate(statistics.getErrorRate());
+                                                     data.setTopSlowRules(performanceAnalyzer.identifySlowRules(1000)); // 获取执行时间超过1秒的规则
+                                                     data.setRulePerformance(performanceAnalyzer.generateReport().getEntries());
+                                                     return data;
+                                                 }
+                                             }
+
+                                             public class DashboardData {
+                                                 private long totalExecutions;
+                                                 private double averageExecutionTime;
+                                                 private double errorRate;
+                                                 private List<Integer> topSlowRules;
+                                                 private List<RulePerformanceEntry> rulePerformance;
+
+                                                 // Getters and setters
+                                             }
+                                             ```
+
+                                             41. 规则执行优先级动态调整
+
+                                             实现一个机制，根据规则的执行频率和重要性动态调整规则的执行优先级：
+
+                                             ```java
+                                             public class DynamicR
+                                             继续完善动态规则优先级调整机制：
+
+                                             ```java
+                                             public class DynamicRulePriorityAdjuster {
+                                                 private final Map<Integer, RulePriorityData> rulePriorityData = new ConcurrentHashMap<>();
+                                                 private final RuleRepository ruleRepository;
+
+                                                 public DynamicRulePriorityAdjuster(RuleRepository ruleRepository) {
+                                                     this.ruleRepository = ruleRepository;
+                                                 }
+
+                                                 public void recordExecution(int ruleId, long executionTime, boolean isSuccessful) {
+                                                     RulePriorityData data = rulePriorityData.computeIfAbsent(ruleId, k -> new RulePriorityData());
+                                                     data.recordExecution(executionTime, isSuccessful);
+                                                 }
+
+                                                 public void adjustPriorities() {
+                                                     List<Map.Entry<Integer, RulePriorityData>> sortedRules = new ArrayList<>(rulePriorityData.entrySet());
+                                                     sortedRules.sort((e1, e2) -> Double.compare(e2.getValue().getImportanceScore(), e1.getValue().getImportanceScore()));
+
+                                                     int newPriority = 1;
+                                                     for (Map.Entry<Integer, RulePriorityData> entry : sortedRules) {
+                                                         int ruleId = entry.getKey();
+                                                         SettlementRule rule = ruleRepository.findById(ruleId);
+                                                         if (rule != null && rule.getPriority() != newPriority) {
+                                                             rule.setPriority(newPriority);
+                                                             ruleRepository.save(rule);
+                                                         }
+                                                         newPriority++;
+                                                     }
+                                                 }
+                                             }
+
+                                             class RulePriorityData {
+                                                 private long totalExecutions = 0;
+                                                 private long totalExecutionTime = 0;
+                                                 private long successfulExecutions = 0;
+
+                                                 public void recordExecution(long executionTime, boolean isSuccessful) {
+                                                     totalExecutions++;
+                                                     totalExecutionTime += executionTime;
+                                                     if (isSuccessful) {
+                                                         successfulExecutions++;
+                                                     }
+                                                 }
+
+                                                 public double getImportanceScore() {
+                                                     double successRate = (double) successfulExecutions / totalExecutions;
+                                                     double averageExecutionTime = (double) totalExecutionTime / totalExecutions;
+                                                     // 根据执行频率、成功率和平均执行时间计算重要性得分
+                                                     return (totalExecutions * successRate) / averageExecutionTime;
+                                                 }
+                                             }
+
+                                             interface RuleRepository {
+                                                 SettlementRule findById(int ruleId);
+                                                 void save(SettlementRule rule);
+                                             }
+                                             ```
+
+                                             42. 规则执行模拟器
+
+                                             创建一个规则执行模拟器，用于在不影响实际业务的情况下测试和优化规则：
+
+                                             ```java
+                                             public class RuleExecutionSimulator {
+                                                 private final SettlementRuleEngine ruleEngine;
+                                                 private final List<SettlementRule> rules;
+
+                                                 public RuleExecutionSimulator(SettlementRuleEngine ruleEngine, List<SettlementRule> rules) {
+                                                     this.ruleEngine = ruleEngine;
+                                                     this.rules = rules;
+                                                 }
+
+                                                 public SimulationResult simulate(List<Map<String, Object>> testCases) {
+                                                     SimulationResult result = new SimulationResult();
+                                                     for (Map<String, Object> testCase : testCases) {
+                                                         double totalSettlement = 0;
+                                                         for (SettlementRule rule : rules) {
+                                                             try {
+                                                                 double ruleResult = ruleEngine.calculateSettlement(testCase, rule.getRuleExpression());
+                                                                 totalSettlement += ruleResult;
+                                                                 result.addRuleResult(rule.getId(), ruleResult);
+                                                             } catch (Exception e) {
+                                                                 result.addRuleError(rule.getId(), e.getMessage());
+                                                             }
+                                                         }
+                                                         result.addTestCaseResult(testCase, totalSettlement);
+                                                     }
+                                                     return result;
+                                                 }
+                                             }
+
+                                             class SimulationResult {
+                                                 private List<TestC
+                                                 继续完善 SimulationResult 类和添加更多功能：
+
+                                                 ```java
+                                                 class SimulationResult {
+                                                     private List<TestCaseResult> testCaseResults = new ArrayList<>();
+                                                     private Map<Integer, List<Double>> ruleResults = new HashMap<>();
+                                                     private Map<Integer, List<String>> ruleErrors = new HashMap<>();
+
+                                                     public void addTestCaseResult(Map<String, Object> testCase, double totalSettlement) {
+                                                         testCaseResults.add(new TestCaseResult(testCase, totalSettlement));
+                                                     }
+
+                                                     public void addRuleResult(int ruleId, double result) {
+                                                         ruleResults.computeIfAbsent(ruleId, k -> new ArrayList<>()).add(result);
+                                                     }
+
+                                                     public void addRuleError(int ruleId, String errorMessage) {
+                                                         ruleErrors.computeIfAbsent(ruleId, k -> new ArrayList<>()).add(errorMessage);
+                                                     }
+
+                                                     public List<TestCaseResult> getTestCaseResults() {
+                                                         return testCaseResults;
+                                                     }
+
+                                                     public Map<Integer, List<Double>> getRuleResults() {
+                                                         return ruleResults;
+                                                     }
+
+                                                     public Map<Integer, List<String>> getRuleErrors() {
+                                                         return ruleErrors;
+                                                     }
+
+                                                     public SimulationSummary generateSummary() {
+                                                         SimulationSummary summary = new SimulationSummary();
+                                                         summary.setTotalTestCases(testCaseResults.size());
+                                                         summary.setAverageSettlement(testCaseResults.stream()
+                                                                 .mapToDouble(TestCaseResult::getTotalSettlement)
+                                                                 .average()
+                                                                 .orElse(0));
+                                                         summary.setRulePerformance(calculateRulePerformance());
+                                                         summary.setErrorRates(calculateErrorRates());
+                                                         return summary;
+                                                     }
+
+                                                     private Map<Integer, RulePerformance> calculateRulePerformance() {
+                                                         Map<Integer, RulePerformance> performance = new HashMap<>();
+                                                         for (Map.Entry<Integer, List<Double>> entry : ruleResults.entrySet()) {
+                                                             int ruleId = entry.getKey();
+                                                             List<Double> results = entry.getValue();
+                                                             double avgResult = results.stream().mapToDouble(Double::doubleValue).average().orElse(0);
+                                                             double stdDev = calculateStandardDeviation(results);
+                                                             performance.put(ruleId, new RulePerformance(avgResult, stdDev));
+                                                         }
+                                                         return performance;
+                                                     }
+
+                                                     private Map<Integer, Double> calculateErrorRates() {
+                                                         Map<Integer, Double> errorRates = new HashMap<>();
+                                                         int totalTestCases = testCaseResults.size();
+                                                         for (Map.Entry<Integer, List<String>> entry : ruleErrors.entrySet()) {
+                                                             int ruleId = entry.getKey();
+                                                             int errorCount = entry.getValue().size();
+                                                             double errorRate = (double) errorCount / totalTestCases;
+                                                             errorRates.put(ruleId, errorRate);
+                                                         }
+                                                         return errorRates;
+                                                     }
+
+                                                     private double calculateStandardDeviation(List<Double> values) {
+                                                         double mean = values.stream().mapToDouble(Double::doubleValue).average().orElse(0);
+                                                         double variance = values.stream()
+                                                                 .mapToDouble(v -> Math.pow(v - mean, 2))
+                                                                 .average()
+                                                                 .orElse(0);
+                                                         return Math.sqrt(variance);
+                                                     }
+                                                 }
+
+                                                 class TestCaseResult {
+                                                     private Map<String, Object> testCase;
+                                                     private double totalSettlement;
+
+                                                     // Constructor, getters, and setters
+                                                 }
+
+                                                 class SimulationSummary {
+                                                     private int totalTestCases;
+                                                     private double averageSettlement;
+                                                     private Map<Integer, RulePerformance> rulePerformance;
+                                                     private Map<Integer, Double> errorRates;
+
+                                                     // Getters and setters
+                                                 }
+
+                                                 class RulePerformance {
+                                                     private double averageResult;
+                                                     private double standardDeviation;
+
+                                                     // Constructor, getters, and setters
+                                                 }
+                                                 ```
+
+                                                 43. 规则执行负载均衡
+
+                                                 为了
+                                                 为了实现规则执行的负载均衡，我们可以设计一个负载均衡器来分配规则执行任务：
+
+                                                 ```java
+                                                 public class RuleExecutionLoadBalancer {
+                                                     private final List<RuleExecutionNode> executionNodes;
+                                                     private final AtomicInteger currentNodeIndex = new AtomicInteger(0);
+
+                                                     public RuleExecutionLoadBalancer(List<RuleExecutionNode> executionNodes) {
+                                                         this.executionNodes = new ArrayList<>(executionNodes);
+                                                     }
+
+                                                     public RuleExecutionNode getNextNode() {
+                                                         int index = currentNodeIndex.getAndIncrement() % executionNodes.size();
+                                                         return executionNodes.get(index);
+                                                     }
+
+                                                     public CompletableFuture<Double> executeRule(SettlementRule rule, Map<String, Object> context) {
+                                                         RuleExecutionNode node = getNextNode();
+                                                         return node.executeRule(rule, context);
+                                                     }
+
+                                                     public void addNode(RuleExecutionNode node) {
+                                                         executionNodes.add(node);
+                                                     }
+
+                                                     public void removeNode(RuleExecutionNode node) {
+                                                         executionNodes.remove(node);
+                                                     }
+                                                 }
+
+                                                 public interface RuleExecutionNode {
+                                                     CompletableFuture<Double> executeRule(SettlementRule rule, Map<String, Object> context);
+                                                 }
+
+                                                 public class LocalRuleExecutionNode implements RuleExecutionNode {
+                                                     private final SettlementRuleEngine ruleEngine;
+
+                                                     public LocalRuleExecutionNode(SettlementRuleEngine ruleEngine) {
+                                                         this.ruleEngine = ruleEngine;
+                                                     }
+
+                                                     @Override
+                                                     public CompletableFuture<Double> executeRule(SettlementRule rule, Map<String, Object> context) {
+                                                         return CompletableFuture.supplyAsync(() ->
+                                                             ruleEngine.calculateSettlement(context, rule.getRuleExpression())
+                                                         );
+                                                     }
+                                                 }
+
+                                                 public class RemoteRuleExecutionNode implements RuleExecutionNode {
+                                                     private final String nodeUrl;
+                                                     private final WebClient webClient;
+
+                                                     public RemoteRuleExecutionNode(String nodeUrl, WebClient webClient) {
+                                                         this.nodeUrl = nodeUrl;
+                                                         this.webClient = webClient;
+                                                     }
+
+                                                     @Override
+                                                     public CompletableFuture<Double> executeRule(SettlementRule rule, Map<String, Object> context) {
+                                                         return webClient.post()
+                                                             .uri(nodeUrl + "/execute-rule")
+                                                             .bodyValue(new RuleExecutionRequest(rule, context))
+                                                             .retrieve()
+                                                             .bodyToMono(Double.class)
+                                                             .toFuture();
+                                                     }
+                                                 }
+
+                                                 public class RuleExecutionRequest {
+                                                     private SettlementRule rule;
+                                                     private Map<String, Object> context;
+
+                                                     // Constructor, getters, and setters
+                                                 }
+                                                 ```
+
+                                                 44. 规则执行热更新
+
+                                                 实现规则的热更新机制，允许在不停止系统的情况下更新规则：
+
+                                                 ```java
+                                                 public class RuleHotUpdater {
+                                                     private final ConcurrentMap<Integer, SettlementRule> ruleCache;
+                                                     private final RuleRepository ruleRepository;
+
+                                                     public RuleHotUpdater(RuleRepository ruleRepository) {
+                                                         this.ruleRepository = ruleRepository;
+                                                         this.ruleCache = new ConcurrentHashMap<>();
+                                                         initializeCache();
+                                                     }
+
+                                                     private void initializeCache() {
+                                                         List<SettlementRule> allRules = ruleRepository.findAll();
+                                                         for (SettlementRule rule : allRules) {
+                                                             ruleCache.put(rule.getId(), rule);
+                                                         }
+                                                     }
+
+                                                     public void updateRule(SettlementRule updatedRule) {
+                                                         ruleRepository.save(updatedRule);
+                                                         ruleCache.put(updatedRule.getId(), updatedRule);
+                                                     }
+
+                                                     public SettlementRule getRule(int ruleId) {
+                                                         return ruleCache.get(ruleId);
+                                                     }
+
+                                                     public void deleteRule(int ruleId) {
+                                                         ruleRepository.deleteById(ruleId);
+
+                                                         继续完善 RuleHotUpdater 类并添加更多功能：
+
+                                                         ```java
+                                                         public class RuleHotUpdater {
+                                                             private final ConcurrentMap<Integer, SettlementRule> ruleCache;
+                                                             private final RuleRepository ruleRepository;
+                                                             private final List<RuleUpdateListener> updateListeners;
+
+                                                             public RuleHotUpdater(RuleRepository ruleRepository) {
+                                                                 this.ruleRepository = ruleRepository;
+                                                                 this.ruleCache = new ConcurrentHashMap<>();
+                                                                 this.updateListeners = new ArrayList<>();
+                                                                 initializeCache();
+                                                             }
+
+                                                             private void initializeCache() {
+                                                                 List<SettlementRule> allRules = ruleRepository.findAll();
+                                                                 for (SettlementRule rule : allRules) {
+                                                                     ruleCache.put(rule.getId(), rule);
+                                                                 }
+                                                             }
+
+                                                             public void updateRule(SettlementRule updatedRule) {
+                                                                 ruleRepository.save(updatedRule);
+                                                                 SettlementRule oldRule = ruleCache.put(updatedRule.getId(), updatedRule);
+                                                                 notifyListeners(oldRule, updatedRule);
+                                                             }
+
+                                                             public SettlementRule getRule(int ruleId) {
+                                                                 return ruleCache.get(ruleId);
+                                                             }
+
+                                                             public void deleteRule(int ruleId) {
+                                                                 ruleRepository.deleteById(ruleId);
+                                                                 SettlementRule removedRule = ruleCache.remove(ruleId);
+                                                                 if (removedRule != null) {
+                                                                     notifyListeners(removedRule, null);
+                                                                 }
+                                                             }
+
+                                                             public void addUpdateListener(RuleUpdateListener listener) {
+                                                                 updateListeners.add(listener);
+                                                             }
+
+                                                             public void removeUpdateListener(RuleUpdateListener listener) {
+                                                                 updateListeners.remove(listener);
+                                                             }
+
+                                                             private void notifyListeners(SettlementRule oldRule, SettlementRule newRule) {
+                                                                 for (RuleUpdateListener listener : updateListeners) {
+                                                                     listener.onRuleUpdate(oldRule, newRule);
+                                                                 }
+                                                             }
+                                                         }
+
+                                                         public interface RuleUpdateListener {
+                                                             void onRuleUpdate(SettlementRule oldRule, SettlementRule newRule);
+                                                         }
+                                                         ```
+
+                                                         45. 规则执行事务管理
+
+                                                         实现规则执行的事务管理，确保多个规则的执行要么全部成功，要么全部失败：
+
+                                                         ```java
+                                                         public class RuleExecutionTransactionManager {
+                                                             private final SettlementRuleEngine ruleEngine;
+                                                             private final RuleHotUpdater ruleHotUpdater;
+
+                                                             public RuleExecutionTransactionManager(SettlementRuleEngine ruleEngine, RuleHotUpdater ruleHotUpdater) {
+                                                                 this.ruleEngine = ruleEngine;
+                                                                 this.ruleHotUpdater = ruleHotUpdater;
+                                                             }
+
+                                                             public TransactionResult executeRulesInTransaction(List<Integer> ruleIds, Map<String, Object> context) {
+                                                                 TransactionResult result = new TransactionResult();
+                                                                 Map<String, Object> transactionContext = new HashMap<>(context);
+                                                                 List<RuleExecutionResult> executionResults = new ArrayList<>();
+
+                                                                 for (int ruleId : ruleIds) {
+                                                                     SettlementRule rule = ruleHotUpdater.getRule(ruleId);
+                                                                     if (rule == null) {
+                                                                         result.setSuccess(false);
+                                                                         result.setErrorMessage("Rule not found: " + ruleId);
+                                                                         return result;
+                                                                     }
+
+                                                                     try {
+                                                                         double ruleResult = ruleEngine.calculateSettlement(transactionContext, rule.getRuleExpression());
+                                                                         executionResults.add(new RuleExecutionResult(ruleId, ruleResult));
+                                                                         transactionContext.put("rule_" + ruleId + "_result", ruleResult);
+                                                                     } catch (Exception e) {
+                                                                         result.setSuccess(false);
+                                                                         result.setErrorMessage("Error executing rule " + ruleId + ": " + e.getMessage());
+                                                                         return result;
+                                                                     }
+                                                                 }
+
+                                                                 result.setSuccess(true);
+                                                                 result.setExecutionResults(executionResults);
+
+                                                                 继续完善 RuleExecutionTransactionManager 类并添加更多功能：
+
+                                                                 ```java
+                                                                         return result;
+                                                                     }
+
+                                                                     public TransactionResult executeRulesInTransactionWithRollback(List<Integer> ruleIds, Map<String, Object> context) {
+                                                                         TransactionResult result = new TransactionResult();
+                                                                         Map<String, Object> transactionContext = new HashMap<>(context);
+                                                                         List<RuleExecutionResult> executionResults = new ArrayList<>();
+                                                                         List<Runnable> rollbackActions = new ArrayList<>();
+
+                                                                         for (int ruleId : ruleIds) {
+                                                                             SettlementRule rule = ruleHotUpdater.getRule(ruleId);
+                                                                             if (rule == null) {
+                                                                                 rollback(rollbackActions);
+                                                                                 result.setSuccess(false);
+                                                                                 result.setErrorMessage("Rule not found: " + ruleId);
+                                                                                 return result;
+                                                                             }
+
+                                                                             try {
+                                                                                 double ruleResult = ruleEngine.calculateSettlement(transactionContext, rule.getRuleExpression());
+                                                                                 executionResults.add(new RuleExecutionResult(ruleId, ruleResult));
+                                                                                 transactionContext.put("rule_" + ruleId + "_result", ruleResult);
+
+                                                                                 // Add rollback action
+                                                                                 rollbackActions.add(() -> transactionContext.remove("rule_" + ruleId + "_result"));
+                                                                             } catch (Exception e) {
+                                                                                 rollback(rollbackActions);
+                                                                                 result.setSuccess(false);
+                                                                                 result.setErrorMessage("Error executing rule " + ruleId + ": " + e.getMessage());
+                                                                                 return result;
+                                                                             }
+                                                                         }
+
+                                                                         result.setSuccess(true);
+                                                                         result.setExecutionResults(executionResults);
+                                                                         return result;
+                                                                     }
+
+                                                                     private void rollback(List<Runnable> rollbackActions) {
+                                                                         for (Runnable action : rollbackActions) {
+                                                                             action.run();
+                                                                         }
+                                                                     }
+                                                                 }
+
+                                                                 public class TransactionResult {
+                                                                     private boolean success;
+                                                                     private String errorMessage;
+                                                                     private List<RuleExecutionResult> executionResults;
+
+                                                                     // Getters and setters
+                                                                 }
+
+                                                                 public class RuleExecutionResult {
+                                                                     private int ruleId;
+                                                                     private double result;
+
+                                                                     // Constructor, getters, and setters
+                                                                 }
+                                                                 ```
+
+
+----------------------------------------------------
