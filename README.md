@@ -249,6 +249,7 @@
 * [Workflow orchestration using Netflix Conductor](https://nitish1503.medium.com/workflow-orchestration-using-netflix-conductor-1047cff467d9)
 * [Decoding challenges with Netflix Conductor](https://nitish1503.medium.com/decoding-challenges-with-netflix-conductor-6a623b47291f)
 * [Netflix Maestro and Apache Airflow — Competitors or Companions in Workflow Orchestration?](https://blog.det.life/netflix-maestro-and-apache-airflow-competitors-or-companions-in-workflow-orchestration-2bce948956a5)
+* [100X Faster: How We Supercharged Netflix Maestro’s Workflow Engine](https://netflixtechblog.com/100x-faster-how-we-supercharged-netflix-maestros-workflow-engine-028e9637f041?source=user_profile_page---------11-------------c3aeaf49d8a4----------------------)
 
 
 ## Observability
