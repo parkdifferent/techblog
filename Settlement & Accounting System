@@ -1,0 +1,939 @@
+设计结算会计系统，遵循最佳实践，可参考全球互联网公司的实践?
+
+-----gemini 3.0 pro--------
+设计一个企业级、高并发、高可靠的**结算会计系统（Settlement & Accounting System）**，通常参考 **Stripe (Ledger), Uber (Finance Tech), 阿里巴巴 (TCN/GOC), 蚂蚁金服 (OFIN)** 等全球顶尖互联网金融架构。
+
+该系统的核心目标是：**将复杂的业务流（订单、支付、退款）转化为标准的财务流（分录、凭证、报表），并确保资金的“准、快、全”结算。**
+
+以下是基于业界最佳实践的架构设计与实现指南。
+
+-----
+
+### 一、 核心设计哲学 (Core Principles)
+
+在设计代码之前，必须确立以下不可动摇的原则：
+
+1.  **复式记账 (Double-Entry Bookkeeping)**:
+      * 这是会计的基石。任何一笔资金变动必须同时有借（Debit）和贷（Credit），且 $\text{Debit} = \text{Credit}$。
+      * *作用*：保证系统内部资金零泄露，自我验证。
+2.  **不可变性 (Immutability)**:
+      * 财务数据**一旦写入，严禁 Update**。
+      * 如果记错了怎么办？**冲红（Red-Ink Entry/Storno）**。即插入一条负数记录抵消原记录，再插入一条正确的记录。
+3.  **幂等性 (Idempotency)**:
+      * 金融系统最怕重复计费。所有接口必须支持幂等，利用 `unique_key`（如 `source_id + event_type`）防止重放攻击或网络重试导致的重复记账。
+4.  **业务与财务解耦**:
+      * 上游业务系统（交易、支付）只管“发生了什么事件”，结算系统负责“如何记账”。
+
+-----
+
+### 二、 总体架构设计 (System Architecture)
+
+系统分为四层：**数据接入层、核心处理层、数据存储层、输出层**。
+
+#### 1\. 数据接入层 (Ingestion Layer)
+
+  * **统一标准接入 (Unified Event)**: 无论上游是电商订单、会员充值还是广告扣费，进入结算系统前必须标准化为“业务事件 (Business Event)”。
+  * **技术选型**: Kafka / RocketMQ (削峰填谷)。
+
+#### 2\. 核心处理层 (Core Processing Layer) - **最关键部分**
+
+这里包含两个核心引擎：
+
+  * **计费/规则引擎 (Rule Engine)**: 计算“收多少钱，分给谁”。
+      * *输入*: 订单金额 100元。
+      * *规则*: 平台抽佣 5%，税率 1%。
+      * *输出*: 商家应结 94元，平台收入 5元，待缴税款 1元。
+  * **会计引擎 (Accounting Engine)**: 将计算结果转化为“会计分录”。
+      * *逻辑*: 将业务语言翻译成会计语言（借：银行存款，贷：主营业务收入）。
+
+#### 3\. 存储层 (Storage Layer)
+
+  * **分库分表**: 按 `merchant_id` 或 `user_id` 进行 Sharding。
+  * **热点账户处理**: 针对平台大账户（如“平台总收款户”），采用**缓冲记账 (Buffer Accounting)** 策略，先写内存或Redis队列，再异步合并写入 DB，避免行锁竞争。
+
+-----
+
+### 三、 核心领域模型 (Domain Model)
+
+这是参考 **Stripe** 和 **阿里** 的模型设计：
+
+#### 1\. 业务事件 (Business Event)
+
+上游传来的原始数据。
+
+```json
+{
+  "event_id": "evt_123",
+  "type": "PAYMENT_SUCCESS",
+  "amount": 100.00,
+  "currency": "CNY",
+  "biz_time": "2023-12-01T10:00:00Z",
+  "metadata": { "order_id": "ord_888", "merchant_id": "m_999" }
+}
+```
+
+#### 2\. 分录 (Posting Entry / Ledger Entry)
+
+这是原子的记账单元。**这通常是数据量最大的表。**
+
+  * **表结构设计**:
+      * `id`: 主键
+      * `ledger_id`: 账本ID
+      * `account_id`: 账户ID (如: 商家A余额户)
+      * `direction`: DEBIT / CREDIT
+      * `amount`: 金额 (建议用 Long 存储“分”，避免浮点误差)
+      * `entry_type`: 资金类型 (货款/手续费/税金)
+      * `source_id`: 关联的 event\_id (用于幂等)
+      * `balance_snapshot`: 交易后余额 (可选，用于快速核对)
+
+#### 3\. 账户 (Account)
+
+  * 分为 **实体账户 (Balance Account)** 和 **虚拟账户 (Shadow Account)**。
+  * 结算系统通常维护一套“子账本 (Sub-ledger)”，每天定期将汇总数据同步给公司的 ERP (General Ledger, 如 SAP/Oracle)。
+
+-----
+
+### 四、 核心流程设计 (Core Workflow)
+
+#### 场景：用户支付 100 元，平台抽成 10%
+
+1.  **事件消费**: 监听到 `ORDER_PAID` 事件。
+2.  **清分 (Clearing/Proration)**:
+      * 调用规则引擎，计算出资金分配方案。
+      * 结果：`Merchant: +90`, `Platform_Fee: +10`。
+3.  **试算 (Pre-Check)**:
+      * 检查账户状态（是否冻结）、汇率是否有效。
+4.  **记账 (Posting)**:
+      * 开启数据库事务。
+      * **生成分录**:
+          * Dr (借): `渠道收款户` 100.00
+          * Cr (贷): `商家待结算户` 90.00
+          * Cr (贷): `平台收入户` 10.00
+      * **更新余额**: `UPDATE accounts SET balance = balance + ? WHERE id = ?`
+      * *最佳实践*: 使用 **乐观锁 (CAS)** 更新余额，防止并发覆盖。
+5.  **日终结算 (Settlement)**:
+      * T+1 日，定时任务扫描“商家待结算户”。
+      * 生成“结算单 (Bill)”，将资金从“待结算户”划转至“可用余额户”或直接触发打款。
+
+-----
+
+### 五、 关键难点与解决方案
+
+#### 1\. 对账 (Reconciliation) - 系统的生命线
+
+永远不要相信单一数据源。
+
+  * **三方对账模型**:
+      * **内部账**: 业务订单系统数据。
+      * **渠道账**: 支付宝/微信/Stripe 的对账单。
+      * **会计账**: 结算系统自己的 Ledger 数据。
+  * **实践**: 每日凌晨下载渠道账单，进行 `Inner Join`。发现差异自动生成“差错单 (Exception Item)”，进入人工或自动处理流程。
+
+#### 2\. 时序与乱序问题
+
+  * *问题*: 还没收到“支付成功”事件，先收到了“退款”事件（可能是网络延迟）。
+  * *解决*:
+      * **方案A (缓冲)**: 放入延迟队列，等待前序事件。
+      * **方案B (暂估)**: 允许“负余额”或创建“暂估户”，标记该记录为 pending，待主事件到达后 trigger 冲正。业界多采用方案 B，不阻塞业务。
+
+#### 3\. 高并发热点账户 (The Hot Wallet Problem)
+
+  * *场景*: “平台手续费账户”每秒都有几万笔入账，MySQL 行锁成为瓶颈。
+  * *阿里/蚂蚁方案*: **汇总记账**。
+      * 不直接 Update 数据库热点行。
+      * 先在 Redis 中 `INCRBY`，或者在内存中 Accumulate。
+      * 每隔 N 秒（如 5秒）或积攒 M 条记录后，生成一条汇总的分录写入数据库。
+      * *代价*: 实时性微弱降低，但吞吐量提升百倍。
+
+#### 4\. 精度问题
+
+  * **严禁使用 Double/Float**。
+  * **方案**:
+    1.  使用 `BigDecimal` (Java)。
+    2.  存储单位最小化：存整型 (Long)，单位为“分”或“厘”。
+    3.  **除不尽处理 (Banker's Rounding)**: 遇到 100元分给3个人，33.33, 33.33, 33.33，剩下一分钱怎么办？
+          * *兜底法*: 记入“尾差账户”或给最后一个受益人。
+
+-----
+
+### 六、 技术栈推荐 (Tech Stack)
+
+  * **Language**: Java (Spring Boot) 或 Go (高并发优势)。
+  * **Database**:
+      * TP (交易): MySQL / PostgreSQL (必须支持 ACID)。
+      * AP (报表): ClickHouse / StarRocks (用于实时查询几亿条流水的报表)。
+  * **Distributed Lock**: Redis (Redisson)。
+  * **Scheduler**: XXL-JOB / Quartz (用于日终跑批)。
+  * **Rule Engine**: Drools / QLExpress (阿里开源) / Aviator。
+
+### 七、 总结：从 0 到 1 的路径
+
+1.  **V1.0**: 建立原子化的“分录表”和“账户余额表”，实现最基础的复式记账，T+1 跑批结算。
+2.  **V2.0**: 引入规则引擎，支持复杂的动态分润（如阶梯费率）。
+3.  **V3.0**: 引入实时流式计算（Flink），实现实时可结算；引入自动对账机器人。
+
+设计结算系统的最高境界是：**业务侧感觉不到它的存在，但每一分钱的去向都可追溯、可审计、可解释。**
+
+
+结算会计系统如何设计与实现，遵循最佳实践，可参考全球互联网公司的最佳实践?
+----------gemini 3.0 pro--------
+设计和实现一个企业级的**结算会计系统（Settlement & Accounting System）是金融科技领域最复杂的挑战之一。在全球顶级互联网公司（如 Amazon, Stripe, Airbnb, Alipay, Meituan）中，该系统被视为核心“基础设施”，要求具备极高的准确性、一致性、可追溯性**和**高并发处理能力**。
+
+以下是基于全球最佳实践的系统设计指南，涵盖架构设计、核心流程、数据模型及关键技术难点。
+
+-----
+
+### 🏛️ 1. 系统定位与核心概念
+
+在设计之前，必须理清“结算”与“会计”的区别与联系：
+
+  * **支付 (Payment):** 资金的“收”与“付”动作（通道层）。
+  * **清算 (Clearing):** 信息流的处理。计算“谁欠谁多少钱”，包括扣费、分润、计税等。
+  * **结算 (Settlement):** 资金流的终结。根据清算结果，实际划拨资金（通常是 T+N 日）。
+  * **会计 (Accounting):** 记录一切资金变动。将业务数据转化为财务数据（借贷记账）。
+
+**核心设计哲学：**
+
+> **信息流与资金流分离，业务账与会计账分离。**
+
+-----
+
+### 🏗️ 2. 总体架构设计 (High-Level Architecture)
+
+采用**微服务架构**与**事件驱动架构 (EDA)** 相结合。
+
+#### 2.1 逻辑分层
+
+1.  **业务接入层 (Upstream):** 接收来自电商、广告、直播等业务线的原始订单（Order）。
+2.  **清算层 (Clearing Engine):** 负责计费（Fees）、分润（Profit Sharing）、计税（Tax）和汇率转换。
+3.  **账务层 (Accounting Engine):** 核心子账本系统，负责复式记账（Double-Entry Bookkeeping）。
+4.  **结算层 (Settlement Engine):** 生成结算单，管理付款批次，对接资金渠道。
+5.  **对账层 (Reconciliation):** 确保内部账与外部（银行/渠道）账一致。
+6.  **总账对接 (GL Interface):** 将汇总数据推送到 ERP 系统（如 Oracle/SAP）。
+
+-----
+
+### 🧩 3. 核心功能模块设计
+
+#### 3.1 账户体系 (Account System)
+
+参考银行核心系统设计，建立多维度的账户结构。
+
+  * **账户类型:**
+      * **内部户:** 平台收入户、暂存户、待清算户、风险保证金户。
+      * **外部户:** 商户余额户、用户钱包户、渠道备付金户。
+  * **最佳实践:**
+      * **红蓝户模型:** 甚至可以将“余额”拆分为“可用余额”和“冻结余额”。
+      * **热点账户优化:** 针对平台总账户（高并发写），采用“缓冲记账”或“子账户汇总”策略。
+
+#### 3.2 计费与清算引擎 (Clearing Engine)
+
+这是最复杂的逻辑层，负责将“业务订单”转化为“财务指令”。
+
+  * **流程:** 原始交易 -\> 匹配费率规则 -\> 计算手续费/佣金 -\> 生成分润明细。
+  * **难点:** 复杂的阶梯费率、多方分润（Platform, Merchant, Influencer）、多币种转换。
+
+#### 3.3 账务核心 (Core Ledger) - **最关键部分**
+
+全球最佳实践是采用**复式记账法 (Double-Entry Bookkeeping)**。
+
+  * **基本公式:**
+    $$Assets = Liabilities + Equity$$
+    任何一笔交易必须同时产生借（Debit）和贷（Credit），且金额相等。
+
+  * **设计示例 (一笔 100元的交易，收取 1% 手续费):**
+
+      * *借:* 渠道应收 (Asset) 100
+      * *贷:* 商户待结算 (Liability) 99
+      * *贷:* 平台手续费收入 (Revenue) 1
+
+  * **技术实现:**
+
+      * **不可变性 (Immutability):** 账务流水（Journal Entry）一旦写入，**绝对禁止**修改或物理删除。
+      * **冲正 (Reversal):** 如果发生错误，必须通过插入一笔负向/反向的分录来抵消，即“红冲蓝补”。
+
+#### 3.4 结算引擎 (Settlement Engine)
+
+负责何时给钱（T+1, T+7, 触发式结算）。
+
+  * **汇聚 (Aggregation):** 将商户一天的数万笔小额交易汇总成一笔打款单，节省银行手续费。
+  * **风控拦截:** 在打款前检查商户状态（是否有欺诈嫌疑、余额是否为负）。
+
+-----
+
+### 🛠️ 4. 关键技术实现与最佳实践
+
+#### 4.1 数据一致性 (Data Consistency)
+
+在分布式系统中，资金绝对不能错。
+
+  * **幂等性 (Idempotency):** 所有的接口（尤其是记账和打款）必须支持幂等。通常使用 `Unique_Request_ID` 或 `Biz_Order_ID` 作为幂等键。
+  * **分布式事务:**
+      * **TCC (Try-Confirm-Cancel):** 适用于强一致性要求的场景（如余额扣减）。
+      * **事务消息 (Transactional Outbox):** 使用本地消息表 + MQ，确保“记账成功”必定触发“下游通知”。
+
+#### 4.2 精度与存储
+
+  * **金额存储:** **严禁**使用 `Float` 或 `Double`。
+      * **最佳实践:** 使用 `BigDeciaml` (Java) 或存储为最小单位的整数 (Long)。例如：$100.50$ 存为 `10050` (分/Cent)。
+  * **多币种:** 必须记录三要素：`原始金额`、`汇率`、`本位币金额`。
+
+#### 4.3 对账系统 (Reconciliation)
+
+这是系统的最后一道防线。
+
+  * **三方对账模型:**
+    1.  **业务账 vs 支付账:** 确保订单都支付了。
+    2.  **支付账 vs 渠道账 (银行):** 确保钱真的到账了。
+    3.  **会计账 vs 资金账:** 确保账本余额等于银行账户余额。
+  * **自动化:** 系统应能自动解析银行的 CSV/MT940 文件，进行逐笔勾兑，自动生成“差异表 (Discrepancy Report)”。
+
+-----
+
+### 📊 5. 数据模型简图 (ER Schema Conceptual)
+
+以下是一个简化的核心数据库设计思路：
+
+```sql
+-- 1. 账户表 (Accounts)
+CREATE TABLE accounts (
+    id BIGINT PRIMARY KEY,
+    owner_id BIGINT, -- 商户或用户ID
+    type VARCHAR(20), -- ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE
+    balance BIGINT, -- 余额（最小单位）
+    currency CHAR(3),
+    version INT -- 乐观锁版本号
+);
+
+-- 2. 分录流水表 (Journal_Entries / Ledger_Rows)
+-- 这是整个系统数据量最大的表，通常需要分库分表
+CREATE TABLE journal_entries (
+    id BIGINT PRIMARY KEY,
+    transaction_id VARCHAR(64), -- 关联的事务ID
+    account_id BIGINT,
+    direction VARCHAR(4), -- DEBIT or CREDIT
+    amount BIGINT,
+    biz_date DATE, -- 会计日期
+    created_at TIMESTAMP
+);
+
+-- 3. 结算单 (Settlement_Orders)
+CREATE TABLE settlement_orders (
+    id BIGINT PRIMARY KEY,
+    merchant_id BIGINT,
+    amount BIGINT,
+    status VARCHAR(20), -- PENDING, PROCESSING, SUCCESS, FAILED
+    bank_account_info JSON,
+    expected_settle_date DATE
+);
+```
+
+-----
+
+### 🌍 6. 全球化挑战 (Global Best Practices)
+
+如果你的系统需要支持跨境业务（如 TikTok, Shein）：
+
+1.  **时区问题 (Timezones):** 系统内部必须统一使用 **UTC** 时间存储。但在生成日结单（Daily Statement）时，需要根据商户所在地的时区（Cut-off Time）进行切分。
+2.  **汇率损益 (FX Gain/Loss):** 交易时的汇率与结算时的汇率往往不同。系统必须能够计算这部分差额，并记入“汇兑损益”科目。
+3.  **合规 (Compliance):**
+      * **KYC/KYB:** 结算前必须完成商户身份验证。
+      * **AML (反洗钱):** 大额结算需对接反洗钱系统扫描。
+
+-----
+
+### 💡 总结：成功的关键指标
+
+设计良好的结算会计系统应满足以下指标：
+
+1.  **零误差:** 资金处理准确率 100%。
+2.  **可审计:** 每一分钱的变动都能追溯到原始业务订单。
+3.  **自动化率:** 99% 的对账和结算应自动完成，无需人工干预。
+4.  **弹性:** 能够应对“双11”级别的流量峰值（通常通过异步削峰实现）。
+
+### 下一步建议
+
+**您希望我针对以下哪个具体环节进行详细展开？**
+
+1.  **复式记账的数据库表结构设计**（详细到字段与索引）。
+2.  **日终对账（Reconciliation）的算法与流程图**。
+3.  **如何处理“高并发热点账户”的扣款问题**（技术架构细节）。
+
+
+-------------opus----------
+
+# 结算会计系统设计与实现
+
+> 参考全球互联网公司最佳实践：Stripe、Uber、Ant Group (蚂蚁集团)、Square、Airbnb
+
+## 目录
+
+- [1. 核心设计原则](#1-核心设计原则)
+- [2. 系统架构概览](#2-系统架构概览)
+- [3. 复式记账数据库设计](#3-复式记账数据库设计)
+- [4. 核心服务实现](#4-核心服务实现)
+- [5. 日终对账算法与流程](#5-日终对账算法与流程)
+- [6. 高并发热点账户处理](#6-高并发热点账户处理)
+- [7. 技术栈选型](#7-技术栈选型)
+- [8. 高可用与容灾](#8-高可用与容灾)
+
+---
+
+## 1. 核心设计原则
+
+### 1.1 复式记账 (Double-Entry Bookkeeping)
+
+每笔交易必须同时记录**借方 (Debit)** 和**贷方 (Credit)**，且两者金额必须相等。
+
+```
+借方总额 = 贷方总额
+```
+
+**示例：用户支付100元给商户**
+
+| 账户 | 借方 (Debit) | 贷方 (Credit) |
+|------|-------------|---------------|
+| 用户钱包账户 | | 100.00 |
+| 商户待结算账户 | 100.00 | |
+| 平台手续费账户 | 2.00 | |
+| 商户待结算账户 | | 2.00 |
+
+### 1.2 数据不可变性 (Immutability)
+
+- **核心原则**：账务记录一旦写入，永不修改、永不删除
+- **错账处理**：通过"冲正分录"进行修正，保留完整审计轨迹
+- **实现方式**：表设计不提供 UPDATE/DELETE 操作，仅 INSERT
+
+### 1.3 幂等性 (Idempotency)
+
+- 每笔交易携带唯一的 `idempotency_key`
+- 重复请求返回相同结果，不产生重复记账
+- 分布式环境下防止重复扣款/入账
+
+### 1.4 最终一致性 (Eventual Consistency)
+
+- 采用异步对账机制保证数据一致性
+- 实时记账 + 定时对账 + 差异处理
+- 参考 Uber 的 "Reconciliation as a Service" 架构
+
+---
+
+## 2. 系统架构概览
+
+### 2.1 分层架构图
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                           API Gateway                                    │
+│                    (认证、限流、路由、熔断)                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+                                    │
+        ┌───────────────────────────┼───────────────────────────┐
+        ▼                           ▼                           ▼
+┌───────────────┐         ┌───────────────┐         ┌───────────────┐
+│  交易服务      │         │  账务服务      │         │  结算服务      │
+│ Transaction   │         │   Ledger      │         │  Settlement   │
+│   Service     │────────▶│   Engine      │◀────────│   Service     │
+└───────────────┘         └───────────────┘         └───────────────┘
+        │                         │                         │
+        │                         ▼                         │
+        │                 ┌───────────────┐                 │
+        │                 │  对账服务      │                 │
+        │                 │Reconciliation │                 │
+        │                 │   Service     │                 │
+        │                 └───────────────┘                 │
+        │                         │                         │
+        ▼                         ▼                         ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         Message Queue (Kafka)                            │
+│                    (事件驱动、解耦、削峰填谷)                               │
+└─────────────────────────────────────────────────────────────────────────┘
+                                    │
+        ┌───────────────────────────┼───────────────────────────┐
+        ▼                           ▼                           ▼
+┌───────────────┐         ┌───────────────┐         ┌───────────────┐
+│   MySQL       │         │    Redis      │         │  时序数据库    │
+│  (主数据库)    │         │   (缓存/锁)   │         │  (监控指标)    │
+└───────────────┘         └───────────────┘         └───────────────┘
+```
+
+### 2.2 核心服务职责
+
+| 服务 | 职责 | 关键特性 |
+|------|------|----------|
+| **Transaction Service** | 交易创建、状态管理 | 幂等控制、状态机 |
+| **Ledger Engine** | 复式记账核心 | 借贷平衡、乐观锁 |
+| **Settlement Service** | 商户结算 | T+1/T+2、批量处理 |
+| **Reconciliation Service** | 对账服务 | 定时任务、差异处理 |
+
+---
+
+## 3. 复式记账数据库设计
+
+### 3.1 ER 关系图
+
+```
+┌──────────────────┐       ┌──────────────────┐       ┌──────────────────┐
+│ chart_of_accounts│       │     account      │       │   transaction    │
+│    (会计科目)     │◀──────│    (账户)        │       │    (交易)        │
+└──────────────────┘       └──────────────────┘       └──────────────────┘
+         │                         │                         │
+         │                         │                         │
+         │                         ▼                         │
+         │                 ┌──────────────────┐              │
+         └────────────────▶│  journal_entry   │◀─────────────┘
+                           │   (账务分录)      │
+                           └──────────────────┘
+                                   │
+                                   ▼
+                           ┌──────────────────┐
+                           │ account_balance  │
+                           │  _snapshot       │
+                           │  (余额快照)       │
+                           └──────────────────┘
+```
+
+### 3.2 详细表结构设计
+
+#### 3.2.1 会计科目表 (chart_of_accounts)
+
+```sql
+-- ============================================================
+-- 会计科目表 (Chart of Accounts)
+-- 定义账户的分类体系，遵循会计准则
+-- ============================================================
+CREATE TABLE `chart_of_accounts` (
+    -- 主键
+    `id`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 科目基本信息
+    `code`            VARCHAR(32) NOT NULL COMMENT '科目编码，如 1001-现金，2001-应付账款',
+    `name`            VARCHAR(128) NOT NULL COMMENT '科目名称',
+    `description`     VARCHAR(512) DEFAULT NULL COMMENT '科目描述',
+
+    -- 科目分类
+    `account_type`    ENUM('ASSET', 'LIABILITY', 'EQUITY', 'REVENUE', 'EXPENSE')
+                      NOT NULL COMMENT '科目类型：资产/负债/所有者权益/收入/费用',
+    `balance_type`    ENUM('DEBIT', 'CREDIT') NOT NULL COMMENT '余额方向：借方/贷方',
+
+    -- 层级结构
+    `parent_id`       BIGINT UNSIGNED DEFAULT NULL COMMENT '父科目ID，顶级科目为NULL',
+    `level`           TINYINT UNSIGNED NOT NULL DEFAULT 1 COMMENT '科目层级，1-5级',
+    `full_path`       VARCHAR(256) DEFAULT NULL COMMENT '完整路径，如 1/1001/100101',
+
+    -- 状态控制
+    `status`          ENUM('ACTIVE', 'INACTIVE', 'DEPRECATED')
+                      NOT NULL DEFAULT 'ACTIVE' COMMENT '状态',
+    `allow_posting`   TINYINT(1) NOT NULL DEFAULT 1 COMMENT '是否允许记账：1-是，0-否（汇总科目）',
+
+    -- 审计字段
+    `create_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    `created_by`      VARCHAR(64) DEFAULT NULL COMMENT '创建人',
+    `updated_by`      VARCHAR(64) DEFAULT NULL COMMENT '更新人',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引
+    UNIQUE KEY `uk_code` (`code`),
+
+    -- 普通索引
+    KEY `idx_parent_id` (`parent_id`),
+    KEY `idx_account_type` (`account_type`),
+    KEY `idx_status` (`status`),
+
+    -- 外键约束
+    CONSTRAINT `fk_coa_parent` FOREIGN KEY (`parent_id`)
+        REFERENCES `chart_of_accounts` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='会计科目表';
+```
+
+#### 3.2.2 账户表 (account)
+
+```sql
+-- ============================================================
+-- 账户表 (Account)
+-- 存储具体的账户信息，每个账户关联一个会计科目
+-- 支持多币种、冻结金额、乐观锁
+-- ============================================================
+CREATE TABLE `account` (
+    -- 主键
+    `id`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 账户标识
+    `account_no`      VARCHAR(64) NOT NULL COMMENT '账户编号，全局唯一，格式：{type}_{owner_id}_{currency}',
+    `account_name`    VARCHAR(128) NOT NULL COMMENT '账户名称',
+
+    -- 科目关联
+    `coa_id`          BIGINT UNSIGNED NOT NULL COMMENT '关联的会计科目ID',
+
+    -- 账户所有者
+    `owner_type`      VARCHAR(32) NOT NULL COMMENT '所有者类型：USER/MERCHANT/PLATFORM/CHANNEL',
+    `owner_id`        VARCHAR(64) NOT NULL COMMENT '所有者ID',
+
+    -- 账户属性
+    `account_type`    VARCHAR(32) NOT NULL DEFAULT 'NORMAL'
+                      COMMENT '账户类型：NORMAL-普通/FROZEN-冻结户/TRANSIT-过渡户',
+    `currency`        CHAR(3) NOT NULL DEFAULT 'CNY' COMMENT '币种，ISO 4217标准',
+
+    -- 余额信息 (使用 DECIMAL(20,4) 保证精度)
+    `balance`         DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '可用余额',
+    `frozen_amount`   DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '冻结金额',
+    `total_debit`     DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '累计借方发生额',
+    `total_credit`    DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '累计贷方发生额',
+
+    -- 状态与版本
+    `status`          ENUM('ACTIVE', 'FROZEN', 'CLOSED', 'PENDING')
+                      NOT NULL DEFAULT 'ACTIVE' COMMENT '账户状态',
+    `version`         INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '乐观锁版本号',
+
+    -- 业务扩展
+    `extra_info`      JSON DEFAULT NULL COMMENT '扩展信息，JSON格式',
+    `remark`          VARCHAR(256) DEFAULT NULL COMMENT '备注',
+
+    -- 审计字段
+    `create_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引
+    UNIQUE KEY `uk_account_no` (`account_no`),
+    UNIQUE KEY `uk_owner_currency` (`owner_type`, `owner_id`, `account_type`, `currency`),
+
+    -- 普通索引
+    KEY `idx_coa_id` (`coa_id`),
+    KEY `idx_owner` (`owner_type`, `owner_id`),
+    KEY `idx_status` (`status`),
+    KEY `idx_create_time` (`create_time`),
+
+    -- 外键约束
+    CONSTRAINT `fk_account_coa` FOREIGN KEY (`coa_id`)
+        REFERENCES `chart_of_accounts` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='账户表';
+```
+
+#### 3.2.3 交易表 (transaction)
+
+```sql
+-- ============================================================
+-- 交易表 (Transaction)
+-- 记录业务交易的主表，是记账的触发来源
+-- 支持幂等控制、状态机、关联业务单号
+-- ============================================================
+CREATE TABLE `transaction` (
+    -- 主键
+    `id`                BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 交易标识
+    `transaction_no`    VARCHAR(64) NOT NULL COMMENT '交易流水号，全局唯一',
+    `idempotency_key`   VARCHAR(128) NOT NULL COMMENT '幂等键，防止重复交易',
+
+    -- 交易类型
+    `transaction_type`  VARCHAR(32) NOT NULL
+                        COMMENT '交易类型：PAYMENT/REFUND/TRANSFER/WITHDRAW/DEPOSIT/SETTLE',
+    `sub_type`          VARCHAR(32) DEFAULT NULL COMMENT '子类型',
+
+    -- 关联业务
+    `biz_type`          VARCHAR(32) DEFAULT NULL COMMENT '业务类型：ORDER/RECHARGE/WITHDRAW',
+    `biz_no`            VARCHAR(64) DEFAULT NULL COMMENT '业务单号',
+    `channel`           VARCHAR(32) DEFAULT NULL COMMENT '渠道：ALIPAY/WECHAT/BANK',
+
+    -- 金额信息
+    `amount`            DECIMAL(20,4) NOT NULL COMMENT '交易金额',
+    `currency`          CHAR(3) NOT NULL DEFAULT 'CNY' COMMENT '币种',
+    `fee`               DECIMAL(20,4) DEFAULT 0.0000 COMMENT '手续费',
+
+    -- 交易方
+    `payer_type`        VARCHAR(32) DEFAULT NULL COMMENT '付款方类型',
+    `payer_id`          VARCHAR(64) DEFAULT NULL COMMENT '付款方ID',
+    `payee_type`        VARCHAR(32) DEFAULT NULL COMMENT '收款方类型',
+    `payee_id`          VARCHAR(64) DEFAULT NULL COMMENT '收款方ID',
+
+    -- 状态管理
+    `status`            ENUM('INIT', 'PENDING', 'PROCESSING', 'SUCCESS', 'FAILED', 'REVERSED', 'CLOSED')
+                        NOT NULL DEFAULT 'INIT' COMMENT '交易状态',
+    `error_code`        VARCHAR(32) DEFAULT NULL COMMENT '错误码',
+    `error_msg`         VARCHAR(256) DEFAULT NULL COMMENT '错误信息',
+
+    -- 时间信息
+    `request_time`      DATETIME NOT NULL COMMENT '请求时间',
+    `complete_time`     DATETIME DEFAULT NULL COMMENT '完成时间',
+    `expire_time`       DATETIME DEFAULT NULL COMMENT '过期时间',
+
+    -- 扩展信息
+    `memo`              VARCHAR(256) DEFAULT NULL COMMENT '交易备注',
+    `extra_info`        JSON DEFAULT NULL COMMENT '扩展信息',
+    `client_ip`         VARCHAR(64) DEFAULT NULL COMMENT '客户端IP',
+
+    -- 审计字段
+    `create_time`       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引
+    UNIQUE KEY `uk_transaction_no` (`transaction_no`),
+    UNIQUE KEY `uk_idempotency_key` (`idempotency_key`),
+
+    -- 普通索引（覆盖高频查询场景）
+    KEY `idx_biz` (`biz_type`, `biz_no`),
+    KEY `idx_payer` (`payer_type`, `payer_id`),
+    KEY `idx_payee` (`payee_type`, `payee_id`),
+    KEY `idx_status` (`status`),
+    KEY `idx_type_status` (`transaction_type`, `status`),
+    KEY `idx_create_time` (`create_time`),
+    KEY `idx_request_time` (`request_time`),
+
+    -- 复合索引（对账查询优化）
+    KEY `idx_channel_time` (`channel`, `request_time`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='交易表';
+```
+
+#### 3.2.4 账务分录表 (journal_entry) - 核心表
+
+```sql
+-- ============================================================
+-- 账务分录表 (Journal Entry)
+-- 复式记账的核心表，记录每一笔借贷分录
+-- 【关键】此表数据不可变，只能INSERT，禁止UPDATE/DELETE
+-- ============================================================
+CREATE TABLE `journal_entry` (
+    -- 主键
+    `id`                BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 分录标识
+    `entry_no`          VARCHAR(64) NOT NULL COMMENT '分录编号，全局唯一',
+    `batch_no`          VARCHAR(64) DEFAULT NULL COMMENT '批次号，同一交易的分录共享',
+
+    -- 关联交易
+    `transaction_id`    BIGINT UNSIGNED NOT NULL COMMENT '关联交易ID',
+    `transaction_no`    VARCHAR(64) NOT NULL COMMENT '关联交易流水号（冗余，加速查询）',
+
+    -- 关联账户
+    `account_id`        BIGINT UNSIGNED NOT NULL COMMENT '关联账户ID',
+    `account_no`        VARCHAR(64) NOT NULL COMMENT '关联账户编号（冗余）',
+
+    -- 借贷金额（二选一非零）
+    `debit_amount`      DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '借方金额',
+    `credit_amount`     DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '贷方金额',
+
+    -- 余额快照（记账后余额，用于追溯）
+    `balance_before`    DECIMAL(20,4) NOT NULL COMMENT '记账前余额',
+    `balance_after`     DECIMAL(20,4) NOT NULL COMMENT '记账后余额',
+
+    -- 会计日期（可能与自然日期不同）
+    `entry_date`        DATE NOT NULL COMMENT '会计日期',
+    `accounting_period` VARCHAR(7) DEFAULT NULL COMMENT '会计期间，格式：YYYY-MM',
+
+    -- 分录属性
+    `entry_type`        VARCHAR(32) NOT NULL DEFAULT 'NORMAL'
+                        COMMENT '分录类型：NORMAL-正常/REVERSE-冲正/ADJUST-调整',
+    `reverse_entry_id`  BIGINT UNSIGNED DEFAULT NULL COMMENT '被冲正的分录ID',
+
+    -- 描述信息
+    `summary`           VARCHAR(256) DEFAULT NULL COMMENT '摘要',
+    `memo`              VARCHAR(512) DEFAULT NULL COMMENT '备注',
+
+    -- 审计字段（只有创建时间，无更新时间，因为不可变）
+    `create_time`       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `created_by`        VARCHAR(64) DEFAULT NULL COMMENT '创建人/系统',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引
+    UNIQUE KEY `uk_entry_no` (`entry_no`),
+
+    -- 普通索引
+    KEY `idx_transaction_id` (`transaction_id`),
+    KEY `idx_transaction_no` (`transaction_no`),
+    KEY `idx_account_id` (`account_id`),
+    KEY `idx_account_no` (`account_no`),
+    KEY `idx_batch_no` (`batch_no`),
+    KEY `idx_entry_date` (`entry_date`),
+
+    -- 复合索引（账户流水查询优化）
+    KEY `idx_account_date` (`account_id`, `entry_date`),
+    KEY `idx_account_time` (`account_id`, `create_time`),
+
+    -- 复合索引（对账优化）
+    KEY `idx_date_type` (`entry_date`, `entry_type`),
+
+    -- 外键约束
+    CONSTRAINT `fk_entry_transaction` FOREIGN KEY (`transaction_id`)
+        REFERENCES `transaction` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT `fk_entry_account` FOREIGN KEY (`account_id`)
+        REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='账务分录表（不可变）';
+
+-- ============================================================
+-- 分录表约束：确保借贷二选一
+-- ============================================================
+-- ALTER TABLE `journal_entry` ADD CONSTRAINT `chk_debit_credit`
+--     CHECK ((`debit_amount` > 0 AND `credit_amount` = 0) OR
+--            (`debit_amount` = 0 AND `credit_amount` > 0));
+```
+
+#### 3.2.5 账户余额快照表 (account_balance_snapshot)
+
+```sql
+-- ============================================================
+-- 账户余额快照表 (Account Balance Snapshot)
+-- 定期保存账户余额快照，用于：
+-- 1. 加速历史余额查询
+-- 2. 日终对账基准
+-- 3. 快速恢复账户余额
+-- ============================================================
+CREATE TABLE `account_balance_snapshot` (
+    -- 主键
+    `id`                BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 账户信息
+    `account_id`        BIGINT UNSIGNED NOT NULL COMMENT '账户ID',
+    `account_no`        VARCHAR(64) NOT NULL COMMENT '账户编号（冗余）',
+
+    -- 快照日期
+    `snapshot_date`     DATE NOT NULL COMMENT '快照日期',
+    `snapshot_type`     ENUM('DAILY', 'MONTHLY', 'YEARLY', 'MANUAL')
+                        NOT NULL DEFAULT 'DAILY' COMMENT '快照类型',
+
+    -- 余额信息
+    `opening_balance`   DECIMAL(20,4) NOT NULL COMMENT '期初余额',
+    `closing_balance`   DECIMAL(20,4) NOT NULL COMMENT '期末余额',
+    `frozen_amount`     DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '冻结金额',
+
+    -- 发生额汇总
+    `total_debit`       DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '借方发生额',
+    `total_credit`      DECIMAL(20,4) NOT NULL DEFAULT 0.0000 COMMENT '贷方发生额',
+    `transaction_count` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '交易笔数',
+
+    -- 校验信息
+    `checksum`          VARCHAR(64) DEFAULT NULL COMMENT '数据校验和（MD5）',
+    `verified`          TINYINT(1) NOT NULL DEFAULT 0 COMMENT '是否已核验',
+    `verified_time`     DATETIME DEFAULT NULL COMMENT '核验时间',
+
+    -- 审计字段
+    `create_time`       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引（每个账户每天只有一条日快照）
+    UNIQUE KEY `uk_account_date_type` (`account_id`, `snapshot_date`, `snapshot_type`),
+
+    -- 普通索引
+    KEY `idx_snapshot_date` (`snapshot_date`),
+    KEY `idx_account_no` (`account_no`),
+    KEY `idx_verified` (`verified`, `snapshot_date`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='账户余额快照表';
+```
+
+#### 3.2.6 结算周期表 (settlement_cycle)
+
+```sql
+-- ============================================================
+-- 结算周期表 (Settlement Cycle)
+-- 记录商户结算周期信息
+-- ============================================================
+CREATE TABLE `settlement_cycle` (
+    -- 主键
+    `id`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 结算标识
+    `cycle_no`        VARCHAR(32) NOT NULL COMMENT '结算周期编号',
+
+    -- 商户信息
+    `merchant_id`     VARCHAR(64) NOT NULL COMMENT '商户ID',
+    `merchant_name`   VARCHAR(128) DEFAULT NULL COMMENT '商户名称（冗余）',
+
+    -- 周期类型
+    `cycle_type`      ENUM('T0', 'T1', 'T2', 'WEEKLY', 'BIWEEKLY', 'MONTHLY')
+                      NOT NULL DEFAULT 'T1' COMMENT '结算周期类型',
+
+    -- 时间范围
+    `start_time`      DATETIME NOT NULL COMMENT '周期开始时间',
+    `end_time`        DATETIME NOT NULL COMMENT '周期结束时间',
+    `settle_date`     DATE NOT NULL COMMENT '预计结算日期',
+
+    -- 金额汇总
+    `total_amount`    DECIMAL(20,4) DEFAULT NULL COMMENT '交易总金额',
+    `fee_amount`      DECIMAL(20,4) DEFAULT NULL COMMENT '手续费总额',
+    `net_amount`      DECIMAL(20,4) DEFAULT NULL COMMENT '净结算金额',
+    `transaction_count` INT UNSIGNED DEFAULT 0 COMMENT '交易笔数',
+
+    -- 状态
+    `status`          ENUM('PENDING', 'CALCULATING', 'CONFIRMED', 'SETTLING', 'SETTLED', 'FAILED')
+                      NOT NULL DEFAULT 'PENDING' COMMENT '结算状态',
+    `error_msg`       VARCHAR(256) DEFAULT NULL COMMENT '失败原因',
+
+    -- 打款信息
+    `payout_no`       VARCHAR(64) DEFAULT NULL COMMENT '打款单号',
+    `payout_time`     DATETIME DEFAULT NULL COMMENT '打款时间',
+    `payout_status`   VARCHAR(32) DEFAULT NULL COMMENT '打款状态',
+
+    -- 审计字段
+    `create_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+
+    PRIMARY KEY (`id`),
+
+    -- 唯一索引
+    UNIQUE KEY `uk_cycle_no` (`cycle_no`),
+
+    -- 普通索引
+    KEY `idx_merchant_id` (`merchant_id`),
+    KEY `idx_status` (`status`),
+    KEY `idx_settle_date` (`settle_date`),
+    KEY `idx_create_time` (`create_time`),
+
+    -- 复合索引
+    KEY `idx_merchant_status` (`merchant_id`, `status`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='结算周期表';
+```
+
+#### 3.2.7 对账记录表 (reconciliation_record)
+
+```sql
+-- ============================================================
+-- 对账记录表 (Reconciliation Record)
+-- 记录每日对账的执行情况和结果
+-- ============================================================
+CREATE TABLE `reconciliation_record` (
+    -- 主键
+    `id`                  BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+
+    -- 对账标识
+    `reconcile_no`        VARCHAR(64) NOT NULL COMMENT '对账批次号',
+    `reconcile_date`      DATE NOT NULL COMMENT '对账日期',
+
+    -- 对账类型
+    `reconcile_type`      ENUM('INTERNAL', 'EXTERNAL', 'CROSS_CHECK')
+                          NOT NULL COMMENT '对账类型：内部/外部/交叉',
+    `channel`             VARCHAR(32) DEFAULT NULL COMMENT '对账渠道',
+
+    -- 统计信息
+    `internal_count`      INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '内部交易笔数',
+    `external_count`      INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '外部交易笔数',
+    `matched_count`       INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '匹配成功笔数',
+    `unmatched_count`     INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '未匹配笔数',
+
+    `internal_amount`     DECIMAL(20,4) DEFAULT NULL COMMENT '内部交易金额',
+    `external_amount`     DECIMAL(20,4) DEFAULT NULL COMMENT '外部交易金额',
+    `diff_amount`         DECIMAL(20,4) DEFAULT NULL COMMENT '差异金额',
+
+    -- 差异明细
+    `missing_in_psp`      INT
+
+
+
