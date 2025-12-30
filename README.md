@@ -482,6 +482,7 @@
 * [4 Microservices Caching Patterns at Wix](https://medium.com/wix-engineering/4-microservices-caching-patterns-at-wix-b4dfee1ae22f)
 * [Lessons learned from handling massive traffic with cache](https://medium.com/coupang-engineering/lessons-learned-from-operating-our-data-serving-layer-4e9e4f68fe85)
 * [How Uber Serves Over 40 Million Reads Per Second from Online Storage Using an Integrated Cache](https://www.uber.com/en-TW/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/?uclick_id=ba20efd0-d83e-48ff-a4e9-3f3d772f3a07)
+* [How Uber Serves over 150 Million Reads per Second from Integrated Cache with Stronger Consistency Guarantees](https://www.uber.com/en-TW/blog/how-uber-serves-over-150-million-reads/?uclick_id=b3e262d0-0c34-49e1-b6eb-1d0f7be711e4)
 
 ## 任务调度
 * [Beyond Interactive: Notebook Innovation at Netflix](https://netflixtechblog.com/notebook-innovation-591ee3221233)
